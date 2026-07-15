@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cricket Simulator</title>
+</head>
+
+<body>
+
+<h1>🏏 Cricket Simulator</h1>
+
+<button onclick="startMatch()">Start Match</button>
+
+<p id="result"></p>
+
+<script>
+
+function startMatch(){
+
+let runs = Math.floor(Math.random()*200)+50;
+let wickets = Math.floor(Math.random()*10);
+
+document.getElementById("result").innerHTML =
+"Final Score: " + runs + "/" + wickets;
+
+}
+
+</script>
+
+</body>
+</html>
