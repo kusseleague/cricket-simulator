@@ -1,30 +1,40 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Cricket Simulator</title>
+<title>Player Database Test</title>
 </head>
 
 <body>
 
-<h1>🏏 Cricket Simulator</h1>
+<h1>🏏 Cricket Player Database</h1>
 
-<button onclick="startMatch()">Start Match</button>
+<button onclick="showPlayer()">Random Player</button>
 
 <p id="result"></p>
 
+
+<script src="players.js"></script>
+
+
 <script>
 
-function startMatch(){
+function showPlayer(){
 
-let runs = Math.floor(Math.random()*200)+50;
-let wickets = Math.floor(Math.random()*10);
+let player = players[Math.floor(Math.random()*players.length)];
 
 document.getElementById("result").innerHTML =
-"Final Score: " + runs + "/" + wickets;
+"Name: " + player.name +
+"<br>Role: " + player.role +
+"<br>Batting: " + player.bat + "%" +
+"<br>Bowling: " + player.bowl + "%" +
+"<br>Stamina: " + player.stamina + "%";
 
 }
 
 </script>
 
+
 </body>
+
 </html>
