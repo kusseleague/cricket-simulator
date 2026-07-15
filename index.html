@@ -1,1 +1,40 @@
+<!DOCTYPE html>
+<html>
 
+<head>
+<title>Cricket Simulator</title>
+</head>
+
+<body>
+
+<h1>🏏 Cricket Simulator</h1>
+
+<button onclick="startMatch()">Start Match</button>
+
+<p id="result"></p>
+
+
+<script src="players.js"></script>
+
+
+<script>
+
+function startMatch(){
+
+let player = players[Math.floor(Math.random()*players.length)];
+
+document.getElementById("result").innerHTML =
+"Selected Player: " + player.name +
+"<br>Role: " + player.role +
+"<br>Batting: " + player.bat + "%" +
+"<br>Bowling: " + player.bowl + "%" +
+"<br>Stamina: " + player.stamina + "%";
+
+}
+
+</script>
+
+
+</body>
+
+</html>
