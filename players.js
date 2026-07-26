@@ -241,3 +241,242 @@ bat: 84,
 bowl: 10,
 stamina: 86
 },
+{
+name: "Jasprit Bumrah",
+role: "Bowler",
+bat: 20,
+bowl: 97,
+stamina: 93
+},
+
+{
+name: "Arshdeep Singh",
+role: "Bowler",
+bat: 15,
+bowl: 86,
+stamina: 88
+},
+
+{
+name: "Mohammed Siraj",
+role: "Bowler",
+bat: 18,
+bowl: 88,
+stamina: 90
+},
+
+{
+name: "Mohammed Shami",
+role: "Bowler",
+bat: 25,
+bowl: 92,
+stamina: 88
+},
+
+{
+name: "Kuldeep Yadav",
+role: "Bowler",
+bat: 20,
+bowl: 89,
+stamina: 87
+},
+
+{
+name: "Yuzvendra Chahal",
+role: "Bowler",
+bat: 15,
+bowl: 85,
+stamina: 84
+},
+
+{
+name: "Ravichandran Ashwin",
+role: "Bowler",
+bat: 55,
+bowl: 91,
+stamina: 92
+},
+
+{
+name: "Pat Cummins",
+role: "Bowler",
+bat: 35,
+bowl: 95,
+stamina: 94
+},
+
+{
+name: "Mitchell Starc",
+role: "Bowler",
+bat: 25,
+bowl: 94,
+stamina: 89
+},
+
+{
+name: "Josh Hazlewood",
+role: "Bowler",
+bat: 15,
+bowl: 91,
+stamina: 92
+},
+
+{
+name: "Adam Zampa",
+role: "Bowler",
+bat: 20,
+bowl: 89,
+stamina: 90
+},
+
+{
+name: "Nathan Lyon",
+role: "Bowler",
+bat: 30,
+bowl: 88,
+stamina: 91
+},
+
+{
+name: "Trent Boult",
+role: "Bowler",
+bat: 18,
+bowl: 92,
+stamina: 90
+},
+
+{
+name: "Tim Southee",
+role: "Bowler",
+bat: 35,
+bowl: 84,
+stamina: 86
+},
+
+{
+name: "Lockie Ferguson",
+role: "Bowler",
+bat: 15,
+bowl: 87,
+stamina: 84
+},
+
+{
+name: "Kagiso Rabada",
+role: "Bowler",
+bat: 20,
+bowl: 92,
+stamina: 89
+},
+
+{
+name: "Anrich Nortje",
+role: "Bowler",
+bat: 15,
+bowl: 86,
+stamina: 84
+},
+
+{
+name: "Marco Jansen",
+role: "Bowler",
+bat: 60,
+bowl: 88,
+stamina: 91
+},
+
+{
+name: "Keshav Maharaj",
+role: "Bowler",
+bat: 30,
+bowl: 87,
+stamina: 89
+},
+
+{
+name: "Tabraiz Shamsi",
+role: "Bowler",
+bat: 15,
+bowl: 84,
+stamina: 85
+},
+
+{
+name: "Adil Rashid",
+role: "Bowler",
+bat: 25,
+bowl: 88,
+stamina: 87
+},
+
+{
+name: "Mark Wood",
+role: "Bowler",
+bat: 15,
+bowl: 89,
+stamina: 86
+},
+
+{
+name: "Reece Topley",
+role: "Bowler",
+bat: 10,
+bowl: 84,
+stamina: 83
+},
+
+{
+name: "Chris Woakes",
+role: "Bowler",
+bat: 55,
+bowl: 86,
+stamina: 88
+},
+
+{
+name: "Jofra Archer",
+role: "Bowler",
+bat: 15,
+bowl: 90,
+stamina: 85
+},
+
+{
+name: "Rashid Khan",
+role: "Bowler",
+bat: 45,
+bowl: 94,
+stamina: 91
+},
+
+{
+name: "Wanindu Hasaranga",
+role: "Bowler",
+bat: 55,
+bowl: 88,
+stamina: 90
+},
+
+{
+name: "Maheesh Theekshana",
+role: "Bowler",
+bat: 25,
+bowl: 86,
+stamina: 88
+},
+
+{
+name: "Mustafizur Rahman",
+role: "Bowler",
+bat: 15,
+bowl: 85,
+stamina: 86
+},
+
+{
+name: "Akeal Hosein",
+role: "Bowler",
+bat: 45,
+bowl: 85,
+stamina: 88
+},
