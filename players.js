@@ -3,8 +3,6 @@
 const players = [
 
 {
-
-{
 name: "Virat Kohli",
 role: "Batsman",
 bat: 94,
