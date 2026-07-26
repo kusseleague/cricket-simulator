@@ -219,10 +219,10 @@ stamina: 87
 },
 
 {
-name: "Glenn Phillips",
+name: "Tim Seifert",
 role: "Batsman",
 bat: 84,
-bowl: 70,
+bowl: 30,
 stamina: 90
 },
 
@@ -378,9 +378,9 @@ stamina: 84
 },
 
 {
-name: "Marco Jansen",
+name: "Scott Boland",
 role: "Bowler",
-bat: 60,
+bat: 40,
 bowl: 88,
 stamina: 91
 },
@@ -760,4 +760,4 @@ bowl: 97,
 stamina: 92
 }
 
-  ]
+];
