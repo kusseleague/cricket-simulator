@@ -480,3 +480,282 @@ bat: 45,
 bowl: 85,
 stamina: 88
 },
+{
+name: "Ben Stokes",
+role: "All Rounder",
+bat: 92,
+bowl: 88,
+stamina: 94
+},
+
+{
+name: "Hardik Pandya",
+role: "All Rounder",
+bat: 88,
+bowl: 85,
+stamina: 88
+},
+
+{
+name: "Ravindra Jadeja",
+role: "All Rounder",
+bat: 86,
+bowl: 92,
+stamina: 95
+},
+
+{
+name: "Glenn Maxwell",
+role: "All Rounder",
+bat: 89,
+bowl: 80,
+stamina: 87
+},
+
+{
+name: "Shakib Al Hasan",
+role: "All Rounder",
+bat: 88,
+bowl: 89,
+stamina: 91
+},
+
+{
+name: "Andre Russell",
+role: "All Rounder",
+bat: 91,
+bowl: 84,
+stamina: 85
+},
+
+{
+name: "Sam Curran",
+role: "All Rounder",
+bat: 82,
+bowl: 86,
+stamina: 88
+},
+
+{
+name: "Liam Livingstone",
+role: "All Rounder",
+bat: 86,
+bowl: 78,
+stamina: 85
+},
+
+{
+name: "Cameron Green",
+role: "All Rounder",
+bat: 84,
+bowl: 86,
+stamina: 92
+},
+
+{
+name: "Mitchell Marsh",
+role: "All Rounder",
+bat: 86,
+bowl: 80,
+stamina: 89
+},
+
+{
+name: "Marcus Stoinis",
+role: "All Rounder",
+bat: 82,
+bowl: 75,
+stamina: 86
+},
+
+{
+name: "Mohammad Nabi",
+role: "All Rounder",
+bat: 78,
+bowl: 85,
+stamina: 88
+},
+
+{
+name: "Moeen Ali",
+role: "All Rounder",
+bat: 82,
+bowl: 84,
+stamina: 86
+},
+
+{
+name: "Sunil Narine",
+role: "All Rounder",
+bat: 75,
+bowl: 92,
+stamina: 90
+},
+
+{
+name: "Jason Holder",
+role: "All Rounder",
+bat: 78,
+bowl: 86,
+stamina: 91
+},
+
+{
+name: "Sikandar Raza",
+role: "All Rounder",
+bat: 84,
+bowl: 82,
+stamina: 90
+},
+
+{
+name: "Axar Patel",
+role: "All Rounder",
+bat: 78,
+bowl: 87,
+stamina: 91
+},
+
+{
+name: "Washington Sundar",
+role: "All Rounder",
+bat: 72,
+bowl: 83,
+stamina: 86
+},
+
+{
+name: "Shivam Dube",
+role: "All Rounder",
+bat: 83,
+bowl: 60,
+stamina: 82
+},
+
+{
+name: "Tilak Varma",
+role: "All Rounder",
+bat: 84,
+bowl: 65,
+stamina: 86
+},
+
+{
+name: "Abhishek Sharma",
+role: "All Rounder",
+bat: 82,
+bowl: 70,
+stamina: 85
+},
+
+{
+name: "Marco Jansen",
+role: "All Rounder",
+bat: 82,
+bowl: 88,
+stamina: 90
+},
+
+{
+name: "Rachin Ravindra",
+role: "All Rounder",
+bat: 83,
+bowl: 78,
+stamina: 90
+},
+
+{
+name: "Michael Bracewell",
+role: "All Rounder",
+bat: 75,
+bowl: 80,
+stamina: 87
+},
+
+{
+name: "Glenn Phillips",
+role: "All Rounder",
+bat: 84,
+bowl: 75,
+stamina: 89
+},
+
+{
+name: "Daryl Mitchell",
+role: "All Rounder",
+bat: 86,
+bowl: 72,
+stamina: 90
+},
+
+{
+name: "Kyle Jamieson",
+role: "All Rounder",
+bat: 65,
+bowl: 88,
+stamina: 86
+},
+
+{
+name: "Carlos Brathwaite",
+role: "All Rounder",
+bat: 78,
+bowl: 80,
+stamina: 84
+},
+
+{
+name: "Dwayne Bravo",
+role: "All Rounder",
+bat: 80,
+bowl: 86,
+stamina: 85
+},
+
+{
+name: "Kieron Pollard",
+role: "All Rounder",
+bat: 85,
+bowl: 70,
+stamina: 82
+},
+
+{
+name: "Shane Watson",
+role: "All Rounder",
+bat: 87,
+bowl: 82,
+stamina: 86
+},
+
+{
+name: "Gus Atkinson",
+role: "All Rounder",
+bat: 73,
+bowl: 86,
+stamina: 94
+},
+
+{
+name: "Will Jacks",
+role: "All Rounder",
+bat: 86,
+bowl: 65,
+stamina: 95
+},
+
+{
+name: "Tom Curran",
+role: "All Rounder",
+bat: 60,
+bowl: 70,
+stamina: 94
+},
+
+{
+name: "Noor Ahmed",
+role: "All Rounder",
+bat: 70,
+bowl: 97,
+stamina: 92
+},
