@@ -758,4 +758,6 @@ role: "All Rounder",
 bat: 70,
 bowl: 97,
 stamina: 92
-},
+}
+
+  ]
