@@ -3,39 +3,131 @@ function shuffle(array) {
 }
 
 
-function createTeam() {
+function pickPlayers(list, amount) {
+    return shuffle([...list]).slice(0, amount);
+}
 
-    let shuffledPlayers = shuffle([...players]);
 
-    return shuffledPlayers.slice(0, 11);
+function createBalancedTeam(availablePlayers) {
+
+    let wicketkeepers = availablePlayers.filter(
+        player => player.role === "Wicketkeeper"
+    );
+
+    let batters = availablePlayers.filter(
+        player => player.role === "Batsman"
+    );
+
+    let allRounders = availablePlayers.filter(
+        player => player.role === "All Rounder"
+    );
+
+    let bowlers = availablePlayers.filter(
+        player => player.role === "Bowler"
+    );
+
+
+    let team = [];
+
+    team.push(...pickPlayers(wicketkeepers, 1));
+    team.push(...pickPlayers(batters, 4));
+    team.push(...pickPlayers(allRounders, 3));
+    team.push(...pickPlayers(bowlers, 3));
+
+
+    return team;
+}
+
+
+function calculateRating(team) {
+
+    let batting = 0;
+    let bowling = 0;
+    let stamina = 0;
+
+
+    team.forEach(player => {
+
+        batting += player.bat;
+        bowling += player.bowl;
+        stamina += player.stamina;
+
+    });
+
+
+    return {
+
+        batting: Math.round(batting / team.length),
+        bowling: Math.round(bowling / team.length),
+        stamina: Math.round(stamina / team.length),
+
+        overall: Math.round(
+            (batting + bowling + stamina) / (team.length * 3)
+        )
+
+    };
 
 }
 
 
+function displayTeam(name, team) {
+
+    let rating = calculateRating(team);
+
+    let output = `<h2>${name}</h2>`;
+
+
+    team.forEach((player, index) => {
+
+        output += 
+        `${index + 1}. ${player.name} 
+        (${player.role}) 
+        - Bat: ${player.bat}% 
+        Bowl: ${player.bowl}% 
+        Stamina: ${player.stamina}%<br>`;
+
+    });
+
+
+    output += `
+    <br>
+    <b>Batting:</b> ${rating.batting}%<br>
+    <b>Bowling:</b> ${rating.bowling}%<br>
+    <b>Stamina:</b> ${rating.stamina}%<br>
+    <b>Overall:</b> ${rating.overall}%<br>
+    `;
+
+
+    return output;
+}
+
+
+
 function showTeams() {
 
-    let teamA = createTeam();
-    let teamBPlayers = players.filter(
+
+    let shuffledPool = shuffle([...players]);
+
+
+    let teamA = createBalancedTeam(shuffledPool);
+
+
+    let remainingPlayers = shuffledPool.filter(
         player => !teamA.includes(player)
     );
 
-    let teamB = shuffle(teamBPlayers).slice(0, 11);
+
+    let teamB = createBalancedTeam(remainingPlayers);
 
 
-    let output = "<h2>TEAM A</h2>";
 
-    teamA.forEach((player, index) => {
-        output += (index + 1) + ". " + player.name + 
-        " (" + player.role + ")<br>";
-    });
+    let output = "";
 
+    output += displayTeam("🏏 TEAM A", teamA);
 
-    output += "<h2>TEAM B</h2>";
+    output += "<hr>";
 
-    teamB.forEach((player, index) => {
-        output += (index + 1) + ". " + player.name + 
-        " (" + player.role + ")<br>";
-    });
+    output += displayTeam("🏏 TEAM B", teamB);
 
 
     document.getElementById("teams").innerHTML = output;
