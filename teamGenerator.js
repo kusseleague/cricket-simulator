@@ -179,6 +179,26 @@ function randomToss(){
 
 function chooseDecision(choice){
 
+    function startMatch(){
+
+    document.getElementById("matchSetup").style.display = "none";
+
+    document.getElementById("matchArea").style.display = "block";
+
+    document.getElementById("scoreboard").innerHTML =
+    `
+    <h3>Match Started!</h3>
+
+    Score: 0/0
+
+    <br>
+    Overs: 0.0
+
+    <br><br>
+
+    Ready for the first ball!
+    `;
+ 
     document.getElementById("batBowlChoice").innerHTML +=
     `
     <h3>
