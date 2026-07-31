@@ -135,4 +135,6 @@ function showTeams() {
 
     document.getElementById("teams").innerHTML = output;
 
+    document.getElementById("matchSetup").style.display = "block";
+
 }
