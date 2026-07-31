@@ -265,7 +265,6 @@ function startMatch(){
 function nextBall(){
 
     let batsmanStrength = striker.bat;
-
     let bowlerStrength = currentBowler.bowl;
 
 
@@ -275,31 +274,47 @@ function nextBall(){
     let result;
 
 
-    let advantage = batsmanStrength - bowlerStrength;
+    let difference = batsmanStrength - bowlerStrength;
 
 
-    if(chance < 5){
+    // wicket chance increases against strong bowlers
+    let wicketChance = 8 - (difference/15);
+
+
+    if(chance < wicketChance){
+
         result = "W";
+
     }
 
-    else if(chance < 15 + advantage/5){
+    else if(chance < 20 + difference/2){
+
         result = 6;
+
     }
 
-    else if(chance < 35 + advantage/3){
+    else if(chance < 45 + difference/2){
+
         result = 4;
+
     }
 
-    else if(chance < 60){
+    else if(chance < 70){
+
         result = 1;
+
     }
 
-    else if(chance < 75){
+    else if(chance < 85){
+
         result = 2;
+
     }
 
     else{
+
         result = 0;
+
     }
 
 
@@ -308,7 +323,7 @@ function nextBall(){
 
         wickets++;
 
-        striker = battingTeam[2 + wickets];
+        striker = battingTeam[2+wickets];
 
     }
 
@@ -322,6 +337,18 @@ function nextBall(){
     balls++;
 
 
+    // change striker every over
+    if(balls % 6 === 0){
+
+        let temp = striker;
+
+        striker = nonStriker;
+
+        nonStriker = temp;
+
+    }
+
+
     let overs = Math.floor(balls/6) + "." + (balls%6);
 
 
@@ -331,30 +358,28 @@ function nextBall(){
 
     <h3>🏏 LIVE MATCH</h3>
 
-
     Score: ${score}/${wickets}
-
 
     <br>
 
     Overs: ${overs}
 
-
     <br><br>
 
-
     🏏 Striker:
-    ${striker ? striker.name : "All Out"}
+    ${striker ? striker.name : "ALL OUT"}
 
+    <br>
+
+    🏏 Non-Striker:
+    ${nonStriker ? nonStriker.name : "-"}
 
     <br>
 
     ⚾ Bowler:
     ${currentBowler.name}
 
-
     <br><br>
-
 
     Last Ball:
     ${result === "W" ? "💥 WICKET!" : result + " runs"}
