@@ -1,3 +1,16 @@
+let teamA = [];
+let teamB = [];
+
+let score = 0;
+let wickets = 0;
+let balls = 0;
+
+let battingTeam = [];
+let bowlingTeam = [];
+
+let striker;
+let nonStriker;
+let currentBowler;
 console.log(players.length);
 console.log(players.map(player => player.role));
 
