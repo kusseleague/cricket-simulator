@@ -187,3 +187,17 @@ function randomToss(){
     `;
 
 }
+function chooseDecision(choice){
+
+    document.getElementById("batBowlChoice").innerHTML +=
+    `
+    <h3>
+    ${choice === "Bat" ? "🏏 They chose to Bat First!" : "⚾ They chose to Bowl First!"}
+    </h3>
+
+    <button onclick="startMatch()">
+    🚀 Start Match
+    </button>
+    `;
+
+}
