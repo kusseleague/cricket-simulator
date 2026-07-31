@@ -138,3 +138,40 @@ function showTeams() {
     document.getElementById("matchSetup").style.display = "block";
 
 }
+
+function tossWinner(team) {
+
+    let message = "";
+
+    if(team === "A"){
+        message = "🪙 Team A won the toss!";
+    }
+    else{
+        message = "🪙 Team B won the toss!";
+    }
+
+    document.getElementById("batBowlChoice").innerHTML =
+    `
+    <h3>${message}</h3>
+
+    <p>What do they choose?</p>
+
+    <button onclick="chooseDecision('Bat')">
+    🏏 Bat First
+    </button>
+
+    <button onclick="chooseDecision('Bowl')">
+    ⚾ Bowl First
+    </button>
+    `;
+}
+
+
+
+function randomToss(){
+
+    let winner = Math.random() < 0.5 ? "A" : "B";
+
+    tossWinner(winner);
+
+}
