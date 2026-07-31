@@ -381,8 +381,9 @@ function nextBall(){
 
     <br><br>
 
-    Last Ball:
-    ${result === "W" ? "💥 WICKET!" : result + " runs"}
+   Commentary:
+
+${commentary}
 
     `;
 
