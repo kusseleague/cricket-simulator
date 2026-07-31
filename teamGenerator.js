@@ -179,7 +179,21 @@ function randomToss(){
 
 function chooseDecision(choice){
 
-    function startMatch(){
+    document.getElementById("batBowlChoice").innerHTML +=
+    `
+    <h3>
+    ${choice === "Bat" ? "🏏 They chose to Bat First!" : "⚾ They chose to Bowl First!"}
+    </h3>
+
+    <button onclick="startMatch()">
+    🚀 Start Match
+    </button>
+    `;
+
+}
+
+
+function startMatch(){
 
     document.getElementById("matchSetup").style.display = "none";
 
@@ -197,17 +211,6 @@ function chooseDecision(choice){
     <br><br>
 
     Ready for the first ball!
-    `;
- 
-    document.getElementById("batBowlChoice").innerHTML +=
-    `
-    <h3>
-    ${choice === "Bat" ? "🏏 They chose to Bat First!" : "⚾ They chose to Bowl First!"}
-    </h3>
-
-    <button onclick="startMatch()">
-    🚀 Start Match
-    </button>
     `;
 
 }
