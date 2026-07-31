@@ -264,37 +264,42 @@ function startMatch(){
 
 function nextBall(){
 
-    let battingStrength = striker.bat;
-    let bowlingStrength = currentBowler.bowl;
+    let batsmanStrength = striker.bat;
+
+    let bowlerStrength = currentBowler.bowl;
 
 
-    let chance = Math.floor(Math.random()*100)+1;
+    let chance = Math.random()*100;
+
 
     let result;
 
 
-    if(chance < (bowlingStrength / 5)){
+    let advantage = batsmanStrength - bowlerStrength;
+
+
+    if(chance < 5){
         result = "W";
     }
 
-    else if(chance < 35){
-        result = 0;
+    else if(chance < 15 + advantage/5){
+        result = 6;
     }
 
-    else if(chance < 65){
-        result = 1;
-    }
-
-    else if(chance < 80){
-        result = 2;
-    }
-
-    else if(chance < 93){
+    else if(chance < 35 + advantage/3){
         result = 4;
     }
 
+    else if(chance < 60){
+        result = 1;
+    }
+
+    else if(chance < 75){
+        result = 2;
+    }
+
     else{
-        result = 6;
+        result = 0;
     }
 
 
@@ -303,12 +308,7 @@ function nextBall(){
 
         wickets++;
 
-        // new batter comes in
-        let newBatter = battingTeam[wickets+1];
-
-        if(newBatter){
-            striker = newBatter;
-        }
+        striker = battingTeam[2 + wickets];
 
     }
 
@@ -316,57 +316,49 @@ function nextBall(){
 
         score += result;
 
-
-        // rotate strike
-        if(result % 2 === 1){
-
-            let temp = striker;
-            striker = nonStriker;
-            nonStriker = temp;
-
-        }
-
     }
 
 
     balls++;
 
 
-    let overs = Math.floor(balls / 6) + "." + (balls % 6);
+    let overs = Math.floor(balls/6) + "." + (balls%6);
 
 
 
     document.getElementById("scoreboard").innerHTML =
     `
+
     <h3>🏏 LIVE MATCH</h3>
 
+
     Score: ${score}/${wickets}
+
 
     <br>
 
     Overs: ${overs}
 
+
     <br><br>
 
+
     🏏 Striker:
-    ${striker.name}
+    ${striker ? striker.name : "All Out"}
 
-    <br>
-
-    🏏 Non-Striker:
-    ${nonStriker.name}
 
     <br>
 
     ⚾ Bowler:
     ${currentBowler.name}
 
+
     <br><br>
+
 
     Last Ball:
     ${result === "W" ? "💥 WICKET!" : result + " runs"}
 
     `;
-}
 
 }
