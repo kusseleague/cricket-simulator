@@ -260,16 +260,6 @@ function startMatch(){
 
 }
 
-let score = 0;
-let wickets = 0;
-let balls = 0;
-
-let battingTeam = [];
-let bowlingTeam = [];
-
-let striker;
-let nonStriker;
-let currentBowler;
 
 
 function nextBall(){
