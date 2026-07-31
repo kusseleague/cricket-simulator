@@ -2,16 +2,25 @@
 <html>
 
 <head>
-<title>Player Database Test</title>
+<title>Stumps Cricket Simulator</title>
 </head>
 
 <body>
 
-<h1>🏏 Cricket Player Database</h1>
+<h1>🏏 Stumps Cricket Simulator</h1>
+
+
+<!-- LOAD DATABASE + FUNCTIONS FIRST -->
+<script src="players.js"></script>
+<script src="teamGenerator.js"></script>
+
+
+<!-- RANDOM PLAYER TEST -->
 
 <button onclick="showPlayer()">Random Player</button>
 
 <p id="result"></p>
+
 
 <script>
 
@@ -30,48 +39,89 @@ document.getElementById("result").innerHTML =
 
 </script>
 
-<script src="players.js"></script>
-<script src="teamGenerator.js"></script>
 
-  <button onclick="showTeams()">Create Teams</button>
+
+<hr>
+
+
+<!-- TEAM GENERATOR -->
+
+<button onclick="showTeams()">
+🏏 Create Teams
+</button>
+
 
 <div id="teams"></div>
 
-  <hr>
+
+
+<hr>
+
+
+
+<!-- TOSS AREA -->
 
 <div id="matchSetup" style="display:none;">
 
 <h2>🏏 Match Setup</h2>
 
-<p><b>Who won the toss?</b></p>
 
-<button onclick="tossWinner('A')">Team A</button>
+<p>
+<b>Who won the toss?</b>
+</p>
 
-<button onclick="tossWinner('B')">Team B</button>
 
-<button onclick="randomToss()">🎲 Random Toss</button>
+<button onclick="tossWinner('A')">
+Team A
+</button>
+
+
+<button onclick="tossWinner('B')">
+Team B
+</button>
+
+
+<button onclick="randomToss()">
+🎲 Random Toss
+</button>
+
+
 
 <br><br>
 
+
 <div id="batBowlChoice"></div>
+
 
 </div>
 
-  <hr>
+
+
+<hr>
+
+
+
+<!-- LIVE MATCH -->
 
 <div id="matchArea" style="display:none;">
 
 <h2>🏏 LIVE MATCH</h2>
 
+
 <div id="scoreboard">
+
 </div>
+
 
 <button onclick="nextBall()">
 🏏 Next Ball
 </button>
 
+
 </div>
-  
+
+
+
 </body>
 
 </html>
