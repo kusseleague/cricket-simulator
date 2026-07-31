@@ -199,14 +199,46 @@ function startMatch(){
 
     document.getElementById("matchArea").style.display = "block";
 
+
+    // Temporary setup:
+    // Team A bats, Team B bowls
+
+    battingTeam = teamA;
+    bowlingTeam = teamB;
+
+
+    striker = battingTeam[0];
+    nonStriker = battingTeam[1];
+
+    currentBowler = bowlingTeam.find(
+        player => player.role === "Bowler"
+    );
+
+
     document.getElementById("scoreboard").innerHTML =
     `
-    <h3>Match Started!</h3>
+    <h3>🏏 LIVE MATCH</h3>
 
     Score: 0/0
 
     <br>
+
     Overs: 0.0
+
+    <br><br>
+
+    🏏 Striker:
+    ${striker.name}
+
+    <br>
+
+    🏏 Non-Striker:
+    ${nonStriker.name}
+
+    <br>
+
+    ⚾ Bowler:
+    ${currentBowler.name}
 
     <br><br>
 
