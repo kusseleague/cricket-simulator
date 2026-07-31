@@ -173,5 +173,17 @@ function randomToss(){
     let winner = Math.random() < 0.5 ? "A" : "B";
 
     tossWinner(winner);
+    function chooseDecision(choice){
+
+    document.getElementById("batBowlChoice").innerHTML +=
+    `
+    <h3>
+    ${choice === "Bat" ? "🏏 They chose to Bat First!" : "⚾ They chose to Bowl First!"}
+    </h3>
+
+    <button onclick="startMatch()">
+    🚀 Start Match
+    </button>
+    `;
 
 }
