@@ -125,7 +125,7 @@ function showTeams() {
     let shuffledPool = shuffle([...players]);
 
 
-    let teamA = createBalancedTeam(shuffledPool);
+    teamA = createBalancedTeam(shuffledPool);
 
 
     let remainingPlayers = shuffledPool.filter(
@@ -133,7 +133,7 @@ function showTeams() {
     );
 
 
-    let teamB = createBalancedTeam(remainingPlayers);
+   let teamB = createBalancedTeam(remainingPlayers);
 
 
 
