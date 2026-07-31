@@ -214,3 +214,51 @@ function startMatch(){
     `;
 
 }
+
+let score = 0;
+let wickets = 0;
+let balls = 0;
+
+
+function nextBall(){
+
+    let outcomes = [0,1,1,2,3,4,6,"W"];
+
+    let result = outcomes[Math.floor(Math.random()*outcomes.length)];
+
+
+    if(result === "W"){
+
+        wickets++;
+
+    }
+    else{
+
+        score += result;
+
+    }
+
+
+    balls++;
+
+
+    let overs = Math.floor(balls / 6) + "." + (balls % 6);
+
+
+    document.getElementById("scoreboard").innerHTML =
+    `
+    <h3>🏏 LIVE MATCH</h3>
+
+    Score: ${score}/${wickets}
+
+    <br>
+
+    Overs: ${overs}
+
+    <br><br>
+
+    Last Ball: ${result === "W" ? "WICKET!" : result + " runs"}
+
+    `;
+
+}
