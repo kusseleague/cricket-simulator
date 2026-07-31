@@ -318,20 +318,51 @@ function nextBall(){
     }
 
 
+if(result === "W"){
 
-    if(result === "W"){
+    wickets++;
 
-        wickets++;
+    commentary =
+    `💥 OUT! ${striker.name} is dismissed by ${currentBowler.name}!`;
 
-        striker = battingTeam[2+wickets];
+    striker = battingTeam[2+wickets];
+
+}
+
+else{
+
+    score += result;
+
+
+    if(result === 0){
+
+        commentary =
+        `${currentBowler.name} bowls a dot ball. ${striker.name} cannot score.`;
+
+    }
+
+    else if(result === 4){
+
+        commentary =
+        `🔥 FOUR! ${striker.name} finds the boundary off ${currentBowler.name}!`;
+
+    }
+
+    else if(result === 6){
+
+        commentary =
+        `🚀 SIX! ${striker.name} smashes ${currentBowler.name} into the stands!`;
 
     }
 
     else{
 
-        score += result;
+        commentary =
+        `${striker.name} takes ${result} run${result > 1 ? "s" : ""}.`;
 
     }
+
+}
 
 
     balls++;
