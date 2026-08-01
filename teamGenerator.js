@@ -226,7 +226,12 @@ function startMatch(){
     currentBowler = bowlingTeam.find(
         player => player.role === "Bowler"
     );
-
+console.log("Team A:", teamA);
+console.log("Team B:", teamB);
+console.log("Batting:", battingTeam);
+console.log("Bowling:", bowlingTeam);
+console.log("Striker:", striker);
+console.log("Bowler:", currentBowler);
 
     document.getElementById("scoreboard").innerHTML =
     `
