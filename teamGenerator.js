@@ -1,3 +1,10 @@
+function showTeams(){
+
+    teamA = [];
+    teamB = [];
+
+    let shuffledPool = shuffle([...players]);
+
 let teamA = [];
 let teamB = [];
 
