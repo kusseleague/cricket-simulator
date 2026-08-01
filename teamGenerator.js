@@ -11,6 +11,7 @@ let bowlingTeam = [];
 let striker;
 let nonStriker;
 let currentBowler;
+let commentary = "";
 console.log(players.length);
 console.log(players.map(player => player.role));
 
@@ -133,8 +134,7 @@ function showTeams() {
     );
 
 
-   let teamB = createBalancedTeam(remainingPlayers);
-
+  teamB = createBalancedTeam(remainingPlayers);
 
 
     let output = "";
@@ -325,7 +325,7 @@ if(result === "W"){
     commentary =
     `💥 OUT! ${striker.name} is dismissed by ${currentBowler.name}!`;
 
-    striker = battingTeam[2+wickets];
+   striker = battingTeam[2 + wickets] || null;
 
 }
 
