@@ -46,7 +46,14 @@ function createBalancedTeam(availablePlayers) {
 
     let team = [];
 
-    team.push(...pickPlayers(wicketkeepers, 1));
+   team.push(...pickPlayers(wicketkeepers, 1));
+
+if(team.length < 11){
+    team.push(...pickPlayers(
+        availablePlayers.filter(p => !team.includes(p)),
+        11 - team.length
+    ));
+}
     team.push(...pickPlayers(batters, 4));
     team.push(...pickPlayers(allRounders, 3));
     team.push(...pickPlayers(bowlers, 3));
@@ -221,7 +228,8 @@ function startMatch(){
 
 
     striker = battingTeam[0];
-    nonStriker = battingTeam[1];
+
+nonStriker = battingTeam[1] || battingTeam[2];
 
     currentBowler = bowlingTeam.find(
         player => player.role === "Bowler"
@@ -251,7 +259,7 @@ console.log("Bowler:", currentBowler);
     <br>
 
     🏏 Non-Striker:
-    ${nonStriker.name}
+    ${nonStriker ? nonStriker.name : "No batsman"}
 
     <br>
 
