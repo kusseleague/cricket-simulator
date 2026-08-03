@@ -552,7 +552,15 @@ if(wickets >= 10 || balls >= 120){
         striker=nonStriker;
 
         nonStriker=temp;
+bowlerIndex++;
 
+let bowlers = bowlingTeam.filter(
+    p => p.role === "Bowler"
+);
+
+currentBowler = bowlers[
+    bowlerIndex % bowlers.length
+];
 
     }
 
