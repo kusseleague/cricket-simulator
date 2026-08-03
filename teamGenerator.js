@@ -400,21 +400,6 @@ currentBowler = bowlers[0];
 
 function nextBall(){
 
-    if(wickets >= 10 || balls >= 120){
-
-        document.getElementById("scoreboard").innerHTML = `
-        <h2>🏏 INNINGS COMPLETE</h2>
-
-        Score: ${score}/${wickets}
-
-        <br>
-
-        Overs: ${Math.floor(balls/6)}.${balls%6}
-        `;
-
-        return;
-    }
-
     // rest of nextBall()...
 
     if(secondInnings && score >= target){
