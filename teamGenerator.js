@@ -380,8 +380,6 @@ currentBowler = bowlers[0];
 
 function nextBall(){
 
-function nextBall(){
-
     if(wickets >= 10 || balls >= 120){
 
         document.getElementById("scoreboard").innerHTML = `
