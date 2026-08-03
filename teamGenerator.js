@@ -457,5 +457,5 @@ function startMatch(){
 
     `;
 
-
 }
+console.log("TEAM GENERATOR LOADED");
