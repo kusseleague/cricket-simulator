@@ -13,6 +13,10 @@ let teamB = [];
 let score = 0;
 let wickets = 0;
 let balls = 0;
+let target = 0;
+let firstInningsScore = 0;
+let secondInnings = false;
+let matchOver = false;
 
 let battingTeam = [];
 let bowlingTeam = [];
