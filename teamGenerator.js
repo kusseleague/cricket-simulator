@@ -26,6 +26,8 @@ let nonStriker;
 let currentBowler;
 let bowlerIndex = 0;
 
+let batsmanStats = {};
+
 let commentary = "";
 
 
@@ -357,7 +359,19 @@ function startMatch(){
     striker = battingTeam[0];
 
     nonStriker = battingTeam[1];
+battingTeam.forEach(player => {
 
+    batsmanStats[player.name] = {
+
+        runs: 0,
+        balls: 0,
+        fours: 0,
+        sixes: 0,
+        out: false
+
+    };
+
+});
 
 
 let bowlers = bowlingTeam.filter(
