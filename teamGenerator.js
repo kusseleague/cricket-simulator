@@ -354,10 +354,11 @@ function startMatch(){
 
 
 
-    currentBowler =
-    bowlingTeam.find(
-        p=>p.role==="Bowler"
-    );
+let bowlers = bowlingTeam.filter(
+    p => p.role === "Bowler"
+);
+
+currentBowler = bowlers[0];
 
 
 
