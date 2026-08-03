@@ -343,7 +343,7 @@ function chooseDecision(choice,winner){
 
 function startMatch(){
 
-
+bowlerStats = {};
     score=0;
     wickets=0;
     balls=0;
