@@ -27,7 +27,7 @@ let currentBowler;
 let bowlerIndex = 0;
 
 let batsmanStats = {};
-
+let bowlerStats = {};
 let commentary = "";
 
 
