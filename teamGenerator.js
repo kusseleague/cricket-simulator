@@ -878,3 +878,6 @@ function nextBall(){
 
 
 }
+function nextBall(){
+    alert("NEXT BALL WORKS!");
+}
