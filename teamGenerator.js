@@ -242,3 +242,220 @@ function showTeams(){
 
 
 }
+
+// =============================
+// MATCH SETUP ENGINE
+// =============================
+
+
+let battingTeam = [];
+let bowlingTeam = [];
+
+let striker;
+let nonStriker;
+let currentBowler;
+
+
+
+function tossWinner(team){
+
+
+    let message =
+    team === "A"
+    ? "🪙 Team A won the toss!"
+    : "🪙 Team B won the toss!";
+
+
+    document.getElementById("batBowlChoice").innerHTML =
+
+    `
+
+    <h3>${message}</h3>
+
+    <p>Choose decision:</p>
+
+
+    <button onclick="chooseDecision('Bat','${team}')">
+
+    🏏 Bat First
+
+    </button>
+
+
+    <button onclick="chooseDecision('Bowl','${team}')">
+
+    ⚾ Bowl First
+
+    </button>
+
+    `;
+
+
+}
+
+
+
+
+
+function randomToss(){
+
+    let winner =
+    Math.random() < 0.5
+    ? "A"
+    : "B";
+
+
+    tossWinner(winner);
+
+}
+
+
+
+
+
+function chooseDecision(choice,winner){
+
+
+
+    if(choice==="Bat"){
+
+
+        battingTeam =
+        winner==="A"
+        ? teamA
+        : teamB;
+
+
+        bowlingTeam =
+        winner==="A"
+        ? teamB
+        : teamA;
+
+
+    }
+
+    else{
+
+
+        battingTeam =
+        winner==="A"
+        ? teamB
+        : teamA;
+
+
+        bowlingTeam =
+        winner==="A"
+        ? teamA
+        : teamB;
+
+
+    }
+
+
+
+    document.getElementById("batBowlChoice").innerHTML =
+
+    `
+
+    <h3>
+    ${
+    choice==="Bat"
+    ?"🏏 They chose to bat first!"
+    :"⚾ They chose to bowl first!"
+    }
+
+    </h3>
+
+
+    <button onclick="startMatch()">
+
+    🚀 Start Match
+
+    </button>
+
+    `;
+
+
+
+}
+
+
+
+
+
+function startMatch(){
+
+
+
+    document.getElementById("matchSetup").style.display="none";
+
+
+    document.getElementById("matchArea").style.display="block";
+
+
+
+    striker = battingTeam[0];
+
+    nonStriker = battingTeam[1];
+
+
+
+    currentBowler =
+    bowlingTeam.find(
+        p=>p.role==="Bowler"
+    );
+
+
+
+    document.getElementById("scoreboard").innerHTML =
+
+    `
+
+    <h2>🏏 LIVE MATCH</h2>
+
+
+    Score:
+    0/0
+
+
+    <br><br>
+
+
+    Overs:
+    0.0
+
+
+    <br><br>
+
+
+    🏏 Striker:
+
+    ${striker.name}
+
+
+    <br>
+
+
+    🏏 Non-Striker:
+
+    ${nonStriker.name}
+
+
+    <br>
+
+
+    ⚾ Bowler:
+
+    ${currentBowler.name}
+
+
+
+    <br><br>
+
+
+    Ready for first ball!
+
+    `;
+
+
+}
