@@ -2,6 +2,7 @@
 // STUMPS CRICKET SIMULATOR
 // TEAM GENERATOR ENGINE
 // =============================
+console.log("TEAM GENERATOR LOADED");
 
 let battingTeam = [];
 let bowlingTeam = [];
