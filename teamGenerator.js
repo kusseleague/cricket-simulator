@@ -488,7 +488,199 @@ function startMatch(){
     bowlingTeam.find(
         p=>p.role==="Bowler"
     );
+// =============================
+// BALL SIMULATION ENGINE
+// =============================
 
+let score = 0;
+let wickets = 0;
+let balls = 0;
+let commentary = "";
+
+
+function nextBall(){
+
+
+    if(!striker || !currentBowler){
+
+        alert("Match not started properly!");
+        return;
+
+    }
+
+
+    let batsmanStrength = striker.bat;
+    let bowlerStrength = currentBowler.bowl;
+
+
+    let difference = batsmanStrength - bowlerStrength;
+
+    let chance = Math.random()*100;
+
+
+    let result;
+
+
+    let wicketChance = 8 - (difference/20);
+
+
+    if(chance < wicketChance){
+
+        result = "W";
+
+    }
+
+    else if(chance < 20 + difference/2){
+
+        result = 6;
+
+    }
+
+    else if(chance < 45 + difference/2){
+
+        result = 4;
+
+    }
+
+    else if(chance < 70){
+
+        result = 1;
+
+    }
+
+    else if(chance < 85){
+
+        result = 2;
+
+    }
+
+    else{
+
+        result = 0;
+
+    }
+
+
+
+    if(result === "W"){
+
+        wickets++;
+
+        commentary =
+        `💥 OUT! ${striker.name} is dismissed by ${currentBowler.name}`;
+
+
+        striker = battingTeam[wickets+1] || null;
+
+
+    }
+
+
+    else{
+
+
+        score += result;
+
+
+        if(result === 0){
+
+            commentary =
+            `⚪ Dot ball by ${currentBowler.name}`;
+
+        }
+
+
+        else if(result === 4){
+
+            commentary =
+            `🔥 FOUR! ${striker.name} hits the boundary`;
+
+        }
+
+
+        else if(result === 6){
+
+            commentary =
+            `🚀 SIX! ${striker.name} launches it!`;
+
+        }
+
+
+        else{
+
+            commentary =
+            `${striker.name} scores ${result} run(s)`;
+
+        }
+
+    }
+
+
+
+    balls++;
+
+
+    if(balls % 6 === 0){
+
+        let temp = striker;
+        striker = nonStriker;
+        nonStriker = temp;
+
+    }
+
+
+
+    let overs =
+    Math.floor(balls/6) + "." + (balls%6);
+
+
+
+    document.getElementById("scoreboard").innerHTML =
+
+    `
+
+    <h2>🏏 LIVE MATCH</h2>
+
+    Score:
+    ${score}/${wickets}
+
+    <br><br>
+
+    Overs:
+    ${overs}
+
+
+    <br><br>
+
+    🏏 Striker:
+    ${striker ? striker.name : "ALL OUT"}
+
+
+    <br>
+
+    🏏 Non-Striker:
+    ${nonStriker ? nonStriker.name : "-"}
+
+
+    <br>
+
+    ⚾ Bowler:
+    ${currentBowler.name}
+
+
+    <br><br>
+
+
+    🎙 Commentary:
+
+    <br>
+
+    ${commentary}
+
+    `;
+
+
+}
 
 
     document.getElementById("scoreboard").innerHTML =
