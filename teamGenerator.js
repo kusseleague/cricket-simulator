@@ -499,7 +499,7 @@ function nextBall(){
 
 
     if(result==="W"){
-
+ batsmanStats[striker.name].out = true;
 
         wickets++;
 
