@@ -505,7 +505,11 @@ function nextBall(){
 }
         wickets++;
 
+if(currentBowler && bowlerStats[currentBowler.name]){
 
+    bowlerStats[currentBowler.name].wickets++;
+
+}
         commentary =
         `💥 OUT! ${striker.name} dismissed by ${currentBowler.name}`;
 
