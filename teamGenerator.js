@@ -534,19 +534,66 @@ battingTeam[wickets+1] || null;
 // Check innings end
 if(wickets >= 10 || balls >= 120){
 
-    document.getElementById("scoreboard").innerHTML = `
-    <h2>🏏 INNINGS COMPLETE</h2>
+    if(!secondInnings){
 
-    Score: ${score}/${wickets}
+        firstInningsScore = score;
+        target = score + 1;
 
-    <br>
+        secondInnings = true;
 
-    Overs: ${Math.floor(balls/6)}.${balls%6}
-    `;
-document.querySelector("button[onclick='nextBall()']").style.display = "none";
-    return;
+        score = 0;
+        wickets = 0;
+        balls = 0;
+
+        let temp = battingTeam;
+        battingTeam = bowlingTeam;
+        bowlingTeam = temp;
+
+
+        striker = battingTeam[0];
+        nonStriker = battingTeam[1];
+
+
+        let bowlers = bowlingTeam.filter(
+            p => p.role === "Bowler"
+        );
+
+        currentBowler = bowlers[0];
+
+
+        document.getElementById("scoreboard").innerHTML =
+        `
+        <h2>🏏 SECOND INNINGS</h2>
+
+        Target:
+        ${target}
+
+        <br><br>
+
+        Score:
+        0/0
+
+        <br>
+
+        Overs:
+        0.0
+
+        <br><br>
+
+        🏏 ${striker.name}
+        <br>
+        🏏 ${nonStriker.name}
+        <br>
+        ⚾ ${currentBowler.name}
+
+        `;
+
+
+        return;
+
+    }
+
 }
-
 
     if(balls%6===0){
 
