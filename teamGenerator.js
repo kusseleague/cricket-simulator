@@ -403,11 +403,25 @@ function nextBall(){
 
     // rest of nextBall()...
 
-    if(!striker || !currentBowler){
+    if(secondInnings && score >= target){
 
-        return;
+    document.getElementById("scoreboard").innerHTML =
+    `
+    <h2>🏆 MATCH WON!</h2>
 
-    }
+    Chased ${target} runs
+
+    <br>
+
+    Score:
+    ${score}/${wickets}
+
+    `;
+
+    document.querySelector("button[onclick='nextBall()']").style.display="none";
+
+    return;
+}
 
 
 
