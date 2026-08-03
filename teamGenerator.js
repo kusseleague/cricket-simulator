@@ -527,7 +527,7 @@ battingTeam[wickets+1] || null;
 
 
         if(result===6){
-
+batsmanStats[striker.name].sixes++;
             commentary =
             `🚀 SIX! ${striker.name} hits ${currentBowler.name}`;
 
