@@ -1,9 +1,15 @@
-// =============================
+// =====================================
 // STUMPS CRICKET SIMULATOR
-// TEAM GENERATOR ENGINE
-// =============================
-console.log("TEAM GENERATOR LOADED");
+// TEAM GENERATOR + MATCH SETUP ENGINE
+// =====================================
 
+
+// TEAMS
+let teamA = [];
+let teamB = [];
+
+
+// MATCH VARIABLES
 let battingTeam = [];
 let bowlingTeam = [];
 
@@ -11,11 +17,19 @@ let striker;
 let nonStriker;
 let currentBowler;
 
-let batsmanStats = {};
-let bowlerStats = {};
+
+// SCORE
+let score = 0;
+let wickets = 0;
+let balls = 0;
+
+let commentary = "";
 
 
-// Shuffle players
+// =====================================
+// SHUFFLE
+// =====================================
+
 function shuffle(array){
 
     return array.sort(() => Math.random() - 0.5);
@@ -23,7 +37,10 @@ function shuffle(array){
 }
 
 
-// Pick random players
+// =====================================
+// PICK PLAYERS
+// =====================================
+
 function pickPlayers(list, amount){
 
     return shuffle([...list]).slice(0, amount);
@@ -32,56 +49,68 @@ function pickPlayers(list, amount){
 
 
 
-// Create balanced XI
-function createBalancedTeam(playerPool){
+// =====================================
+// CREATE BALANCED XI
+// =====================================
+
+function createBalancedTeam(playersPool){
 
 
     let team = [];
 
 
-    let wicketkeepers = playerPool.filter(
+    let keepers = playersPool.filter(
         p => p.role === "Wicketkeeper"
     );
 
 
-    let batsmen = playerPool.filter(
+    let batsmen = playersPool.filter(
         p => p.role === "Batsman"
     );
 
 
-    let allRounders = playerPool.filter(
+    let allRounders = playersPool.filter(
         p => p.role === "All Rounder"
     );
 
 
-    let bowlers = playerPool.filter(
+    let bowlers = playersPool.filter(
         p => p.role === "Bowler"
     );
 
 
 
-    // 1 wicketkeeper
-    team.push(
-        ...pickPlayers(wicketkeepers,1)
-    );
+    team.push(...pickPlayers(keepers,1));
+
+    team.push(...pickPlayers(batsmen,4));
+
+    team.push(...pickPlayers(allRounders,3));
+
+    team.push(...pickPlayers(bowlers,3));
 
 
-    // 4 batsmen
-    team.push(
-        ...pickPlayers(batsmen,4)
-    );
+
+    // safety fill if short
+
+    while(team.length < 11){
+
+        let extra = playersPool.find(
+            p => !team.includes(p)
+        );
 
 
-    // 3 all rounders
-    team.push(
-        ...pickPlayers(allRounders,3)
-    );
+        if(extra){
 
+            team.push(extra);
 
-    // 3 bowlers
-    team.push(
-        ...pickPlayers(bowlers,3)
-    );
+        }
+        else{
+
+            break;
+
+        }
+
+    }
 
 
 
@@ -92,7 +121,10 @@ function createBalancedTeam(playerPool){
 
 
 
-// Team rating
+
+// =====================================
+// TEAM RATING
+// =====================================
 
 function calculateRating(team){
 
@@ -101,10 +133,12 @@ function calculateRating(team){
     let stamina = 0;
 
 
-    team.forEach(player => {
+    team.forEach(player=>{
 
         bat += player.bat;
+
         bowl += player.bowl;
+
         stamina += player.stamina;
 
     });
@@ -113,16 +147,19 @@ function calculateRating(team){
 
     return {
 
-        batting: Math.round(bat / 11),
-        bowling: Math.round(bowl / 11),
-        stamina: Math.round(stamina / 11),
+        batting: Math.round(bat/team.length),
+
+        bowling: Math.round(bowl/team.length),
+
+        stamina: Math.round(stamina/team.length),
 
         overall:
         Math.round(
-            (bat+bowl+stamina)/33
+            (bat+bowl+stamina)/(team.length*3)
         )
 
     };
+
 
 }
 
@@ -130,7 +167,9 @@ function calculateRating(team){
 
 
 
-// Display team
+// =====================================
+// DISPLAY TEAM
+// =====================================
 
 function displayTeam(name,team){
 
@@ -138,27 +177,30 @@ function displayTeam(name,team){
     let rating = calculateRating(team);
 
 
-    let html = `
+    let output = `
+
     <h2>${name}</h2>
+
     `;
+
 
 
     team.forEach((player,index)=>{
 
 
-        html += `
-        ${index+1}. 
+        output +=
+
+        `${index+1}. 
         ${player.name}
         (${player.role})
-        <br>
-        `;
+        <br>`;
 
 
     });
 
 
 
-    html += `
+    output += `
 
     <br>
 
@@ -183,11 +225,11 @@ function displayTeam(name,team){
     ⭐ Overall:
     ${rating.overall}%
 
+
     `;
 
 
-
-    return html;
+    return output;
 
 }
 
@@ -195,7 +237,9 @@ function displayTeam(name,team){
 
 
 
-// Button function
+// =====================================
+// CREATE TEAMS BUTTON
+// =====================================
 
 function showTeams(){
 
@@ -215,7 +259,6 @@ function showTeams(){
 
 
     teamB = createBalancedTeam(remaining);
-
 
 
 
@@ -250,26 +293,32 @@ function showTeams(){
 
 }
 
-// =============================
-// MATCH SETUP ENGINE
-// =============================
+
+
+
+
+// =====================================
+// TOSS
+// =====================================
 
 function tossWinner(team){
 
 
     let message =
-    team === "A"
-    ? "🪙 Team A won the toss!"
-    : "🪙 Team B won the toss!";
+    team==="A"
+    ?
+    "🪙 Team A won toss!"
+    :
+    "🪙 Team B won toss!";
+
 
 
     document.getElementById("batBowlChoice").innerHTML =
 
+
     `
 
     <h3>${message}</h3>
-
-    <p>Choose decision:</p>
 
 
     <button onclick="chooseDecision('Bat','${team}')">
@@ -279,11 +328,13 @@ function tossWinner(team){
     </button>
 
 
+
     <button onclick="chooseDecision('Bowl','${team}')">
 
     ⚾ Bowl First
 
     </button>
+
 
     `;
 
@@ -296,18 +347,27 @@ function tossWinner(team){
 
 function randomToss(){
 
+
     let winner =
-    Math.random() < 0.5
-    ? "A"
-    : "B";
+    Math.random()<0.5
+    ?
+    "A"
+    :
+    "B";
 
 
     tossWinner(winner);
+
 
 }
 
 
 
+
+
+// =====================================
+// BAT OR BOWL DECISION
+// =====================================
 
 
 function chooseDecision(choice,winner){
@@ -319,49 +379,66 @@ function chooseDecision(choice,winner){
 
         battingTeam =
         winner==="A"
-        ? teamA
-        : teamB;
+        ?
+        teamA
+        :
+        teamB;
+
 
 
         bowlingTeam =
         winner==="A"
-        ? teamB
-        : teamA;
+        ?
+        teamB
+        :
+        teamA;
 
 
     }
+
 
     else{
 
 
         battingTeam =
         winner==="A"
-        ? teamB
-        : teamA;
+        ?
+        teamB
+        :
+        teamA;
+
 
 
         bowlingTeam =
         winner==="A"
-        ? teamA
-        : teamB;
+        ?
+        teamA
+        :
+        teamB;
 
 
     }
+
 
 
 
     document.getElementById("batBowlChoice").innerHTML =
 
+
     `
 
     <h3>
+
     ${
     choice==="Bat"
-    ?"🏏 They chose to bat first!"
-    :"⚾ They chose to bowl first!"
+    ?
+    "🏏 Batting first!"
+    :
+    "⚾ Bowling first!"
     }
 
     </h3>
+
 
 
     <button onclick="startMatch()">
@@ -370,8 +447,8 @@ function chooseDecision(choice,winner){
 
     </button>
 
-    `;
 
+    `;
 
 
 }
@@ -380,8 +457,12 @@ function chooseDecision(choice,winner){
 
 
 
-function startMatch(){
+// =====================================
+// START MATCH
+// =====================================
 
+
+function startMatch(){
 
 
     document.getElementById("matchSetup").style.display="none";
@@ -391,28 +472,16 @@ function startMatch(){
 
 
 
+    score = 0;
+    wickets = 0;
+    balls = 0;
+
+
+
     striker = battingTeam[0];
 
     nonStriker = battingTeam[1];
-battingTeam.forEach(player => {
 
-    batsmanStats[player.name] = {
-        runs:0,
-        balls:0
-    };
-
-});
-
-
-bowlingTeam.forEach(player => {
-
-    bowlerStats[player.name] = {
-        balls:0,
-        runs:0,
-        wickets:0
-    };
-
-});
 
 
     currentBowler =
@@ -424,27 +493,25 @@ bowlingTeam.forEach(player => {
 
     document.getElementById("scoreboard").innerHTML =
 
+
     `
 
     <h2>🏏 LIVE MATCH</h2>
 
 
-    Score:
-    0/0
+    Score: 0/0
 
 
-    <br><br>
+    <br>
 
 
-    Overs:
-    0.0
+    Overs: 0.0
 
 
     <br><br>
 
 
     🏏 Striker:
-
     ${striker.name}
 
 
@@ -452,7 +519,6 @@ bowlingTeam.forEach(player => {
 
 
     🏏 Non-Striker:
-
     ${nonStriker.name}
 
 
@@ -460,9 +526,7 @@ bowlingTeam.forEach(player => {
 
 
     ⚾ Bowler:
-
     ${currentBowler.name}
-
 
 
     <br><br>
@@ -470,7 +534,164 @@ bowlingTeam.forEach(player => {
 
     Ready for first ball!
 
+
     `;
 
+
 }
-console.log("TEAM GENERATOR LOADED");
+
+
+
+
+
+// =====================================
+// NEXT BALL
+// =====================================
+
+
+function nextBall(){
+
+
+    let bat = striker.bat;
+
+    let bowl = currentBowler.bowl;
+
+
+    let chance = Math.random()*100;
+
+
+    let difference = bat-bowl;
+
+
+    let result;
+
+
+
+    if(chance < 8){
+
+        result="W";
+
+    }
+
+    else if(chance < 20+difference/2){
+
+        result=6;
+
+    }
+
+    else if(chance < 45+difference/2){
+
+        result=4;
+
+    }
+
+    else if(chance < 75){
+
+        result=1;
+
+    }
+
+    else if(chance < 90){
+
+        result=2;
+
+    }
+
+    else{
+
+        result=0;
+
+    }
+
+
+
+    if(result==="W"){
+
+
+        wickets++;
+
+
+        commentary =
+        `💥 OUT! ${striker.name} dismissed by ${currentBowler.name}`;
+
+
+        striker =
+        battingTeam[wickets+1] || null;
+
+
+    }
+
+
+    else{
+
+
+        score += result;
+
+
+
+        commentary =
+        `${striker.name} scores ${result} run(s)`;
+
+
+    }
+
+
+
+    balls++;
+
+
+
+    let overs =
+    Math.floor(balls/6)
+    +
+    "."
+    +
+    balls%6;
+
+
+
+    document.getElementById("scoreboard").innerHTML =
+
+
+    `
+
+    <h2>🏏 LIVE MATCH</h2>
+
+
+    Score:
+    ${score}/${wickets}
+
+
+    <br>
+
+
+    Overs:
+    ${overs}
+
+
+    <br><br>
+
+
+    🏏 Striker:
+    ${striker ? striker.name:"ALL OUT"}
+
+
+    <br>
+
+
+    ⚾ Bowler:
+    ${currentBowler.name}
+
+
+    <br><br>
+
+
+    Commentary:
+
+    ${commentary}
+
+
+    `;
+
+
+}
