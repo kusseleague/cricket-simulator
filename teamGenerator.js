@@ -642,10 +642,31 @@ battingTeam.forEach(player => {
 });
 
         let bowlers = bowlingTeam.filter(
-            p => p.role === "Bowler"
-        );
+    p => p.role === "Bowler"
+);
 
-        currentBowler = bowlers[0];
+currentBowler = bowlers[0];
+
+
+// RESET BOWLER STATS FOR SECOND INNINGS
+
+bowlerStats = {};
+
+bowlingTeam.forEach(player => {
+
+    if(player.role === "Bowler"){
+
+        bowlerStats[player.name] = {
+
+            balls: 0,
+            runs: 0,
+            wickets: 0
+
+        };
+
+    }
+
+});
 
 
         document.getElementById("scoreboard").innerHTML =
