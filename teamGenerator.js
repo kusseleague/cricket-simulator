@@ -695,3 +695,186 @@ function nextBall(){
 
 
 }
+
+// =====================================
+// NEXT BALL ENGINE
+// =====================================
+
+function nextBall(){
+
+
+    if(!striker || !currentBowler){
+
+        alert("Match not started!");
+        return;
+
+    }
+
+
+
+    let battingStrength = striker.bat;
+
+    let bowlingStrength = currentBowler.bowl;
+
+
+
+    let difference = battingStrength - bowlingStrength;
+
+
+    let chance = Math.random()*100;
+
+
+    let result;
+
+
+
+    if(chance < 8){
+
+        result = "W";
+
+    }
+
+    else if(chance < 25 + difference/3){
+
+        result = 6;
+
+    }
+
+    else if(chance < 50 + difference/3){
+
+        result = 4;
+
+    }
+
+    else if(chance < 75){
+
+        result = 1;
+
+    }
+
+    else if(chance < 90){
+
+        result = 2;
+
+    }
+
+    else{
+
+        result = 0;
+
+    }
+
+
+
+
+
+    if(result === "W"){
+
+
+        wickets++;
+
+
+        commentary =
+        `💥 WICKET! ${striker.name} is out to ${currentBowler.name}`;
+
+
+
+        striker =
+        battingTeam[wickets+1] || null;
+
+
+    }
+
+
+    else{
+
+
+        score += result;
+
+
+
+        if(result === 0){
+
+            commentary =
+            `${currentBowler.name} bowls a dot ball!`;
+
+        }
+
+        else{
+
+            commentary =
+            `${striker.name} scores ${result} run(s)!`;
+
+        }
+
+
+    }
+
+
+
+    balls++;
+
+
+
+    let overs =
+    Math.floor(balls/6)
+    +
+    "."
+    +
+    balls%6;
+
+
+
+    document.getElementById("scoreboard").innerHTML =
+
+
+    `
+
+    <h2>🏏 LIVE MATCH</h2>
+
+
+    Score:
+    ${score}/${wickets}
+
+
+    <br>
+
+
+    Overs:
+    ${overs}
+
+
+    <br><br>
+
+
+    🏏 Striker:
+    ${striker ? striker.name : "ALL OUT"}
+
+
+    <br>
+
+
+    🏏 Non-Striker:
+    ${nonStriker ? nonStriker.name : "-"}
+
+
+    <br>
+
+
+    ⚾ Bowler:
+    ${currentBowler.name}
+
+
+    <br><br>
+
+
+    🗣 Commentary:
+
+    ${commentary}
+
+
+    `;
+
+
+
+}
