@@ -576,7 +576,11 @@ if(striker && batsmanStats[striker.name]){
 }
 
 balls++;
+if(currentBowler && bowlerStats[currentBowler.name]){
 
+    bowlerStats[currentBowler.name].balls++;
+
+}
 
 // CHECK TEAM B WIN
 
