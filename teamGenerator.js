@@ -566,6 +566,7 @@ if(striker && batsmanStats[striker.name]){
 }
 
 balls++;
+    if(secondInnings && score >= target){
 // Check innings end
 if(wickets >= 10 || balls >= 120){
 
