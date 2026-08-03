@@ -523,7 +523,11 @@ battingTeam[wickets+1] || null;
 
 
         score += result;
+if(currentBowler && bowlerStats[currentBowler.name]){
 
+    bowlerStats[currentBowler.name].runs += result;
+
+}
     batsmanStats[striker.name].runs += result;
 
 
