@@ -604,6 +604,7 @@ if(wickets >= 10 || balls >= 120){
 
 
         return;
+    }
 document.getElementById("scoreboard").innerHTML =
     `
     <h2>🏆 MATCH RESULT</h2>
@@ -627,8 +628,6 @@ document.getElementById("scoreboard").innerHTML =
 
 
     return;
-    }
-
 }
 
     if(balls%6===0){
