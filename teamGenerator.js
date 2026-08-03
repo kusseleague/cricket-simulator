@@ -749,15 +749,23 @@ function updateScoreboard(message){
     <br><br>
 
 
-    🏏 Striker:
-    ${striker ? striker.name : "ALL OUT"}
+   🏏 Batting:
 
+<br><br>
 
-    <br>
+${striker ? striker.name : "ALL OUT"}
+${striker && batsmanStats[striker.name] 
+? batsmanStats[striker.name].runs + " (" + batsmanStats[striker.name].balls + ")"
+: ""}
 
+⭐
 
-    🏏 Non-Striker:
-    ${nonStriker ? nonStriker.name : "-"}
+<br>
+
+${nonStriker ? nonStriker.name : "-"}
+${nonStriker && batsmanStats[nonStriker.name]
+? batsmanStats[nonStriker.name].runs + " (" + batsmanStats[nonStriker.name].balls + ")"
+: ""}
 
 
     <br>
