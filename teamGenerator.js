@@ -341,6 +341,7 @@ function startMatch(){
     score=0;
     wickets=0;
     balls=0;
+    bowlerIndex = 0;
 
 
     document.getElementById("matchSetup").style.display="none";
