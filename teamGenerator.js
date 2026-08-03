@@ -3,9 +3,15 @@
 // TEAM GENERATOR ENGINE
 // =============================
 
+let battingTeam = [];
+let bowlingTeam = [];
 
-let teamA = [];
-let teamB = [];
+let striker;
+let nonStriker;
+let currentBowler;
+
+let batsmanStats = {};
+let bowlerStats = {};
 
 
 // Shuffle players
