@@ -539,7 +539,7 @@ if(wickets >= 10 || balls >= 120){
 
     Overs: ${Math.floor(balls/6)}.${balls%6}
     `;
-
+document.querySelector("button[onclick='nextBall()']").style.display = "none";
     return;
 }
 
