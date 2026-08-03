@@ -559,8 +559,13 @@ batsmanStats[striker.name].fours++;
     }
 
 
-batsmanStats[striker.name].balls++;
-    balls++;
+if(striker && batsmanStats[striker.name]){
+
+    batsmanStats[striker.name].balls++;
+
+}
+
+balls++;
 // Check innings end
 if(wickets >= 10 || balls >= 120){
 
