@@ -566,10 +566,35 @@ if(striker && batsmanStats[striker.name]){
 }
 
 balls++;
-    if(secondInnings && score >= target){
-// Check innings end
-if(wickets >= 10 || balls >= 120){
 
+
+// CHECK TEAM B WIN
+
+if(secondInnings && score >= target){
+
+    document.getElementById("scoreboard").innerHTML =
+    `
+    <h2>🏆 MATCH WON!</h2>
+
+    Chased ${target} runs
+
+    <br>
+
+    Score:
+    ${score}/${wickets}
+
+    `;
+
+    document.querySelector("button[onclick='nextBall()']").style.display="none";
+
+    return;
+
+}
+
+
+// CHECK INNINGS END
+
+if(wickets >= 10 || balls >= 120){
     if(!secondInnings){
 
         firstInningsScore = score;
