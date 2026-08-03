@@ -253,16 +253,6 @@ function showTeams(){
 // MATCH SETUP ENGINE
 // =============================
 
-
-let battingTeam = [];
-let bowlingTeam = [];
-
-let striker;
-let nonStriker;
-let currentBowler;
-
-
-
 function tossWinner(team){
 
 
