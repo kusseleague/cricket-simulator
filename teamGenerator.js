@@ -604,7 +604,29 @@ if(wickets >= 10 || balls >= 120){
 
 
         return;
+document.getElementById("scoreboard").innerHTML =
+    `
+    <h2>🏆 MATCH RESULT</h2>
 
+    Team A wins!
+
+    <br><br>
+
+    Final Score:
+    ${score}/${wickets}
+
+    <br>
+
+    Needed:
+    ${target-score} more runs
+
+    `;
+
+
+    document.querySelector("button[onclick='nextBall()']").style.display="none";
+
+
+    return;
     }
 
 }
