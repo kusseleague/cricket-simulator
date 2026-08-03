@@ -798,7 +798,35 @@ ${nonStriker && batsmanStats[nonStriker.name]
 
 
     ⚾ Bowler:
-    ${currentBowler ? currentBowler.name : "-"}
+   ⚾ Bowling:
+
+<br><br>
+
+${currentBowler ? currentBowler.name : "-"}
+
+<br>
+
+${
+currentBowler && bowlerStats[currentBowler.name]
+?
+Math.floor(bowlerStats[currentBowler.name].balls / 6)
++
+"."
++
+(bowlerStats[currentBowler.name].balls % 6)
++
+" overs | "
++
+bowlerStats[currentBowler.name].runs
++
+" runs | "
++
+bowlerStats[currentBowler.name].wickets
++
+" wickets"
+:
+""
+}
 
 
     <br><br>
