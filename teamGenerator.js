@@ -403,7 +403,25 @@ function startMatch(){
     striker = battingTeam[0];
 
     nonStriker = battingTeam[1];
+battingTeam.forEach(player => {
 
+    batsmanStats[player.name] = {
+        runs:0,
+        balls:0
+    };
+
+});
+
+
+bowlingTeam.forEach(player => {
+
+    bowlerStats[player.name] = {
+        balls:0,
+        runs:0,
+        wickets:0
+    };
+
+});
 
 
     currentBowler =
