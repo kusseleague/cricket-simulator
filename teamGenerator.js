@@ -557,7 +557,7 @@ battingTeam[wickets+1] || null;
     }
 
 
-
+batsmanStats[striker.name].balls++;
     balls++;
 // Check innings end
 if(wickets >= 10 || balls >= 120){
