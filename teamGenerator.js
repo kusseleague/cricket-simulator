@@ -380,7 +380,21 @@ let bowlers = bowlingTeam.filter(
 
 currentBowler = bowlers[0];
 
+bowlingTeam.forEach(player => {
 
+    if(player.role === "Bowler"){
+
+        bowlerStats[player.name] = {
+
+            balls: 0,
+            runs: 0,
+            wickets: 0
+
+        };
+
+    }
+
+});
 
     updateScoreboard(
         "Match Started!"
