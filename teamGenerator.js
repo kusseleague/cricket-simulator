@@ -478,7 +478,7 @@ function nextBall(){
 
 
         striker =
-        battingTeam[wickets+1];
+battingTeam[wickets+1] || null;
 
 
     }
