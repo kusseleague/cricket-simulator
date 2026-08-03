@@ -20,6 +20,7 @@ let bowlingTeam = [];
 let striker;
 let nonStriker;
 let currentBowler;
+let bowlerIndex = 0;
 
 let commentary = "";
 
