@@ -522,6 +522,8 @@ battingTeam[wickets+1] || null;
 
         score += result;
 
+    batsmanStats[striker.name].runs += result;
+
 
 
         if(result===6){
