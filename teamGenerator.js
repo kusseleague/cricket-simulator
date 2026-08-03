@@ -534,7 +534,7 @@ batsmanStats[striker.name].sixes++;
         }
 
         else if(result===4){
-
+batsmanStats[striker.name].fours++;
             commentary =
             `🔥 FOUR! ${striker.name} finds the boundary`;
 
