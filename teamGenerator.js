@@ -881,3 +881,49 @@ bowlerStats[currentBowler.name].wickets
 
 
 }
+
+
+// ===============================
+// PLAYER SELECTION SYSTEM
+// ===============================
+
+function startTeamSelection(){
+
+    document.getElementById("teamSelection").style.display = "block";
+
+    loadPlayerDropdowns();
+
+}
+
+
+function loadPlayerDropdowns(){
+
+    let selectA = document.getElementById("playerSelectA");
+    let selectB = document.getElementById("playerSelectB");
+
+    selectA.innerHTML = '<option value="">Select a player</option>';
+    selectB.innerHTML = '<option value="">Select a player</option>';
+
+
+    players.forEach((player,index) => {
+
+        let optionA = document.createElement("option");
+
+        optionA.value = index;
+        optionA.textContent =
+            player.name + " (" + player.role + ")";
+
+        selectA.appendChild(optionA);
+
+
+        let optionB = document.createElement("option");
+
+        optionB.value = index;
+        optionB.textContent =
+            player.name + " (" + player.role + ")";
+
+        selectB.appendChild(optionB);
+
+    });
+
+}
