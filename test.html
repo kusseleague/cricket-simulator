@@ -46,12 +46,43 @@ document.getElementById("result").innerHTML =
 
 <!-- TEAM GENERATOR -->
 
-<button onclick="showTeams()">
-🏏 Create Teams
+<!-- TEAM SELECTION -->
+
+<h2>🏏 Build Your Teams</h2>
+
+<button onclick="startTeamSelection()">
+🏏 Choose Players
 </button>
 
+<div id="teamSelection" style="display:none;">
 
-<div id="teams"></div>
+    <h3>TEAM A</h3>
+
+    <select id="playerSelectA">
+        <option value="">Select a player</option>
+    </select>
+
+    <button onclick="addPlayerToTeam('A')">
+        ➕ Add to Team A
+    </button>
+
+    <div id="teamAList"></div>
+
+    <hr>
+
+    <h3>TEAM B</h3>
+
+    <select id="playerSelectB">
+        <option value="">Select a player</option>
+    </select>
+
+    <button onclick="addPlayerToTeam('B')">
+        ➕ Add to Team B
+    </button>
+
+    <div id="teamBList"></div>
+
+</div>
 
 
 
