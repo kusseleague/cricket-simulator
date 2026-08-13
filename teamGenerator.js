@@ -1130,3 +1130,79 @@ function confirmNextBatsman(){
     );
 
 }
+// ===============================
+// CHOOSE NEXT BOWLER
+// ===============================
+
+function chooseNextBowler(availableBowlers){
+
+    let options = "";
+
+    availableBowlers.forEach(player => {
+
+        let stats = bowlerStats[player.name];
+
+        let overs =
+            Math.floor(stats.balls / 6)
+            +
+            "."
+            +
+            (stats.balls % 6);
+
+        options += `
+            <option value="${player.name}">
+                ${player.name} — ${overs} overs
+            </option>
+        `;
+
+    });
+
+
+    document.getElementById("scoreboard").innerHTML += `
+
+        <br><br>
+
+        <h3>⚾ CHOOSE NEXT BOWLER</h3>
+
+        <select id="nextBowler">
+
+            <option value="">
+                Select bowler
+            </option>
+
+            ${options}
+
+        </select>
+
+        <button onclick="confirmNextBowler()">
+            ⚾ Bowl Over
+        </button>
+
+    `;
+
+}
+
+function confirmNextBowler(){
+
+    let selectedName =
+        document.getElementById("nextBowler").value;
+
+
+    if(!selectedName){
+
+        return;
+
+    }
+
+
+    currentBowler =
+        bowlingTeam.find(
+            player => player.name === selectedName
+        );
+
+
+    updateScoreboard(
+        `⚾ ${currentBowler.name} will bowl the next over!`
+    );
+
+}
