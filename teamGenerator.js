@@ -927,3 +927,107 @@ function loadPlayerDropdowns(){
     });
 
 }
+// ===============================
+// SELECTED TEAM PLAYERS
+// ===============================
+
+function addPlayerToTeam(team){
+
+    let select = document.getElementById(
+        team === "A" ? "playerSelectA" : "playerSelectB"
+    );
+
+    let playerIndex = select.value;
+
+    if(playerIndex === ""){
+        return;
+    }
+
+    let player = players[playerIndex];
+
+    // Make sure player isn't already selected
+    if(teamA.includes(player) || teamB.includes(player)){
+
+        alert("This player is already in a team!");
+
+        return;
+    }
+
+    if(team === "A"){
+
+        if(teamA.length >= 11){
+
+            alert("Team A already has 11 players!");
+
+            return;
+        }
+
+        teamA.push(player);
+
+    }
+
+    else{
+
+        if(teamB.length >= 11){
+
+            alert("Team B already has 11 players!");
+
+            return;
+        }
+
+        teamB.push(player);
+
+    }
+
+    displaySelectedTeams();
+
+    select.value = "";
+
+}
+
+
+// ===============================
+// DISPLAY SELECTED TEAMS
+// ===============================
+
+function displaySelectedTeams(){
+
+    let teamAHTML = `
+        <h3>🏏 TEAM A — ${teamA.length}/11</h3>
+    `;
+
+    teamA.forEach((player,index) => {
+
+        teamAHTML += `
+            ${index + 1}. 
+            ${player.name}
+            (${player.role})
+            <br>
+        `;
+
+    });
+
+
+    let teamBHTML = `
+        <h3>🏏 TEAM B — ${teamB.length}/11</h3>
+    `;
+
+    teamB.forEach((player,index) => {
+
+        teamBHTML += `
+            ${index + 1}. 
+            ${player.name}
+            (${player.role})
+            <br>
+        `;
+
+    });
+
+
+    document.getElementById("teamAList").innerHTML =
+        teamAHTML;
+
+    document.getElementById("teamBList").innerHTML =
+        teamBHTML;
+
+}
