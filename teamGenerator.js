@@ -1066,3 +1066,75 @@ function confirmTeams(){
     });
 
 }
+
+function showNextBatsman(){
+
+    let available = battingTeam.filter(player => {
+
+        return !batsmanStats[player.name].out &&
+               player !== nonStriker;
+
+    });
+
+
+    let options = "";
+
+    available.forEach(player => {
+
+        options += `
+            <option value="${player.name}">
+                ${player.name} (${player.role})
+            </option>
+        `;
+
+    });
+
+
+    document.getElementById("scoreboard").innerHTML += `
+
+        <br><br>
+
+        <h3>🏏 Choose Next Batsman</h3>
+
+        <select id="nextBatsman">
+
+            <option value="">
+                Select batsman
+            </option>
+
+            ${options}
+
+        </select>
+
+        <button onclick="confirmNextBatsman()">
+            🏏 Send In
+        </button>
+
+    `;
+
+}
+
+function confirmNextBatsman(){
+
+    let selectedName =
+        document.getElementById("nextBatsman").value;
+
+
+    if(!selectedName){
+
+        return;
+
+    }
+
+
+    striker =
+        battingTeam.find(
+            player => player.name === selectedName
+        );
+
+
+    updateScoreboard(
+        `🏏 ${striker.name} comes to the crease!`
+    );
+
+}
