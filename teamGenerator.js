@@ -534,6 +534,14 @@ if(currentBowler && bowlerStats[currentBowler.name]){
 
        striker = null;
 
+balls++;
+
+if(currentBowler && bowlerStats[currentBowler.name]){
+
+    bowlerStats[currentBowler.name].balls++;
+
+}
+
 showNextBatsman();
 
 return;
