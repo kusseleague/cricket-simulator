@@ -411,8 +411,6 @@ bowlingTeam.forEach(player => {
 };
 
 
-});
-
     updateScoreboard(
         "Match Started!"
     );
