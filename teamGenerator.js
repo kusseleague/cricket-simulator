@@ -536,6 +536,8 @@ if(currentBowler && bowlerStats[currentBowler.name]){
 
 showNextBatsman();
 
+return;
+
 
     }
 
