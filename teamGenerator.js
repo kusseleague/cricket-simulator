@@ -407,8 +407,11 @@ bowlingTeam.forEach(player => {
     runs: 0,
     wickets: 0,
     overs: 0
+       };
 
-};
+    }
+
+});
 
 
     updateScoreboard(
