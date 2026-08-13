@@ -1031,3 +1031,37 @@ function displaySelectedTeams(){
         teamBHTML;
 
 }
+// ===============================
+// CONFIRM SELECTED TEAMS
+// ===============================
+
+function confirmTeams(){
+
+    if(teamA.length !== 11){
+
+        document.getElementById("teamConfirmMessage").innerHTML =
+        "❌ Team A needs 11 players.";
+
+        return;
+    }
+
+    if(teamB.length !== 11){
+
+        document.getElementById("teamConfirmMessage").innerHTML =
+        "❌ Team B needs 11 players.";
+
+        return;
+    }
+
+
+    document.getElementById("teamConfirmMessage").innerHTML =
+    "✅ Teams confirmed!";
+
+
+    document.getElementById("matchSetup").style.display = "block";
+
+    document.getElementById("matchSetup").scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
