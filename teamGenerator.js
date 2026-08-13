@@ -532,8 +532,9 @@ if(currentBowler && bowlerStats[currentBowler.name]){
 
 
 
-        striker =
-battingTeam[wickets+1] || null;
+       striker = null;
+
+showNextBatsman();
 
 
     }
