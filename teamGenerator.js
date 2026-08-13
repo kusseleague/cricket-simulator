@@ -401,15 +401,15 @@ bowlingTeam.forEach(player => {
 
     if(player.role === "Bowler"){
 
-        bowlerStats[player.name] = {
+       bowlerStats[player.name] = {
 
-            balls: 0,
-            runs: 0,
-            wickets: 0
+    balls: 0,
+    runs: 0,
+    wickets: 0,
+    overs: 0
 
-        };
+};
 
-    }
 
 });
 
