@@ -752,25 +752,53 @@ document.getElementById("scoreboard").innerHTML =
     return;
 }
 
-    if(balls%6===0){
+    if(balls % 6 === 0){
+
+    // Swap batsmen at the end of the over
+
+    let temp = striker;
+
+    striker = nonStriker;
+
+    nonStriker = temp;
 
 
-        let temp=striker;
+    // Find bowlers who are still allowed to bowl
 
-        striker=nonStriker;
+    let availableBowlers = bowlingTeam.filter(player => {
 
-        nonStriker=temp;
-bowlerIndex++;
+        if(player.role !== "Bowler"){
+            return false;
+        }
 
-let bowlers = bowlingTeam.filter(
-    p => p.role === "Bowler"
-);
+        if(!bowlerStats[player.name]){
+            return false;
+        }
 
-currentBowler = bowlers[
-    bowlerIndex % bowlers.length
-];
+        // 4 overs maximum = 24 balls
 
-    }
+        if(bowlerStats[player.name].balls >= 24){
+            return false;
+        }
+
+        // Cannot bowl consecutive overs
+
+        if(player === currentBowler){
+            return false;
+        }
+
+        return true;
+
+    });
+
+
+    // Ask the user to choose the next bowler
+
+    chooseNextBowler(availableBowlers);
+
+    return;
+
+}
 
 
 
