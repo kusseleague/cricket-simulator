@@ -79,7 +79,7 @@ function createBalancedTeam(pool){
 
 
     let bowlers = pool.filter(
-        p => p.role === "Bowler"
+        p => p.role === "Bowler" || p.role === "All Rounder"
     );
 
 
