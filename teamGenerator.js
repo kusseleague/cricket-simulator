@@ -724,8 +724,8 @@ battingTeam.forEach(player => {
 
 });
 
-        let bowlers = bowlingTeam.filter(
-    p => p.role === "Bowler"
+      let bowlers = bowlingTeam.filter(
+    p => p.role === "Bowler" || p.role === "All Rounder"
 );
 
 currentBowler = bowlers[0];
