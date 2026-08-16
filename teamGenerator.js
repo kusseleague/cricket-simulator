@@ -748,7 +748,8 @@ document.getElementById("scoreboard").innerHTML =
 
     nonStriker = temp;
 
-
+newBatsmanSettling = false;
+      
     // Find bowlers who can bowl
 
     let availableBowlers = bowlingTeam.filter(player => {
