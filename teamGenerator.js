@@ -518,7 +518,8 @@ if(currentBowler && bowlerStats[currentBowler.name]){
 
 
        striker = null;
-
+newBatsmanSettling = true;
+        
 balls++;
 
 if(currentBowler && bowlerStats[currentBowler.name]){
