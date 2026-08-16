@@ -823,9 +823,12 @@ newBatsmanSettling = false;
 
     let availableBowlers = bowlingTeam.filter(player => {
 
-        if(player.role !== "Bowler"){
-            return false;
-        }
+       if(
+    player.role !== "Bowler" &&
+    player.role !== "All Rounder"
+){
+    return false;
+}
 
         if(!bowlerStats[player.name]){
             return false;
