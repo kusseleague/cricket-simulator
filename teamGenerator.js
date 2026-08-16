@@ -460,42 +460,111 @@ function nextBall(){
 
 
 
-    if(chance < 8){
+   if(chance < 8){
 
-        result="W";
+    result = "W";
 
-    }
+}
 
-    else if(chance < 20 + difference/2){
+else if(newBatsmanSettling){
 
-        result=6;
+    // New batsman has a 70% chance of NOT hitting a boundary
 
-    }
+    let settlingChance = Math.random() * 100;
 
-    else if(chance < 45 + difference/2){
+    if(settlingChance < 70){
 
-        result=4;
+        // Safe outcomes only: 0, 1 or 2
 
-    }
+        let safeChance = Math.random() * 100;
 
-    else if(chance < 70){
+        if(safeChance < 40){
 
-        result=1;
+            result = 0;
 
-    }
+        }
 
-    else if(chance < 85){
+        else if(safeChance < 75){
 
-        result=2;
+            result = 1;
+
+        }
+
+        else{
+
+            result = 2;
+
+        }
 
     }
 
     else{
 
-        result=0;
+        // 30% chance: use normal batting ability
+
+        if(chance < 20 + difference/2){
+
+            result = 6;
+
+        }
+
+        else if(chance < 45 + difference/2){
+
+            result = 4;
+
+        }
+
+        else if(chance < 70){
+
+            result = 1;
+
+        }
+
+        else if(chance < 85){
+
+            result = 2;
+
+        }
+
+        else{
+
+            result = 0;
+
+        }
 
     }
 
+}
+
+else if(chance < 20 + difference/2){
+
+    result = 6;
+
+}
+
+else if(chance < 45 + difference/2){
+
+    result = 4;
+
+}
+
+else if(chance < 70){
+
+    result = 1;
+
+}
+
+else if(chance < 85){
+
+    result = 2;
+
+}
+
+else{
+
+    result = 0;
+
+}
 
 
 
