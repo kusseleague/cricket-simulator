@@ -1309,3 +1309,53 @@ function confirmNextBowler(){
     );
 
 }
+
+// ===============================
+// TOURNAMENT MODE
+// ===============================
+
+let tournamentTeams = [];
+
+
+// CREATE TEAM NAME BOXES
+
+function createTeamNameInputs(){
+
+    let count =
+        Number(
+            document.getElementById(
+                "tournamentTeamCount"
+            ).value
+        );
+
+
+    let container =
+        document.getElementById(
+            "teamNameInputs"
+        );
+
+
+    container.innerHTML = "";
+
+
+    for(let i = 1; i <= count; i++){
+
+        container.innerHTML += `
+
+            <label>
+                Team ${i} Name:
+            </label>
+
+            <input
+                type="text"
+                id="tournamentTeam${i}"
+                placeholder="Enter team name"
+            >
+
+            <br><br>
+
+        `;
+
+    }
+
+}
