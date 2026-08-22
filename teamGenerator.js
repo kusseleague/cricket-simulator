@@ -1497,3 +1497,48 @@ function generateFixtures(){
     document.getElementById("fixtureArea").innerHTML = html;
 
 }
+// ===============================
+// TOURNAMENT TEAM XI SELECTION
+// ===============================
+
+function displayTournamentTeams(){
+
+    let html = `
+        <h2>🏏 TOURNAMENT TEAMS</h2>
+    `;
+
+
+    tournamentTeams.forEach((team,index) => {
+
+        html += `
+
+            <div>
+
+                <h3>🏏 ${team.name}</h3>
+
+                <p>
+                    Playing XI:
+                    ${team.players.length}/11
+                </p>
+
+                <button
+                    onclick="startTournamentTeamSelection(${index})">
+
+                    👥 CHOOSE PLAYING XI
+
+                </button>
+
+                <hr>
+
+            </div>
+
+        `;
+
+    });
+
+
+    document.getElementById(
+        "tournamentTeamsArea"
+    ).innerHTML = html;
+
+}
