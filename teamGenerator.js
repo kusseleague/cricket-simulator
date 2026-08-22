@@ -1422,5 +1422,3 @@ function createTournament(){
         `;
 
 }
-
-createTeamNameInputs();
