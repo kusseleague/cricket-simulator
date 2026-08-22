@@ -1542,3 +1542,188 @@ function displayTournamentTeams(){
     ).innerHTML = html;
 
 }
+// ===============================
+// TOURNAMENT PLAYING XI SELECTOR
+// ===============================
+
+let tournamentSelectingTeam = null;
+
+let tournamentSelectedPlayers = [];
+
+
+function startTournamentTeamSelection(index){
+
+    tournamentSelectingTeam = index;
+
+    tournamentSelectedPlayers = [];
+
+
+    let team =
+        tournamentTeams[index];
+
+
+    document.getElementById(
+        "tournamentTeamsArea"
+    ).innerHTML = `
+
+        <h2>🏏 SELECT PLAYING XI</h2>
+
+        <h3>
+            ${team.name}
+        </h3>
+
+        <p>
+            Selected:
+            <span id="tournamentSelectedCount">
+                0
+            </span>
+            /11
+        </p>
+
+        <div id="tournamentPlayerList"></div>
+
+        <br>
+
+        <button onclick="confirmTournamentXI()">
+            ✅ CONFIRM PLAYING XI
+        </button>
+
+        <button onclick="displayTournamentTeams()">
+            ❌ CANCEL
+        </button>
+
+    `;
+
+
+    displayTournamentPlayers();
+
+}
+
+function displayTournamentPlayers(){
+
+    let html = "";
+
+
+    players.forEach((player,index) => {
+
+        let alreadyUsed =
+            tournamentTeams.some((team,teamIndex) => {
+
+                if(teamIndex === tournamentSelectingTeam){
+                    return false;
+                }
+
+                return team.players.some(
+                    selected =>
+                        selected.name === player.name
+                );
+
+            });
+
+
+        let selected =
+            tournamentSelectedPlayers.some(
+                selected =>
+                    selected.name === player.name
+            );
+
+
+        html += `
+
+            <div>
+
+                <button
+                    onclick="toggleTournamentPlayer(${index})"
+                    ${alreadyUsed ? "disabled" : ""}>
+
+                    ${selected ? "✅" : "⬜"}
+
+                    ${player.name}
+
+                    (${player.role})
+
+                </button>
+
+            </div>
+
+        `;
+
+    });
+
+
+    document.getElementById(
+        "tournamentPlayerList"
+    ).innerHTML = html;
+
+}
+function toggleTournamentPlayer(index){
+
+    let player = players[index];
+
+
+    let alreadySelected =
+        tournamentSelectedPlayers.some(
+            selected =>
+                selected.name === player.name
+        );
+
+
+    if(alreadySelected){
+
+        tournamentSelectedPlayers =
+            tournamentSelectedPlayers.filter(
+                selected =>
+                    selected.name !== player.name
+            );
+
+    }
+
+    else{
+
+        if(tournamentSelectedPlayers.length >= 11){
+
+            return;
+
+        }
+
+        tournamentSelectedPlayers.push(player);
+
+    }
+
+
+    document.getElementById(
+        "tournamentSelectedCount"
+    ).textContent =
+        tournamentSelectedPlayers.length;
+
+
+    displayTournamentPlayers();
+
+}
+function confirmTournamentXI(){
+
+    if(tournamentSelectedPlayers.length !== 11){
+
+        alert(
+            "You must select exactly 11 players."
+        );
+
+        return;
+
+    }
+
+
+    tournamentTeams[
+        tournamentSelectingTeam
+    ].players =
+        [...tournamentSelectedPlayers];
+
+
+    tournamentSelectingTeam = null;
+
+    tournamentSelectedPlayers = [];
+
+
+    displayTournamentTeams();
+
+}
