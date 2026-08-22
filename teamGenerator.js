@@ -1727,3 +1727,76 @@ function confirmTournamentXI(){
     displayTournamentTeams();
 
 }
+// ===============================
+// PLAY TOURNAMENT MATCH
+// ===============================
+
+function playTournamentMatch(index){
+
+    let fixture = tournamentFixtures[index];
+
+    if(!fixture){
+        return;
+    }
+
+
+    let tournamentTeamA = fixture.teamA;
+    let tournamentTeamB = fixture.teamB;
+
+
+    // Make sure both teams have a Playing XI
+
+    if(
+        !tournamentTeamA.players ||
+        tournamentTeamA.players.length !== 11
+    ){
+
+        alert(
+            tournamentTeamA.name +
+            " needs a complete Playing XI."
+        );
+
+        return;
+    }
+
+
+    if(
+        !tournamentTeamB.players ||
+        tournamentTeamB.players.length !== 11
+    ){
+
+        alert(
+            tournamentTeamB.name +
+            " needs a complete Playing XI."
+        );
+
+        return;
+    }
+
+
+    // Load the tournament XIs
+
+    teamA = [...tournamentTeamA.players];
+
+    teamB = [...tournamentTeamB.players];
+
+
+    // Show the normal match setup
+
+    document.getElementById(
+        "tournamentSetup"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "matchSetup"
+    ).style.display = "block";
+
+
+    document.getElementById(
+        "matchSetup"
+    ).scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
