@@ -1420,7 +1420,7 @@ function createTournament(){
             .join("<br>")}
 
         `;
-
+generateFixtures();
 }
 // ===============================
 // TOURNAMENT FIXTURE GENERATOR
