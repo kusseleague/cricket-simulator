@@ -1420,6 +1420,7 @@ function createTournament(){
             .join("<br>")}
 
         `;
+    displayTournamentTeams();
 generateFixtures();
 }
 // ===============================
