@@ -1457,3 +1457,42 @@ function generateFixtures(){
     displayFixtures();
 
 }
+ function displayFixtures(){
+
+    let html = `
+        <h2>📅 TOURNAMENT FIXTURES</h2>
+    `;
+
+
+    tournamentFixtures.forEach((fixture,index) => {
+
+        html += `
+
+            <div>
+
+                <h3>
+                    🏏 MATCH ${index + 1}
+                </h3>
+
+                ${fixture.teamA.name}
+                vs
+                ${fixture.teamB.name}
+
+                <br><br>
+
+                <button onclick="playTournamentMatch(${index})">
+                    ▶️ PLAY MATCH
+                </button>
+
+                <hr>
+
+            </div>
+
+        `;
+
+    });
+
+
+    document.getElementById("fixtureArea").innerHTML = html;
+
+}
