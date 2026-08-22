@@ -94,7 +94,47 @@ document.getElementById("result").innerHTML =
 
 <hr>
 
+<!-- ===============================
+     TOURNAMENT MODE
+================================ -->
 
+<div id="tournamentSetup">
+
+    <h2>🏆 STUMPS TOURNAMENT MODE</h2>
+
+    <label>
+        Number of Teams:
+    </label>
+
+    <select id="tournamentTeamCount"
+            onchange="createTeamNameInputs()">
+
+        <option value="4">4 Teams</option>
+        <option value="5">5 Teams</option>
+        <option value="6">6 Teams</option>
+        <option value="7">7 Teams</option>
+        <option value="8">8 Teams</option>
+
+    </select>
+
+
+    <br><br>
+
+
+    <div id="teamNameInputs"></div>
+
+
+    <br>
+
+
+    <button onclick="createTournament()">
+        🏆 Create Tournament
+    </button>
+
+
+    <div id="tournamentMessage"></div>
+
+</div>
 
 <!-- TOSS AREA -->
 
