@@ -1359,3 +1359,66 @@ function createTeamNameInputs(){
     }
 
 }
+
+function createTournament(){
+
+    let count =
+        Number(
+            document.getElementById(
+                "tournamentTeamCount"
+            ).value
+        );
+
+
+    tournamentTeams = [];
+
+
+    for(let i = 1; i <= count; i++){
+
+        let input =
+            document.getElementById(
+                "tournamentTeam" + i
+            );
+
+
+        let teamName =
+            input.value.trim();
+
+
+        if(teamName === ""){
+
+            document.getElementById(
+                "tournamentMessage"
+            ).innerHTML =
+                `❌ Please enter a name for Team ${i}.`;
+
+            return;
+
+        }
+
+
+        tournamentTeams.push({
+
+            name: teamName,
+
+            players: []
+
+        });
+
+    }
+
+
+    document.getElementById(
+        "tournamentMessage"
+    ).innerHTML =
+
+        `
+        <h3>✅ Tournament Created!</h3>
+
+        ${tournamentTeams
+            .map(team => `🏏 ${team.name}`)
+            .join("<br>")}
+
+        `;
+
+}
