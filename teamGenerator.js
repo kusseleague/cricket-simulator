@@ -1422,3 +1422,38 @@ function createTournament(){
         `;
 
 }
+// ===============================
+// TOURNAMENT FIXTURE GENERATOR
+// ===============================
+
+let tournamentFixtures = [];
+
+
+function generateFixtures(){
+
+    tournamentFixtures = [];
+
+    for(let i = 0; i < tournamentTeams.length; i++){
+
+        for(let j = i + 1; j < tournamentTeams.length; j++){
+
+            tournamentFixtures.push({
+
+                teamA: tournamentTeams[i],
+                teamB: tournamentTeams[j],
+
+                played: false,
+
+                scoreA: null,
+                scoreB: null
+
+            });
+
+        }
+
+    }
+
+
+    displayFixtures();
+
+}
