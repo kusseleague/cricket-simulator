@@ -1438,10 +1438,27 @@ function generateFixtures(){
 
         for(let j = i + 1; j < tournamentTeams.length; j++){
 
+            // FIRST MATCH
+
             tournamentFixtures.push({
 
                 teamA: tournamentTeams[i],
                 teamB: tournamentTeams[j],
+
+                played: false,
+
+                scoreA: null,
+                scoreB: null
+
+            });
+
+
+            // REVERSE MATCH
+
+            tournamentFixtures.push({
+
+                teamA: tournamentTeams[j],
+                teamB: tournamentTeams[i],
 
                 played: false,
 
