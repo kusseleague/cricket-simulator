@@ -1457,8 +1457,6 @@ function generateFixtures(){
     displayFixtures();
 
 }
-
-}
  function displayFixtures(){
 
     let html = `
