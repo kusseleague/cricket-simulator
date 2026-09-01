@@ -1459,7 +1459,6 @@ function generateFixtures(){
 }
 
 }
-}
  function displayFixtures(){
 
     let html = `
