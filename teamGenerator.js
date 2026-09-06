@@ -900,7 +900,30 @@ newBatsmanSettling = false;
 
 }
 
+function autoPlayMatch(){
 
+    let safety = 0;
+
+    while(safety < 1000){
+
+        let nextBallButton =
+            document.querySelector(
+                "button[onclick='nextBall()']"
+            );
+
+        if(
+            !nextBallButton ||
+            nextBallButton.style.display === "none"
+        ){
+            break;
+        }
+
+        nextBall();
+
+        safety++;
+    }
+
+}
 
 
 
