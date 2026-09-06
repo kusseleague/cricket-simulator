@@ -1886,7 +1886,7 @@ function confirmTournamentXI(){
 function playTournamentMatch(index){
 
     let fixture = tournamentFixtures[index];
-
+currentTournamentFixtureIndex = index;
     if(!fixture){
         return;
     }
