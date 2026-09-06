@@ -423,20 +423,88 @@ function nextBall(){
 
     if(secondInnings && score >= target){
 
-    document.getElementById("scoreboard").innerHTML =
-    `
-    <h2>🏆 MATCH WON!</h2>
+    // SECOND INNINGS FINISHED
 
-    Chased ${target} runs
+let winner;
+let scoreA;
+let scoreB;
 
-    <br>
 
-    Score:
-    ${score}/${wickets}
+// The team batting second is out / innings finished
 
-    `;
+// bowlingTeam is the team that batted first
 
-    document.querySelector("button[onclick='nextBall()']").style.display="none";
+if(bowlingTeam[0] &&
+   fixtureForCurrentMatch &&
+   fixtureForCurrentMatch.teamA.players.includes(bowlingTeam[0])){
+
+    scoreA = firstInningsScore;
+    scoreB = score;
+
+} else {
+
+    scoreA = score;
+    scoreB = firstInningsScore;
+
+}
+
+
+// Decide winner
+
+if(scoreA > scoreB){
+
+    winner = fixtureForCurrentMatch.teamA;
+
+} else {
+
+    winner = fixtureForCurrentMatch.teamB;
+
+}
+
+
+// SAVE TOURNAMENT RESULT
+
+if(fixtureForCurrentMatch){
+
+    fixtureForCurrentMatch.played = true;
+
+    fixtureForCurrentMatch.scoreA = scoreA;
+
+    fixtureForCurrentMatch.scoreB = scoreB;
+
+    fixtureForCurrentMatch.winner = winner;
+
+}
+
+
+// SHOW RESULT
+
+document.getElementById("scoreboard").innerHTML =
+`
+<h2>🏆 MATCH RESULT</h2>
+
+🏆 ${winner.name} WINS!
+
+<br><br>
+
+${fixtureForCurrentMatch.teamA.name}:
+${scoreA}
+
+<br>
+
+${fixtureForCurrentMatch.teamB.name}:
+${scoreB}
+
+<br><br>
+
+${winner.name} won by
+${Math.abs(scoreA - scoreB)} runs
+
+`;
+
+document.querySelector(
+    "button[onclick='nextBall()']"
+).style.display="none";
 
 
     // SAVE TOURNAMENT RESULT
