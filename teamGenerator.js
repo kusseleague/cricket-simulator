@@ -1564,7 +1564,7 @@ generateFixtures();
 // ===============================
 
 let tournamentFixtures = [];
-
+let currentTournamentFixtureIndex = null;
 
 function generateFixtures(){
 
