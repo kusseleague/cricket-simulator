@@ -911,6 +911,7 @@ function autoPlayMatch(){
                 "button[onclick='nextBall()']"
             );
 
+        // Match has finished
         if(
             !nextBallButton ||
             nextBallButton.style.display === "none"
@@ -921,10 +922,20 @@ function autoPlayMatch(){
         nextBall();
 
         safety++;
+
+        // If a wicket happened, give the engine
+        // a moment to bring in the next batsman
+        if(striker === null){
+
+            if(typeof showNextBatsman === "function"){
+                showNextBatsman();
+            }
+
+        }
+
     }
 
 }
-
 
 
 
