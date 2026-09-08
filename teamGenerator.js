@@ -735,7 +735,7 @@ else{
 
 
 
-    else{
+ if(result !== "W"){
 
 
         score += result;
