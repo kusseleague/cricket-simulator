@@ -548,7 +548,7 @@ if(
 }
 
 return;
-
+    }
 
     let battingPower = striker.bat;
 
