@@ -1588,6 +1588,7 @@ function createTournament(){
 
         `;
     displayTournamentTeams();
+displayPointsTable();
 generateFixtures();
 }
 // ===============================
