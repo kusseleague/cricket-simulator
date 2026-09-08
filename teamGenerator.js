@@ -974,37 +974,54 @@ function autoPlayMatch(){
 
     while(safety < 1000){
 
+        // If a wicket has just happened,
+        // automatically send in the next batsman
+
+        if(striker === null){
+
+            let available = battingTeam.filter(player => {
+
+                return !batsmanStats[player.name].out &&
+                       player !== nonStriker;
+
+            });
+
+            if(available.length > 0){
+
+                striker = available[0];
+
+                newBatsmanSettling = true;
+
+            }
+
+        }
+
+
         let nextBallButton =
             document.querySelector(
                 "button[onclick='nextBall()']"
             );
 
-        // Match has finished
+
+        // Match finished
+
         if(
             !nextBallButton ||
             nextBallButton.style.display === "none"
         ){
+
             break;
+
         }
+
 
         nextBall();
 
         safety++;
 
-        // If a wicket happened, give the engine
-        // a moment to bring in the next batsman
-        if(striker === null){
-
-            if(typeof showNextBatsman === "function"){
-                showNextBatsman();
-            }
-
-        }
-
     }
 
 }
-
 
 
 // ===============================
