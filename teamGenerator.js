@@ -1559,13 +1559,18 @@ function createTournament(){
         }
 
 
-        tournamentTeams.push({
+     tournamentTeams.push({
 
-            name: teamName,
+    name: teamName,
 
-            players: []
+    players: [],
 
-        });
+    played: 0,
+    wins: 0,
+    losses: 0,
+    points: 0
+
+});
 
     }
 
