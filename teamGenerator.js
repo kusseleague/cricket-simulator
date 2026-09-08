@@ -1983,3 +1983,74 @@ currentTournamentFixtureIndex = index;
     });
 
 }
+
+
+// ===============================
+// TOURNAMENT POINTS TABLE
+// ===============================
+
+function displayPointsTable(){
+
+    let html = `
+        <h2>🏆 POINTS TABLE</h2>
+
+        <table border="1" cellpadding="8" cellspacing="0">
+
+            <tr>
+                <th>Pos</th>
+                <th>Team</th>
+                <th>P</th>
+                <th>W</th>
+                <th>L</th>
+                <th>Pts</th>
+            </tr>
+    `;
+
+
+    // Sort teams by points
+    // Then wins as the tie-breaker
+
+    let sortedTeams = [...tournamentTeams].sort((a,b) => {
+
+        if(b.points !== a.points){
+            return b.points - a.points;
+        }
+
+        return b.wins - a.wins;
+
+    });
+
+
+    sortedTeams.forEach((team,index) => {
+
+        html += `
+
+            <tr>
+
+                <td>${index + 1}</td>
+
+                <td>🏏 ${team.name}</td>
+
+                <td>${team.played}</td>
+
+                <td>${team.wins}</td>
+
+                <td>${team.losses}</td>
+
+                <td><b>${team.points}</b></td>
+
+            </tr>
+
+        `;
+
+    });
+
+
+    html += `</table>`;
+
+
+    document.getElementById(
+        "pointsTableArea"
+    ).innerHTML = html;
+
+}
