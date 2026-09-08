@@ -507,42 +507,47 @@ document.querySelector(
 ).style.display="none";
 
 
-    // SAVE TOURNAMENT RESULT
+  // SAVE TOURNAMENT RESULT
 
-    if(
-        typeof tournamentFixtures !== "undefined" &&
-        typeof currentTournamentFixtureIndex !== "undefined" &&
-        currentTournamentFixtureIndex !== null
-    ){
+if(
+    typeof tournamentFixtures !== "undefined" &&
+    typeof currentTournamentFixtureIndex !== "undefined" &&
+    currentTournamentFixtureIndex !== null
+){
 
-        let fixture =
-            tournamentFixtures[
-                currentTournamentFixtureIndex
-            ];
+    let fixture =
+        tournamentFixtures[
+            currentTournamentFixtureIndex
+        ];
 
+    if(fixture){
+
+        // Match has been completed
         fixture.played = true;
 
-        fixture.scoreA =
-            fixture.teamA === teamA
-            ? target - 1
-            : score;
+        // Team A batted first
+        fixture.scoreA = firstInningsScore;
 
-        fixture.scoreB =
-            fixture.teamB === teamB
-            ? score
-            : target - 1;
+        // Team B batted second
+        fixture.scoreB = score;
 
-        fixture.winner =
-            score >= target
-            ? fixture.teamB
-            : fixture.teamA;
+        // Decide winner
+        if(score >= target){
+
+            fixture.winner = fixture.teamB;
+
+        }
+        else{
+
+            fixture.winner = fixture.teamA;
+
+        }
 
     }
 
-
-    return;
 }
 
+return;
 
 
     let battingPower = striker.bat;
