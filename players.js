@@ -5,15 +5,15 @@ const players = [
 {
 name: "Virat Kohli",
 role: "Batsman",
-bat: 94,
-bowl: 20,
+bat: 91,
+bowl: 15,
 stamina: 88
 },
 
 {
 name: "Rohit Sharma",
 role: "Batsman",
-bat: 92,
+bat: 87,
 bowl: 15,
 stamina: 85
 },
@@ -29,7 +29,7 @@ stamina: 88
 {
 name: "Shreyas Iyer",
 role: "Batsman",
-bat: 86,
+bat: 89,
 bowl: 10,
 stamina: 86
 },
@@ -37,7 +37,7 @@ stamina: 86
 {
 name: "Suryakumar Yadav",
 role: "Batsman",
-bat: 91,
+bat: 85,
 bowl: 20,
 stamina: 87
 },
@@ -45,7 +45,7 @@ stamina: 87
 {
 name: "Yashasvi Jaiswal",
 role: "Batsman",
-bat: 89,
+bat: 87,
 bowl: 10,
 stamina: 88
 },
@@ -61,7 +61,7 @@ stamina: 86
 {
 name: "Rishabh Pant",
 role: "Wicketkeeper",
-bat: 88,
+bat: 84,
 bowl: 10,
 stamina: 87
 },
@@ -77,7 +77,7 @@ stamina: 88
 {
 name: "Jos Buttler",
 role: "Wicketkeeper",
-bat: 91,
+bat: 88,
 bowl: 10,
 stamina: 87
 },
@@ -93,7 +93,7 @@ stamina: 82
 {
 name: "Steve Smith",
 role: "Batsman",
-bat: 92,
+bat: 86,
 bowl: 35,
 stamina: 91
 },
@@ -101,7 +101,7 @@ stamina: 91
 {
 name: "David Warner",
 role: "Batsman",
-bat: 88,
+bat: 90,
 bowl: 10,
 stamina: 84
 },
@@ -109,7 +109,7 @@ stamina: 84
 {
 name: "Travis Head",
 role: "Batsman",
-bat: 91,
+bat: 85,
 bowl: 35,
 stamina: 88
 },
@@ -117,7 +117,7 @@ stamina: 88
 {
 name: "Marnus Labuschagne",
 role: "Batsman",
-bat: 86,
+bat: 84,
 bowl: 25,
 stamina: 89
 },
@@ -125,7 +125,7 @@ stamina: 89
 {
 name: "Kane Williamson",
 role: "Batsman",
-bat: 90,
+bat: 86,
 bowl: 25,
 stamina: 90
 },
@@ -133,7 +133,7 @@ stamina: 90
 {
 name: "Joe Root",
 role: "Batsman",
-bat: 91,
+bat: 86,
 bowl: 40,
 stamina: 91
 },
@@ -173,7 +173,7 @@ stamina: 85
 {
 name: "Heinrich Klaasen",
 role: "Wicketkeeper",
-bat: 89,
+bat: 88,
 bowl: 10,
 stamina: 86
 },
