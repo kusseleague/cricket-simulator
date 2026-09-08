@@ -970,13 +970,35 @@ newBatsmanSettling = false;
 
 function autoPlayMatch(){
 
-    let safety = 0;
+    // If there is no striker because of a wicket,
+    // automatically bring in the next batsman
+    if(striker === null){
 
-    while(safety < 1000){
+        let available = battingTeam.filter(player => {
 
-        // If a wicket has just happened,
-        // automatically send in the next batsman
+            return !batsmanStats[player.name].out &&
+                   player !== nonStriker;
 
+        });
+
+        // If nobody is available, the innings is over
+        if(available.length === 0){
+            return;
+        }
+
+        striker = available[0];
+
+        newBatsmanSettling = true;
+    }
+
+    // Play one ball
+    nextBall();
+
+    // Continue automatically after a short delay
+    setTimeout(function(){
+
+        // If a wicket happened, striker will be null.
+        // Bring in the next batsman before continuing.
         if(striker === null){
 
             let available = battingTeam.filter(player => {
@@ -992,35 +1014,17 @@ function autoPlayMatch(){
 
                 newBatsmanSettling = true;
 
+                autoPlayMatch();
+
             }
 
+            return;
         }
 
+        // Continue if the match is still running
+        autoPlayMatch();
 
-        let nextBallButton =
-            document.querySelector(
-                "button[onclick='nextBall()']"
-            );
-
-
-        // Match finished
-
-        if(
-            !nextBallButton ||
-            nextBallButton.style.display === "none"
-        ){
-
-            break;
-
-        }
-
-
-        nextBall();
-
-        safety++;
-
-    }
-
+    }, 100);
 }
 
 
