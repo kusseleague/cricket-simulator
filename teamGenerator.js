@@ -679,40 +679,59 @@ else{
 
 
     if(result==="W"){
- if(striker && batsmanStats[striker.name]){
 
-    batsmanStats[striker.name].out = true;
+    if(striker && batsmanStats[striker.name]){
 
-}
-        wickets++;
-
-if(currentBowler && bowlerStats[currentBowler.name]){
-
-    bowlerStats[currentBowler.name].wickets++;
-
-}
-        commentary =
-        `💥 OUT! ${striker.name} dismissed by ${currentBowler.name}`;
-
-
-
-       striker = null;
-newBatsmanSettling = true;
-        
-balls++;
-
-if(currentBowler && bowlerStats[currentBowler.name]){
-
-    bowlerStats[currentBowler.name].balls++;
-
-}
-
-showNextBatsman();
-
-return;
-
+        batsmanStats[striker.name].out = true;
 
     }
+
+    wickets++;
+
+    if(currentBowler && bowlerStats[currentBowler.name]){
+
+        bowlerStats[currentBowler.name].wickets++;
+
+    }
+
+    commentary =
+        `💥 OUT! ${striker.name} dismissed by ${currentBowler.name}`;
+
+    balls++;
+
+    if(currentBowler && bowlerStats[currentBowler.name]){
+
+        bowlerStats[currentBowler.name].balls++;
+
+    }
+
+    // ===============================
+    // ALL OUT
+    // ===============================
+
+    if(wickets >= 10){
+
+        striker = null;
+
+        // Let the innings-end section below
+        // handle the change of innings.
+
+    }
+
+    else{
+
+        // Normal wicket — bring in a new batsman
+
+        striker = null;
+        newBatsmanSettling = true;
+
+        showNextBatsman();
+
+        return;
+
+    }
+
+}
 
 
 
