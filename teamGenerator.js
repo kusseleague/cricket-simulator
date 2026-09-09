@@ -1843,9 +1843,6 @@ generateFixtures();
 let tournamentFixtures = [];
 let currentTournamentFixtureIndex = null;
 
-let currentFirstInningsTeam = null;
-let currentSecondInningsTeam = null;
-
 function generateFixtures(){
 
     tournamentFixtures = [];
