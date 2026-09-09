@@ -739,15 +739,15 @@ stamina: 94
 {
 name: "Will Jacks",
 role: "All Rounder",
-bat: 86,
-bowl: 65,
-stamina: 95
+bat: 84,
+bowl: 60,
+stamina: 91
 },
 
 {
 name: "Tom Curran",
 role: "All Rounder",
-bat: 60,
+bat: 55,
 bowl: 70,
 stamina: 94
 },
@@ -755,8 +755,8 @@ stamina: 94
 {
 name: "Noor Ahmed",
 role: "All Rounder",
-bat: 70,
-bowl: 97,
+bat: 15,
+bowl: 84,
 stamina: 92
 }
 
