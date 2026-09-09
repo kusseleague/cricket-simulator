@@ -2221,6 +2221,13 @@ currentTournamentFixtureIndex = index;
         "matchSetup"
     ).style.display = "block";
 
+    document.getElementById("batBowlChoice").innerHTML = `
+    <p><b>Who won the toss?</b></p>
+
+    <button onclick="tossWinner('A')">Team A</button>
+    <button onclick="tossWinner('B')">Team B</button>
+    <button onclick="randomToss()">🎲 Random Toss</button>
+`;
 
     document.getElementById(
         "matchSetup"
