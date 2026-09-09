@@ -1767,12 +1767,15 @@ function displayFixtures(){
 
                 <br><br>
 
-                ${fixture.teamA.name}: 
-                ${fixture.scoreA} runs
-                <br>
+             ${fixture.teamA.name}: 
+${fixture.scoreA}/${fixture.wicketsA}
+(${fixture.oversA} overs)
 
-                ${fixture.teamB.name}: 
-                ${fixture.scoreB} runs
+<br>
+
+${fixture.teamB.name}: 
+${fixture.scoreB}/${fixture.wicketsB}
+(${fixture.oversB} overs)
 
                 <br><br>
 
