@@ -442,7 +442,179 @@ bowlingTeam.forEach(player => {
 
 }
 
+// ===============================
+// FINISH MATCH
+// ===============================
 
+function finishMatch(winnerTeam, secondInningsFinalScore){
+
+    if(matchOver){
+        return;
+    }
+
+    matchOver = true;
+
+    // ===============================
+    // TOURNAMENT MATCH
+    // ===============================
+
+    if(
+        currentTournamentFixtureIndex !== null &&
+        tournamentFixtures[currentTournamentFixtureIndex]
+    ){
+
+        let fixture =
+            tournamentFixtures[currentTournamentFixtureIndex];
+
+        // Prevent duplicate result processing
+        if(!fixture.played){
+
+            let scoreA;
+            let scoreB;
+
+            // Work out which tournament team batted first
+
+            if(currentFirstInningsTeam === fixture.teamA){
+
+                scoreA = firstInningsScore;
+                scoreB = secondInningsFinalScore;
+
+            }
+
+            else{
+
+                scoreA = secondInningsFinalScore;
+                scoreB = firstInningsScore;
+
+            }
+
+            // Save result
+
+            fixture.played = true;
+
+            fixture.scoreA = scoreA;
+            fixture.scoreB = scoreB;
+
+            fixture.winner = winnerTeam;
+
+            // Update tournament statistics
+
+            fixture.teamA.played++;
+            fixture.teamB.played++;
+
+            winnerTeam.wins++;
+            winnerTeam.points += 2;
+
+            let loserTeam =
+                winnerTeam === fixture.teamA
+                ? fixture.teamB
+                : fixture.teamA;
+
+            loserTeam.losses++;
+        }
+
+        // Update tournament screens
+
+        displayPointsTable();
+        displayFixtures();
+
+        // Calculate final scores again for display
+
+        let finalScoreA;
+        let finalScoreB;
+
+        if(currentFirstInningsTeam === fixture.teamA){
+
+            finalScoreA = firstInningsScore;
+            finalScoreB = secondInningsFinalScore;
+
+        }
+
+        else{
+
+            finalScoreA = secondInningsFinalScore;
+            finalScoreB = firstInningsScore;
+
+        }
+
+        // Show result
+
+        document.getElementById("scoreboard").innerHTML =
+        `
+        <h2>🏆 MATCH RESULT</h2>
+
+        <h3>🏆 ${winnerTeam.name} WINS!</h3>
+
+        <br>
+
+        ${fixture.teamA.name}:
+        ${finalScoreA}
+
+        <br>
+
+        ${fixture.teamB.name}:
+        ${finalScoreB}
+
+        <br><br>
+
+        <button onclick="playNextTournamentMatch()">
+            ➡️ NEXT MATCH
+        </button>
+
+        <br><br>
+
+        <button onclick="returnToTournament()">
+            🏆 TOURNAMENT
+        </button>
+        `;
+
+        document.querySelector(
+            "button[onclick='nextBall()']"
+        ).style.display = "none";
+
+        let autoButton =
+            document.querySelector(
+                "button[onclick='autoPlayMatch()']"
+            );
+
+        if(autoButton){
+            autoButton.style.display = "none";
+        }
+
+        return;
+    }
+
+    // ===============================
+    // NORMAL MATCH
+    // ===============================
+
+    document.getElementById("scoreboard").innerHTML =
+    `
+    <h2>🏆 MATCH RESULT</h2>
+
+    <h3>🏆 ${winnerTeam.name} WINS!</h3>
+
+    <br>
+
+    Final Score:
+    ${secondInningsFinalScore}/${wickets}
+
+    `;
+
+    document.querySelector(
+        "button[onclick='nextBall()']"
+    ).style.display = "none";
+
+    let autoButton =
+        document.querySelector(
+            "button[onclick='autoPlayMatch()']"
+        );
+
+    if(autoButton){
+        autoButton.style.display = "none";
+    }
+
+}
 
 
 
