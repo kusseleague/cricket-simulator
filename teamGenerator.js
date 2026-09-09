@@ -2190,8 +2190,11 @@ function displayPointsTable(){
         if(b.points !== a.points){
             return b.points - a.points;
         }
+if(b.nrr !== a.nrr){
+    return b.nrr - a.nrr;
+}
 
-        return b.wins - a.wins;
+return b.wins - a.wins;
 
     });
 
