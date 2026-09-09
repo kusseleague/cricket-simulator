@@ -493,12 +493,32 @@ function finishMatch(winnerTeam, secondInningsFinalScore){
 
             // Save result
 
-            fixture.played = true;
+           fixture.played = true;
 
-            fixture.scoreA = scoreA;
-            fixture.scoreB = scoreB;
+fixture.scoreA = scoreA;
+fixture.scoreB = scoreB;
 
-            fixture.winner = winnerTeam;
+fixture.wicketsA =
+    currentFirstInningsTeam === fixture.teamA
+    ? 10
+    : wickets;
+
+fixture.wicketsB =
+    currentFirstInningsTeam === fixture.teamA
+    ? wickets
+    : 10;
+
+fixture.oversA =
+    currentFirstInningsTeam === fixture.teamA
+    ? Math.floor(firstInningsBalls / 6) + "." + (firstInningsBalls % 6)
+    : Math.floor(secondInningsBalls / 6) + "." + (secondInningsBalls % 6);
+
+fixture.oversB =
+    currentFirstInningsTeam === fixture.teamA
+    ? Math.floor(secondInningsBalls / 6) + "." + (secondInningsBalls % 6)
+    : Math.floor(firstInningsBalls / 6) + "." + (firstInningsBalls % 6);
+
+fixture.winner = winnerTeam;
 
             // Update tournament statistics
 
