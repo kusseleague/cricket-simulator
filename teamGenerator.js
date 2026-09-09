@@ -532,6 +532,32 @@ fixture.winner = winnerTeam;
             fixture.teamA.played++;
             fixture.teamB.played++;
 
+fixture.teamA.runsFor += scoreA;
+fixture.teamB.runsFor += scoreB;
+
+fixture.teamA.runsAgainst += scoreB;
+fixture.teamB.runsAgainst += scoreA;
+
+fixture.teamA.ballsFaced +=
+    currentFirstInningsTeam === fixture.teamA
+    ? firstInningsBalls
+    : secondInningsBalls;
+
+fixture.teamB.ballsFaced +=
+    currentFirstInningsTeam === fixture.teamA
+    ? secondInningsBalls
+    : firstInningsBalls;
+
+fixture.teamA.ballsBowled +=
+    currentFirstInningsTeam === fixture.teamA
+    ? secondInningsBalls
+    : firstInningsBalls;
+
+fixture.teamB.ballsBowled +=
+    currentFirstInningsTeam === fixture.teamA
+    ? firstInningsBalls
+    : secondInningsBalls;
+            
             winnerTeam.wins++;
             winnerTeam.points += 2;
 
