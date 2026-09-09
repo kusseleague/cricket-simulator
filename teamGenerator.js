@@ -1013,7 +1013,9 @@ bowlingTeam.forEach(player => {
 // SECOND INNINGS FINISHED
 // ALL OUT / 20 OVERS
 // ===============================
-
+secondInningsWickets = wickets;
+secondInningsBalls = balls;
+    
 finishMatch(
     currentFirstInningsTeam,
     score
