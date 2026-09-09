@@ -1879,44 +1879,60 @@ function generateFixtures(){
     displayFixtures();
 
 }
- function displayFixtures(){
+function displayFixtures(){
 
-    let html = `
-        <h2>📅 TOURNAMENT FIXTURES</h2>
-    `;
-
+    let html = `<h2>📅 TOURNAMENT FIXTURES</h2>`;
 
     tournamentFixtures.forEach((fixture,index) => {
 
         html += `
-
             <div>
 
-                <h3>
-                    🏏 MATCH ${index + 1}
-                </h3>
+                <h3>🏏 MATCH ${index + 1}</h3>
 
                 ${fixture.teamA.name}
                 vs
                 ${fixture.teamB.name}
 
                 <br><br>
+        `;
 
+        if(fixture.played){
+
+            html += `
+                <strong>✅ PLAYED</strong>
+
+                <br><br>
+
+                ${fixture.teamA.name}: 
+                ${fixture.scoreA} runs
+                <br>
+
+                ${fixture.teamB.name}: 
+                ${fixture.scoreB} runs
+
+                <br><br>
+
+                🏆 Winner:
+                ${fixture.winner.name}
+            `;
+
+        } else {
+
+            html += `
                 <button onclick="playTournamentMatch(${index})">
                     ▶️ PLAY MATCH
                 </button>
+            `;
+        }
 
-                <hr>
-
+        html += `
+            <hr>
             </div>
-
         `;
-
     });
 
-
     document.getElementById("fixtureArea").innerHTML = html;
-
 }
 // ===============================
 // TOURNAMENT TEAM XI SELECTION
