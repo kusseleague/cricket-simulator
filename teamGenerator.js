@@ -793,7 +793,11 @@ else{
         `💥 OUT! ${striker.name} dismissed by ${currentBowler.name}`;
 
     balls++;
-
+if(secondInnings){
+    secondInningsBalls++;
+} else {
+    firstInningsBalls++;
+}
     if(currentBowler && bowlerStats[currentBowler.name]){
 
         bowlerStats[currentBowler.name].balls++;
