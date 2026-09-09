@@ -2177,6 +2177,7 @@ function displayPointsTable(){
                 <th>W</th>
                 <th>L</th>
                 <th>Pts</th>
+                <th>NRR</th>
             </tr>
     `;
 
