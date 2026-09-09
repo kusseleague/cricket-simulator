@@ -2300,3 +2300,34 @@ function displayPointsTable(){
     ).innerHTML = html;
 
 }
+// ===============================
+// PLAY NEXT TOURNAMENT MATCH
+// ===============================
+
+function playNextTournamentMatch(){
+
+    let nextIndex =
+        tournamentFixtures.findIndex(
+            fixture => !fixture.played
+        );
+
+    if(nextIndex === -1){
+
+        document.getElementById("scoreboard").innerHTML =
+        `
+        <h2>🏆 TOURNAMENT COMPLETE!</h2>
+
+        <p>
+        All tournament matches have been played.
+        </p>
+
+        <button onclick="returnToTournament()">
+            🏆 VIEW TOURNAMENT
+        </button>
+        `;
+
+        return;
+    }
+
+    playTournamentMatch(nextIndex);
+}
