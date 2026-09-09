@@ -344,11 +344,45 @@ function chooseDecision(choice,winner){
 
 function startMatch(){
 
-bowlerStats = {};
-    score=0;
-    wickets=0;
-    balls=0;
+    // RESET MATCH COMPLETELY
+    bowlerStats = {};
+
+    score = 0;
+    wickets = 0;
+    balls = 0;
+
+    target = 0;
+    firstInningsScore = 0;
+
+    secondInnings = false;
+    matchOver = false;
+
+    newBatsmanSettling = false;
+
     bowlerIndex = 0;
+
+    // ===============================
+    // IDENTIFY TOURNAMENT TEAMS
+    // ===============================
+
+    if(
+        currentTournamentFixtureIndex !== null &&
+        tournamentFixtures[currentTournamentFixtureIndex]
+    ){
+
+        let fixture =
+            tournamentFixtures[currentTournamentFixtureIndex];
+
+        currentFirstInningsTeam =
+            battingTeam === teamA
+            ? fixture.teamA
+            : fixture.teamB;
+
+        currentSecondInningsTeam =
+            battingTeam === teamA
+            ? fixture.teamB
+            : fixture.teamA;
+    }
 
 
     document.getElementById("matchSetup").style.display="none";
