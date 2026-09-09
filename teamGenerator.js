@@ -873,24 +873,16 @@ if(currentBowler && bowlerStats[currentBowler.name]){
 
 }
 
-// CHECK TEAM B WIN
+// ===============================
+// CHECK SECOND INNINGS CHASE
+// ===============================
 
 if(secondInnings && score >= target){
 
-    document.getElementById("scoreboard").innerHTML =
-    `
-    <h2>🏆 MATCH WON!</h2>
-
-    Chased ${target} runs
-
-    <br>
-
-    Score:
-    ${score}/${wickets}
-
-    `;
-
-    document.querySelector("button[onclick='nextBall()']").style.display="none";
+    finishMatch(
+        currentSecondInningsTeam,
+        score
+    );
 
     return;
 
