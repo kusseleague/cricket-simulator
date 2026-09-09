@@ -507,13 +507,13 @@ fixture.scoreB = scoreB;
 
 fixture.wicketsA =
     currentFirstInningsTeam === fixture.teamA
-    ? 10
-    : wickets;
+    ? firstInningsWickets
+    : secondInningsWickets;
 
 fixture.wicketsB =
     currentFirstInningsTeam === fixture.teamA
-    ? wickets
-    : 10;
+    ? secondInningsWickets
+    : firstInningsWickets;
 
 fixture.oversA =
     currentFirstInningsTeam === fixture.teamA
