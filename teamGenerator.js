@@ -2338,3 +2338,20 @@ function playNextTournamentMatch(){
 
     playTournamentMatch(nextIndex);
 }
+
+function returnToTournament(){
+
+    document.getElementById("matchArea").style.display = "none";
+
+    document.getElementById("matchSetup").style.display = "none";
+
+    document.getElementById("tournamentSetup").style.display = "block";
+
+    displayTournamentTeams();
+    displayPointsTable();
+    displayFixtures();
+
+    document.getElementById("fixtureArea").scrollIntoView({
+        behavior: "smooth"
+    });
+}
