@@ -1678,8 +1678,13 @@ function createTournament(){
     wins: 0,
     losses: 0,
     points: 0,
-    nrr: 0
+    nrr: 0,
 
+runsFor: 0,
+    runsAgainst: 0,
+    ballsFaced: 0,
+    ballsBowled: 0
+         
 });
 
     }
