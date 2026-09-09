@@ -982,29 +982,18 @@ bowlingTeam.forEach(player => {
 
         return;
     }
-document.getElementById("scoreboard").innerHTML =
-    `
-    <h2>🏆 MATCH RESULT</h2>
+// ===============================
+// SECOND INNINGS FINISHED
+// ALL OUT / 20 OVERS
+// ===============================
 
-    Team A wins!
+finishMatch(
+    currentFirstInningsTeam,
+    score
+);
 
-    <br><br>
+return;
 
-    Final Score:
-    ${score}/${wickets}
-
-    <br>
-
-    Needed:
-    ${target-score} more runs
-
-    `;
-
-
-    document.querySelector("button[onclick='nextBall()']").style.display="none";
-
-
-    return;
 }
 
   if(balls % 6 === 0){
