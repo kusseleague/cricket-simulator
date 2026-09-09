@@ -557,7 +557,13 @@ fixture.teamB.ballsBowled +=
     currentFirstInningsTeam === fixture.teamA
     ? firstInningsBalls
     : secondInningsBalls;
-            
+            fixture.teamA.nrr =
+    (fixture.teamA.runsFor / (fixture.teamA.ballsFaced / 6)) -
+    (fixture.teamA.runsAgainst / (fixture.teamA.ballsBowled / 6));
+
+fixture.teamB.nrr =
+    (fixture.teamB.runsFor / (fixture.teamB.ballsFaced / 6)) -
+    (fixture.teamB.runsAgainst / (fixture.teamB.ballsBowled / 6));
             winnerTeam.wins++;
             winnerTeam.points += 2;
 
