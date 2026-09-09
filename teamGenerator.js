@@ -918,6 +918,10 @@ if(wickets >= 10 || balls >= 120){
     if(!secondInnings){
 
         firstInningsScore = score;
+        
+        firstInningsWickets = wickets;
+firstInningsBalls = balls;
+        
         target = score + 1;
 
         secondInnings = true;
