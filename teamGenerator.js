@@ -2214,6 +2214,8 @@ function displayPointsTable(){
 
                 <td><b>${team.points}</b></td>
 
+                <td>${team.nrr.toFixed(3)}</td>
+ 
             </tr>
 
         `;
