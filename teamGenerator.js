@@ -17,6 +17,9 @@ let balls = 0;
 let firstInningsBalls = 0;
 let secondInningsBalls = 0;
 
+let firstInningsWickets = 0;
+let secondInningsWickets = 0;
+
 let target = 0;
 let firstInningsScore = 0;
 let secondInnings = false;
