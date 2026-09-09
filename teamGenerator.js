@@ -21,6 +21,9 @@ let matchOver = false;
 let battingTeam = [];
 let bowlingTeam = [];
 
+let currentFirstInningsTeam = null;
+let currentSecondInningsTeam = null;
+
 let striker;
 let nonStriker;
 let currentBowler;
