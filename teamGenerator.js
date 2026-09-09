@@ -558,14 +558,6 @@ function finishMatch(winnerTeam, secondInningsFinalScore){
         ${fixture.teamB.name}:
         ${finalScoreB}
 
-        <br><br>
-
-        <button onclick="playNextTournamentMatch()">
-            ➡️ NEXT MATCH
-        </button>
-
-        <br><br>
-
         <button onclick="returnToTournament()">
             🏆 TOURNAMENT
         </button>
