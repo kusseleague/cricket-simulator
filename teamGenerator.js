@@ -599,6 +599,29 @@ fixture.teamB.nrr =
                 : fixture.teamA;
 
             loserTeam.losses++;
+
+        }
+
+            // ===============================
+// CHECK GROUP STAGE COMPLETION
+// ===============================
+
+let groupFixtures =
+    tournamentFixtures.filter(
+        fixture => fixture.stage === "group"
+    );
+
+let groupStageComplete =
+    groupFixtures.length > 0 &&
+    groupFixtures.every(
+        fixture => fixture.played
+    );
+
+if(groupStageComplete && !knockoutStarted){
+
+    generateKnockoutStage();
+
+}
         }
 
         // Update tournament screens
