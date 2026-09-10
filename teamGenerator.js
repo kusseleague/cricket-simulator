@@ -2057,8 +2057,6 @@ function generateKnockoutStage(){
 
     let first = sortedTeams[0];
     let second = sortedTeams[1];
-    let third = sortedTeams[2];
-    let fourth = sortedTeams[3];
 
 
     // ===============================
@@ -2083,46 +2081,6 @@ function generateKnockoutStage(){
     });
 
     qualifierCreated = true;
-
-
-    // ===============================
-    // ELIMINATOR
-    // Created after Qualifier
-    // ===============================
-
-    // We store 3rd place for now.
-    // The actual Eliminator teams will be
-    // assigned after the Qualifier finishes.
-
-    tournamentFixtures.push({
-
-        teamA: null,
-        teamB: third,
-
-        stage: "eliminator",
-
-        played: false,
-
-        scoreA: null,
-        scoreB: null,
-
-        winner: null
-
-    });
-
-    eliminatorCreated = true;
-
-
-    // ===============================
-    // 3RD PLACE PLAYOFF
-    // Created later
-    // ===============================
-
-    // ===============================
-    // FINAL
-    // Created later
-    // ===============================
-
 
     displayFixtures();
 
