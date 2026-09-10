@@ -563,7 +563,9 @@ if(
     fixture.stage === "final"
 ){
 
-    // Do not award group-stage points
+    // ===============================
+    // QUALIFIER
+    // ===============================
 
     if(fixture.stage === "qualifier"){
 
@@ -574,20 +576,54 @@ if(
             ? fixture.teamB
             : fixture.teamA;
 
-        // Find the Eliminator
+        // Find the original 3rd place team
 
-        let eliminator =
-            tournamentFixtures.find(
-                f => f.stage === "eliminator"
-            );
+        let sortedTeams = [...tournamentTeams].sort((a,b) => {
 
-        eliminator.teamA = qualifierLoser;
+            if(b.points !== a.points){
+                return b.points - a.points;
+            }
 
+            if(b.nrr !== a.nrr){
+                return b.nrr - a.nrr;
+            }
 
-        // Create Final later
-        // after Eliminator is completed
+            return b.wins - a.wins;
+
+        });
+
+        let thirdTeam = sortedTeams[2];
+
+        // Create Eliminator
+
+        if(!eliminatorCreated){
+
+            tournamentFixtures.push({
+
+                teamA: qualifierLoser,
+                teamB: thirdTeam,
+
+                stage: "eliminator",
+
+                played: false,
+
+                scoreA: null,
+                scoreB: null,
+
+                winner: null
+
+            });
+
+            eliminatorCreated = true;
+
+        }
 
     }
+
+
+    // ===============================
+    // ELIMINATOR
+    // ===============================
 
     else if(fixture.stage === "eliminator"){
 
@@ -598,6 +634,24 @@ if(
             ? fixture.teamB
             : fixture.teamA;
 
+        // Find original 4th place team
+
+        let sortedTeams = [...tournamentTeams].sort((a,b) => {
+
+            if(b.points !== a.points){
+                return b.points - a.points;
+            }
+
+            if(b.nrr !== a.nrr){
+                return b.nrr - a.nrr;
+            }
+
+            return b.wins - a.wins;
+
+        });
+
+        let fourthTeam = sortedTeams[3];
+
         // Create 3rd Place Playoff
 
         if(!thirdPlaceCreated){
@@ -605,21 +659,8 @@ if(
             tournamentFixtures.push({
 
                 teamA: eliminatorLoser,
-               teamB: tournamentTeams
-    .slice()
-    .sort((a,b) => {
+                teamB: fourthTeam,
 
-        if(b.points !== a.points){
-            return b.points - a.points;
-        }
-
-        if(b.nrr !== a.nrr){
-            return b.nrr - a.nrr;
-        }
-
-        return b.wins - a.wins;
-
-    })[3],
                 stage: "third",
 
                 played: false,
@@ -635,14 +676,16 @@ if(
 
         }
 
+        // Find Qualifier
+
+        let qualifier =
+            tournamentFixtures.find(
+                f => f.stage === "qualifier"
+            );
+
         // Create Final
 
         if(!finalCreated){
-
-            let qualifier =
-                tournamentFixtures.find(
-                    f => f.stage === "qualifier"
-                );
 
             tournamentFixtures.push({
 
@@ -666,11 +709,21 @@ if(
 
     }
 
+
+    // ===============================
+    // 3RD PLACE PLAYOFF
+    // ===============================
+
     else if(fixture.stage === "third"){
 
         tournamentThirdPlace = winnerTeam;
 
     }
+
+
+    // ===============================
+    // FINAL
+    // ===============================
 
     else if(fixture.stage === "final"){
 
@@ -683,9 +736,57 @@ if(
 
     }
 
-    fixture.played = true;
+
+    // ===============================
+    // DISPLAY KNOCKOUT RESULT
+    // ===============================
 
     displayFixtures();
+
+    document.getElementById("scoreboard").innerHTML =
+    `
+    <h2>🏆 MATCH RESULT</h2>
+
+    <h3>🏆 ${winnerTeam.name} WINS!</h3>
+
+    <br>
+
+    ${fixture.teamA.name}:
+    ${fixture.scoreA}
+
+    <br>
+
+    ${fixture.teamB.name}:
+    ${fixture.scoreB}
+
+    <br><br>
+
+    <button onclick="returnToTournament()">
+        🏆 TOURNAMENT
+    </button>
+    `;
+
+    // Hide Next Ball
+
+    let nextButton =
+        document.querySelector(
+            "button[onclick='nextBall()']"
+        );
+
+    if(nextButton){
+        nextButton.style.display = "none";
+    }
+
+    // Hide Auto Play
+
+    let autoButton =
+        document.querySelector(
+            "button[onclick='autoPlayMatch()']"
+        );
+
+    if(autoButton){
+        autoButton.style.display = "none";
+    }
 
     return;
 
