@@ -41,6 +41,8 @@ let newBatsmanSettling = false;
 let bowlerStats = {};
 let commentary = "";
 
+let autoPlayTimer = null;
+let matchSession = 0;
 
 // ===============================
 // RANDOM FUNCTIONS
