@@ -1137,8 +1137,15 @@ newBatsmanSettling = false;
 
 function autoPlayMatch(){
 
+    if(matchOver){
+        return;
+    }
+
+    const thisSession = matchSession;
+
     // If there is no striker because of a wicket,
     // automatically bring in the next batsman
+
     if(striker === null){
 
         let available = battingTeam.filter(player => {
@@ -1148,7 +1155,6 @@ function autoPlayMatch(){
 
         });
 
-        // If nobody is available, the innings is over
         if(available.length === 0){
             return;
         }
@@ -1161,11 +1167,19 @@ function autoPlayMatch(){
     // Play one ball
     nextBall();
 
-    // Continue automatically after a short delay
-    setTimeout(function(){
+    // Stop if this match has finished
+    if(matchOver || thisSession !== matchSession){
+        return;
+    }
 
-        // If a wicket happened, striker will be null.
-        // Bring in the next batsman before continuing.
+    autoPlayTimer = setTimeout(function(){
+
+        // Make sure this is still the same match
+        if(matchOver || thisSession !== matchSession){
+            return;
+        }
+
+        // If a wicket happened, bring in the next batsman
         if(striker === null){
 
             let available = battingTeam.filter(player => {
@@ -1188,10 +1202,11 @@ function autoPlayMatch(){
             return;
         }
 
-        // Continue if the match is still running
+        // Continue automatically
         autoPlayMatch();
 
     }, 100);
+
 }
 
 
