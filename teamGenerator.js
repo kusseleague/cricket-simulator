@@ -600,8 +600,6 @@ fixture.teamB.nrr =
 
             loserTeam.losses++;
 
-        }
-
             // ===============================
 // CHECK GROUP STAGE COMPLETION
 // ===============================
