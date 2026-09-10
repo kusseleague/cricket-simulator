@@ -605,16 +605,21 @@ if(
             tournamentFixtures.push({
 
                 teamA: eliminatorLoser,
-                teamB: tournamentFixtures.find(
-                    f => f.stage === "qualifier"
-                ).teamB === eliminatorLoser
-                    ? tournamentFixtures.find(
-                        f => f.stage === "qualifier"
-                    ).teamA
-                    : tournamentFixtures.find(
-                        f => f.stage === "qualifier"
-                    ).teamB,
+               teamB: tournamentTeams
+    .slice()
+    .sort((a,b) => {
 
+        if(b.points !== a.points){
+            return b.points - a.points;
+        }
+
+        if(b.nrr !== a.nrr){
+            return b.nrr - a.nrr;
+        }
+
+        return b.wins - a.wins;
+
+    })[3],
                 stage: "third",
 
                 played: false,
