@@ -483,6 +483,11 @@ function finishMatch(winnerTeam, secondInningsFinalScore){
         return;
     }
 
+    if(autoPlayTimer){
+        clearTimeout(autoPlayTimer);
+        autoPlayTimer = null;
+    }
+
     matchOver = true;
 
     // ===============================
