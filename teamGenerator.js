@@ -2106,10 +2106,27 @@ function displayFixtures(){
 
     tournamentFixtures.forEach((fixture,index) => {
 
+        let matchTitle = `🏏 MATCH ${index + 1}`;
+
+        if(fixture.stage === "semi"){
+            matchTitle =
+                fixture.semiNumber === 1
+                ? "🥇 SEMI-FINAL 1"
+                : "🥈 SEMI-FINAL 2";
+        }
+
+        else if(fixture.stage === "third"){
+            matchTitle = "🥉 3RD PLACE PLAYOFF";
+        }
+
+        else if(fixture.stage === "final"){
+            matchTitle = "🏆 FINAL";
+        }
+
         html += `
             <div>
 
-                <h3>🏏 MATCH ${index + 1}</h3>
+                <h3>${matchTitle}</h3>
 
                 ${fixture.teamA.name}
                 vs
@@ -2125,15 +2142,15 @@ function displayFixtures(){
 
                 <br><br>
 
-             ${fixture.teamA.name}: 
-${fixture.scoreA}/${fixture.wicketsA}
-(${fixture.oversA} overs)
+                ${fixture.teamA.name}:
+                ${fixture.scoreA}/${fixture.wicketsA}
+                (${fixture.oversA} overs)
 
-<br>
+                <br>
 
-${fixture.teamB.name}: 
-${fixture.scoreB}/${fixture.wicketsB}
-(${fixture.oversB} overs)
+                ${fixture.teamB.name}:
+                ${fixture.scoreB}/${fixture.wicketsB}
+                (${fixture.oversB} overs)
 
                 <br><br>
 
