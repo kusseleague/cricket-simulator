@@ -661,7 +661,16 @@ let groupStageComplete =
         fixture => fixture.played
     );
 
+console.log(
+    "GROUP CHECK:",
+    "fixtures =", groupFixtures.length,
+    "complete =", groupStageComplete,
+    "knockoutStarted =", knockoutStarted
+);
+
 if(groupStageComplete && !knockoutStarted){
+
+    console.log("🔥 GENERATING KNOCKOUTS");
 
     generateKnockoutStage();
 
