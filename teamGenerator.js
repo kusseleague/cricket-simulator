@@ -552,7 +552,53 @@ fixture.oversB =
     : Math.floor(firstInningsBalls / 6) + "." + (firstInningsBalls % 6);
 
 fixture.winner = winnerTeam;
-// WE WILL INSERT CODE HERE
+// ===============================
+// KNOCKOUT MATCH
+// ===============================
+
+if(
+    fixture.stage === "semi" ||
+    fixture.stage === "third" ||
+    fixture.stage === "final"
+){
+
+    // Do not award group-stage points
+
+    fixture.played = true;
+
+    fixture.scoreA = scoreA;
+    fixture.scoreB = scoreB;
+
+    fixture.winner = winnerTeam;
+
+    if(fixture.stage === "semi"){
+
+        checkSemiFinalsComplete();
+
+    }
+
+    else if(fixture.stage === "third"){
+
+        tournamentThirdPlace = winnerTeam;
+
+    }
+
+    else if(fixture.stage === "final"){
+
+        tournamentChampion = winnerTeam;
+
+        tournamentRunnerUp =
+            winnerTeam === fixture.teamA
+            ? fixture.teamB
+            : fixture.teamA;
+
+    }
+
+    displayFixtures();
+
+    return;
+
+}
             // Update tournament statistics
 
             fixture.teamA.played++;
