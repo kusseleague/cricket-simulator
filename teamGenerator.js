@@ -1786,6 +1786,20 @@ generateFixtures();
 let tournamentFixtures = [];
 let currentTournamentFixtureIndex = null;
 
+// ===============================
+// KNOCKOUT STAGE
+// ===============================
+
+let knockoutStarted = false;
+
+let semiFinalsCreated = false;
+let finalCreated = false;
+let thirdPlaceCreated = false;
+
+let tournamentChampion = null;
+let tournamentRunnerUp = null;
+let tournamentThirdPlace = null;
+
 function generateFixtures(){
 
     tournamentFixtures = [];
