@@ -557,23 +557,107 @@ fixture.winner = winnerTeam;
 // ===============================
 
 if(
-    fixture.stage === "semi" ||
+    fixture.stage === "qualifier" ||
+    fixture.stage === "eliminator" ||
     fixture.stage === "third" ||
     fixture.stage === "final"
 ){
 
     // Do not award group-stage points
 
-    fixture.played = true;
+    if(fixture.stage === "qualifier"){
 
-    fixture.scoreA = scoreA;
-    fixture.scoreB = scoreB;
+        let qualifierWinner = winnerTeam;
 
-    fixture.winner = winnerTeam;
+        let qualifierLoser =
+            winnerTeam === fixture.teamA
+            ? fixture.teamB
+            : fixture.teamA;
 
-    if(fixture.stage === "semi"){
+        // Find the Eliminator
 
-        checkSemiFinalsComplete();
+        let eliminator =
+            tournamentFixtures.find(
+                f => f.stage === "eliminator"
+            );
+
+        eliminator.teamA = qualifierLoser;
+
+
+        // Create Final later
+        // after Eliminator is completed
+
+    }
+
+    else if(fixture.stage === "eliminator"){
+
+        let eliminatorWinner = winnerTeam;
+
+        let eliminatorLoser =
+            winnerTeam === fixture.teamA
+            ? fixture.teamB
+            : fixture.teamA;
+
+        // Create 3rd Place Playoff
+
+        if(!thirdPlaceCreated){
+
+            tournamentFixtures.push({
+
+                teamA: eliminatorLoser,
+                teamB: tournamentFixtures.find(
+                    f => f.stage === "qualifier"
+                ).teamB === eliminatorLoser
+                    ? tournamentFixtures.find(
+                        f => f.stage === "qualifier"
+                    ).teamA
+                    : tournamentFixtures.find(
+                        f => f.stage === "qualifier"
+                    ).teamB,
+
+                stage: "third",
+
+                played: false,
+
+                scoreA: null,
+                scoreB: null,
+
+                winner: null
+
+            });
+
+            thirdPlaceCreated = true;
+
+        }
+
+        // Create Final
+
+        if(!finalCreated){
+
+            let qualifier =
+                tournamentFixtures.find(
+                    f => f.stage === "qualifier"
+                );
+
+            tournamentFixtures.push({
+
+                teamA: qualifier.winner,
+                teamB: eliminatorWinner,
+
+                stage: "final",
+
+                played: false,
+
+                scoreA: null,
+                scoreB: null,
+
+                winner: null
+
+            });
+
+            finalCreated = true;
+
+        }
 
     }
 
@@ -594,12 +678,14 @@ if(
 
     }
 
+    fixture.played = true;
+
     displayFixtures();
 
     return;
 
 }
-            // Update tournament statistics
+       // Update tournament statistics
 
             fixture.teamA.played++;
             fixture.teamB.played++;
