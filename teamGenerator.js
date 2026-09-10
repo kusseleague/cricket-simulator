@@ -1997,9 +1997,109 @@ function generateKnockoutStage(){
     displayFixtures();
 
 }
+    // ===============================
+// CHECK SEMI-FINALS
+// ===============================
+
+function checkSemiFinalsComplete(){
+
+    let semiFinals =
+        tournamentFixtures.filter(
+            fixture => fixture.stage === "semi"
+        );
+
+    if(
+        semiFinals.length !== 2 ||
+        !semiFinals.every(
+            fixture => fixture.played
+        )
+    ){
+        return;
+    }
+
+    let semi1 = semiFinals.find(
+        fixture => fixture.semiNumber === 1
+    );
+
+    let semi2 = semiFinals.find(
+        fixture => fixture.semiNumber === 2
+    );
+
+
+    // ===============================
+    // CREATE FINAL
+    // ===============================
+
+    if(!finalCreated){
+
+        tournamentFixtures.push({
+
+            teamA: semi1.winner,
+            teamB: semi2.winner,
+
+            stage: "final",
+
+            played: false,
+
+            scoreA: null,
+            scoreB: null,
+
+            winner: null
+
+        });
+
+        finalCreated = true;
+
+    }
+
+
+    // ===============================
+    // 3RD PLACE MATCH
+    // ===============================
+
+    // Only for 5–8 team tournaments
+
+    if(
+        tournamentTeams.length >= 5 &&
+        !thirdPlaceCreated
+    ){
+
+        tournamentFixtures.push({
+
+            teamA:
+                semi1.winner === null
+                ? null
+                : semi1.teamA === semi1.winner
+                    ? semi1.teamB
+                    : semi1.teamA,
+
+            teamB:
+                semi2.winner === null
+                ? null
+                : semi2.teamA === semi2.winner
+                    ? semi2.teamB
+                    : semi2.teamA,
+
+            stage: "third",
+
+            played: false,
+
+            scoreA: null,
+            scoreB: null,
+
+            winner: null
+
+        });
+
+        thirdPlaceCreated = true;
+
+    }
+
+
     displayFixtures();
 
 }
+  
 function displayFixtures(){
 
     let html = `<h2>📅 TOURNAMENT FIXTURES</h2>`;
