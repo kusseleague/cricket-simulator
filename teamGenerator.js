@@ -622,7 +622,7 @@ if(groupStageComplete && !knockoutStarted){
     generateKnockoutStage();
 
 }
-        }
+        
 
         // Update tournament screens
 
