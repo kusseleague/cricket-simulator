@@ -1936,7 +1936,106 @@ function generateFixtures(){
     // ===============================
 // CHECK SEMI-FINALS
 // ===============================
+// ===============================
+// GENERATE KNOCKOUT STAGE
+// ===============================
 
+function generateKnockoutStage(){
+
+    if(knockoutStarted){
+        return;
+    }
+
+    knockoutStarted = true;
+
+    // Rank teams using the same points-table rules
+
+    let sortedTeams = [...tournamentTeams].sort((a,b) => {
+
+        if(b.points !== a.points){
+            return b.points - a.points;
+        }
+
+        if(b.nrr !== a.nrr){
+            return b.nrr - a.nrr;
+        }
+
+        return b.wins - a.wins;
+
+    });
+
+    let first = sortedTeams[0];
+    let second = sortedTeams[1];
+    let third = sortedTeams[2];
+    let fourth = sortedTeams[3];
+
+
+    // ===============================
+    // QUALIFIER
+    // 1st vs 2nd
+    // ===============================
+
+    tournamentFixtures.push({
+
+        teamA: first,
+        teamB: second,
+
+        stage: "qualifier",
+
+        played: false,
+
+        scoreA: null,
+        scoreB: null,
+
+        winner: null
+
+    });
+
+    qualifierCreated = true;
+
+
+    // ===============================
+    // ELIMINATOR
+    // Created after Qualifier
+    // ===============================
+
+    // We store 3rd place for now.
+    // The actual Eliminator teams will be
+    // assigned after the Qualifier finishes.
+
+    tournamentFixtures.push({
+
+        teamA: null,
+        teamB: third,
+
+        stage: "eliminator",
+
+        played: false,
+
+        scoreA: null,
+        scoreB: null,
+
+        winner: null
+
+    });
+
+    eliminatorCreated = true;
+
+
+    // ===============================
+    // 3RD PLACE PLAYOFF
+    // Created later
+    // ===============================
+
+    // ===============================
+    // FINAL
+    // Created later
+    // ===============================
+
+
+    displayFixtures();
+
+}
 function checkSemiFinalsComplete(){
 
     let semiFinals =
