@@ -1782,7 +1782,14 @@ function createTournament(){
 
 
     tournamentTeams = [];
+knockoutStarted = false;
+semiFinalsCreated = false;
+finalCreated = false;
+thirdPlaceCreated = false;
 
+tournamentChampion = null;
+tournamentRunnerUp = null;
+tournamentThirdPlace = null;
 
     for(let i = 1; i <= count; i++){
 
