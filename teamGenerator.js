@@ -1898,7 +1898,6 @@ tournamentThirdPlace = null;
 
 });
 
-            });
 
 
             // REVERSE MATCH
