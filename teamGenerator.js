@@ -1870,7 +1870,14 @@ let tournamentThirdPlace = null;
 function generateFixtures(){
 
     tournamentFixtures = [];
+knockoutStarted = false;
+semiFinalsCreated = false;
+finalCreated = false;
+thirdPlaceCreated = false;
 
+tournamentChampion = null;
+tournamentRunnerUp = null;
+tournamentThirdPlace = null;
     for(let i = 0; i < tournamentTeams.length; i++){
 
         for(let j = i + 1; j < tournamentTeams.length; j++){
