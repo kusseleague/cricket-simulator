@@ -1810,32 +1810,38 @@ function generateFixtures(){
 
             // FIRST MATCH
 
-            tournamentFixtures.push({
+         tournamentFixtures.push({
 
-                teamA: tournamentTeams[i],
-                teamB: tournamentTeams[j],
+    teamA: tournamentTeams[i],
+    teamB: tournamentTeams[j],
 
-                played: false,
+    stage: "group",
 
-                scoreA: null,
-                scoreB: null
+    played: false,
+
+    scoreA: null,
+    scoreB: null
+
+});
 
             });
 
 
             // REVERSE MATCH
 
-            tournamentFixtures.push({
+          tournamentFixtures.push({
 
-                teamA: tournamentTeams[j],
-                teamB: tournamentTeams[i],
+    teamA: tournamentTeams[i],
+    teamB: tournamentTeams[j],
 
-                played: false,
+    stage: "group",
 
-                scoreA: null,
-                scoreB: null
+    played: false,
 
-            });
+    scoreA: null,
+    scoreB: null
+
+});
 
         }
 
