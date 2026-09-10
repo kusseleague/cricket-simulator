@@ -399,7 +399,18 @@ function startMatch(){
 
     document.getElementById("matchArea").style.display="block";
 
+ document.querySelector(
+    "button[onclick='nextBall()']"
+).style.display = "inline-block";
 
+let autoButton =
+    document.querySelector(
+        "button[onclick='autoPlayMatch()']"
+    );
+
+if(autoButton){
+    autoButton.style.display = "inline-block";
+}
 
     striker = battingTeam[0];
 
