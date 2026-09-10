@@ -1870,55 +1870,51 @@ let tournamentThirdPlace = null;
 function generateFixtures(){
 
     tournamentFixtures = [];
-knockoutStarted = false;
-semiFinalsCreated = false;
-finalCreated = false;
-thirdPlaceCreated = false;
 
-tournamentChampion = null;
-tournamentRunnerUp = null;
-tournamentThirdPlace = null;
     for(let i = 0; i < tournamentTeams.length; i++){
 
         for(let j = i + 1; j < tournamentTeams.length; j++){
 
             // FIRST MATCH
 
-         tournamentFixtures.push({
+            tournamentFixtures.push({
 
-    teamA: tournamentTeams[i],
-    teamB: tournamentTeams[j],
+                teamA: tournamentTeams[i],
+                teamB: tournamentTeams[j],
 
-    stage: "group",
+                stage: "group",
 
-    played: false,
+                played: false,
 
-    scoreA: null,
-    scoreB: null
+                scoreA: null,
+                scoreB: null
 
-});
-
+            });
 
 
             // REVERSE MATCH
 
-          tournamentFixtures.push({
+            tournamentFixtures.push({
 
-    teamA: tournamentTeams[i],
-    teamB: tournamentTeams[j],
+                teamA: tournamentTeams[j],
+                teamB: tournamentTeams[i],
 
-    stage: "group",
+                stage: "group",
 
-    played: false,
+                played: false,
 
-    scoreA: null,
-    scoreB: null
+                scoreA: null,
+                scoreB: null
 
-});
+            });
 
         }
 
     }
+
+    displayFixtures();
+
+}
 // ===============================
 // GENERATE KNOCKOUT STAGE
 // ===============================
