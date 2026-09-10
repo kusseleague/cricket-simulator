@@ -1846,7 +1846,90 @@ function generateFixtures(){
         }
 
     }
+// ===============================
+// GENERATE KNOCKOUT STAGE
+// ===============================
 
+function generateKnockoutStage(){
+
+    if(knockoutStarted){
+        return;
+    }
+
+    knockoutStarted = true;
+
+    // Rank teams using the same rules as the points table
+
+    let sortedTeams = [...tournamentTeams].sort((a,b) => {
+
+        if(b.points !== a.points){
+            return b.points - a.points;
+        }
+
+        if(b.nrr !== a.nrr){
+            return b.nrr - a.nrr;
+        }
+
+        return b.wins - a.wins;
+
+    });
+
+
+    let first = sortedTeams[0];
+    let second = sortedTeams[1];
+    let third = sortedTeams[2];
+    let fourth = sortedTeams[3];
+
+
+    // ===============================
+    // SEMI FINAL 1
+    // ===============================
+
+    tournamentFixtures.push({
+
+        teamA: first,
+        teamB: fourth,
+
+        stage: "semi",
+        semiNumber: 1,
+
+        played: false,
+
+        scoreA: null,
+        scoreB: null,
+
+        winner: null
+
+    });
+
+
+    // ===============================
+    // SEMI FINAL 2
+    // ===============================
+
+    tournamentFixtures.push({
+
+        teamA: second,
+        teamB: third,
+
+        stage: "semi",
+        semiNumber: 2,
+
+        played: false,
+
+        scoreA: null,
+        scoreB: null,
+
+        winner: null
+
+    });
+
+
+    semiFinalsCreated = true;
+
+    displayFixtures();
+
+}
     displayFixtures();
 
 }
