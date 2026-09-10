@@ -1875,9 +1875,10 @@ let currentTournamentFixtureIndex = null;
 
 let knockoutStarted = false;
 
-let semiFinalsCreated = false;
-let finalCreated = false;
+let qualifierCreated = false;
+let eliminatorCreated = false;
 let thirdPlaceCreated = false;
+let finalCreated = false;
 
 let tournamentChampion = null;
 let tournamentRunnerUp = null;
