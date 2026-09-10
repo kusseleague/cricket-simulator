@@ -356,6 +356,14 @@ function chooseDecision(choice,winner){
 
 function startMatch(){
 
+    // Stop any Auto Play from the previous match
+    if(autoPlayTimer){
+        clearTimeout(autoPlayTimer);
+        autoPlayTimer = null;
+    }
+
+    matchSession++;
+
     // RESET MATCH COMPLETELY
     bowlerStats = {};
 
