@@ -667,7 +667,7 @@ if(groupStageComplete && !knockoutStarted){
 
 }
         
-
+        }
         // Update tournament screens
 
         displayPointsTable();
