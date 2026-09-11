@@ -1570,7 +1570,19 @@ function updateScoreboard(message){
             chaseInfo = `
                 <br>
 
-                🎯 ${battingTeam.name}
+                🎯 ${
+    secondInnings
+    ?
+    (
+        currentFirstInningsTeam === tournamentFixtures[currentTournamentFixtureIndex].teamA
+        ?
+        tournamentFixtures[currentTournamentFixtureIndex].teamB.name
+        :
+        tournamentFixtures[currentTournamentFixtureIndex].teamA.name
+    )
+    :
+    ""
+}
                 need ${runsNeeded}
                 runs from ${ballsRemaining}
                 balls
