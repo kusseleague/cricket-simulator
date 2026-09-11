@@ -2560,8 +2560,8 @@ currentTournamentFixtureIndex = index;
     document.getElementById("batBowlChoice").innerHTML = `
     <p><b>Who won the toss?</b></p>
 
-    <button onclick="tossWinner('A')">Team A</button>
-    <button onclick="tossWinner('B')">Team B</button>
+   <button onclick="tossWinner('A')">${tournamentTeamA.name}</button>
+<button onclick="tossWinner('B')">${tournamentTeamB.name}</button>
     <button onclick="randomToss()">🎲 Random Toss</button>
 `;
 
