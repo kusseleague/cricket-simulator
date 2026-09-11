@@ -223,14 +223,35 @@ function showTeams(){
 
 function tossWinner(team){
 
+    let winnerName;
+
+    if(
+        currentTournamentFixtureIndex !== null &&
+        tournamentFixtures[currentTournamentFixtureIndex]
+    ){
+
+        let fixture =
+            tournamentFixtures[currentTournamentFixtureIndex];
+
+        winnerName =
+            team === "A"
+            ? fixture.teamA.name
+            : fixture.teamB.name;
+
+    }
+
+    else{
+
+        winnerName =
+            team === "A"
+            ? "Team A"
+            : "Team B";
+
+    }
+
 
     let message =
-    team==="A"
-    ?
-    "🪙 Team A won the toss!"
-    :
-    "🪙 Team B won the toss!";
-
+        `🪙 ${winnerName} won the toss!`;
 
 
     document.getElementById("batBowlChoice").innerHTML =
@@ -242,12 +263,10 @@ function tossWinner(team){
     🏏 Bat First
     </button>
 
-
     <button onclick="chooseDecision('Bowl','${team}')">
     ⚾ Bowl First
     </button>
     `;
-
 
 }
 
