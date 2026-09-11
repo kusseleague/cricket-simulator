@@ -1509,93 +1509,165 @@ function autoPlayMatch(){
 
 function updateScoreboard(message){
 
-
     let overs =
-    Math.floor(balls/6)
-    +
-    "."
-    +
-    balls%6;
+        Math.floor(balls / 6)
+        +
+        "."
+        +
+        (balls % 6);
 
+
+    // ===============================
+    // RUN RATES
+    // ===============================
+
+    let currentRunRate = 0;
+    let requiredRunRate = 0;
+
+    if(balls > 0){
+
+        currentRunRate =
+            (score / balls) * 6;
+
+    }
+
+
+    if(secondInnings && balls < 120){
+
+        let runsNeeded =
+            Math.max(target - score, 0);
+
+        let ballsRemaining =
+            120 - balls;
+
+        if(ballsRemaining > 0){
+
+            requiredRunRate =
+                (runsNeeded / ballsRemaining) * 6;
+
+        }
+
+    }
+
+
+    // ===============================
+    // CHASE INFORMATION
+    // ===============================
+
+    let chaseInfo = "";
+
+    if(secondInnings){
+
+        let runsNeeded =
+            Math.max(target - score, 0);
+
+        let ballsRemaining =
+            Math.max(120 - balls, 0);
+
+
+        if(score < target){
+
+            chaseInfo = `
+                <br>
+
+                🎯 ${battingTeam.name}
+                need ${runsNeeded}
+                runs from ${ballsRemaining}
+                balls
+
+                <br>
+
+                📈 CRR: ${currentRunRate.toFixed(2)}
+                |
+                📊 RRR: ${requiredRunRate.toFixed(2)}
+
+                <br>
+            `;
+
+        }
+
+    }
 
 
     document.getElementById("scoreboard").innerHTML =
 
-
     `
     <h2>🏏 LIVE MATCH</h2>
-
 
     Score:
     ${score}/${wickets}
 
-
     <br>
-
 
     Overs:
     ${overs}
 
+    ${chaseInfo}
 
     <br><br>
 
+    🏏 Batting:
 
-   🏏 Batting:
+    <br><br>
 
-<br><br>
+    ${striker ? striker.name : "ALL OUT"}
+    ${striker && batsmanStats[striker.name]
+    ? batsmanStats[striker.name].runs
+        + " ("
+        + batsmanStats[striker.name].balls
+        + ")"
+    : ""}
 
-${striker ? striker.name : "ALL OUT"}
-${striker && batsmanStats[striker.name] 
-? batsmanStats[striker.name].runs + " (" + batsmanStats[striker.name].balls + ")"
-: ""}
-
-⭐
-
-<br>
-
-${nonStriker ? nonStriker.name : "-"}
-${nonStriker && batsmanStats[nonStriker.name]
-? batsmanStats[nonStriker.name].runs + " (" + batsmanStats[nonStriker.name].balls + ")"
-: ""}
-
+    ⭐
 
     <br>
 
+    ${nonStriker ? nonStriker.name : "-"}
+    ${nonStriker && batsmanStats[nonStriker.name]
+    ? batsmanStats[nonStriker.name].runs
+        + " ("
+        + batsmanStats[nonStriker.name].balls
+        + ")"
+    : ""}
+
+    <br>
 
     ⚾ Bowler:
-   ⚾ Bowling:
-
-<br><br>
-
-${currentBowler ? currentBowler.name : "-"}
-
-<br>
-
-${
-currentBowler && bowlerStats[currentBowler.name]
-?
-Math.floor(bowlerStats[currentBowler.name].balls / 6)
-+
-"."
-+
-(bowlerStats[currentBowler.name].balls % 6)
-+
-" overs | "
-+
-bowlerStats[currentBowler.name].runs
-+
-" runs | "
-+
-bowlerStats[currentBowler.name].wickets
-+
-" wickets"
-:
-""
-}
-
+    ⚾ Bowling:
 
     <br><br>
 
+    ${currentBowler ? currentBowler.name : "-"}
+
+    <br>
+
+    ${
+    currentBowler && bowlerStats[currentBowler.name]
+    ?
+    Math.floor(
+        bowlerStats[currentBowler.name].balls / 6
+    )
+    +
+    "."
+    +
+    (
+        bowlerStats[currentBowler.name].balls % 6
+    )
+    +
+    " overs | "
+    +
+    bowlerStats[currentBowler.name].runs
+    +
+    " runs | "
+    +
+    bowlerStats[currentBowler.name].wickets
+    +
+    " wickets"
+    :
+    ""
+    }
+
+    <br><br>
 
     🗣 Commentary:
 
@@ -1603,13 +1675,9 @@ bowlerStats[currentBowler.name].wickets
 
     ${message}
 
-
     `;
 
-
 }
-
-
 // ===============================
 // PLAYER SELECTION SYSTEM
 // ===============================
