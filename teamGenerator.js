@@ -1564,39 +1564,53 @@ function updateScoreboard(message){
         let ballsRemaining =
             Math.max(120 - balls, 0);
 
-if(score < target){
 
-    chaseInfo = `
-        <br>
+        if(score < target){
 
-        ${
-            secondInnings
-            ?
-            (
-                currentFirstInningsTeam === tournamentFixtures[currentTournamentFixtureIndex].teamA
-                ?
-                tournamentFixtures[currentTournamentFixtureIndex].teamB.name
-                :
-                tournamentFixtures[currentTournamentFixtureIndex].teamA.name
-            )
-            :
-            ""
+            chaseInfo = `
+                <br>
+
+                ${
+                    currentFirstInningsTeam === tournamentFixtures[currentTournamentFixtureIndex].teamA
+                    ?
+                    tournamentFixtures[currentTournamentFixtureIndex].teamB.name
+                    :
+                    tournamentFixtures[currentTournamentFixtureIndex].teamA.name
+                }
+
+                need ${runsNeeded}
+                runs from ${ballsRemaining}
+                balls
+
+                <br>
+
+                📈 CRR: ${currentRunRate.toFixed(2)}
+                |
+                📊 RRR: ${requiredRunRate.toFixed(2)}
+
+                <br>
+            `;
+
         }
 
-        need ${runsNeeded}
-        runs from ${ballsRemaining}
-        balls
+    }
 
-        <br>
 
-        📈 CRR: ${currentRunRate.toFixed(2)}
-        |
-        📊 RRR: ${requiredRunRate.toFixed(2)}
+    document.getElementById("scoreboard").innerHTML =
 
-        <br>
-    `;
+    `
+    <h2>🏏 LIVE MATCH</h2>
 
-}
+    Score:
+    ${score}/${wickets}
+
+    <br>
+
+    Overs:
+    ${overs}
+
+    ${chaseInfo}
+
     <br><br>
 
     🏏 Batting:
