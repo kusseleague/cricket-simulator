@@ -2877,6 +2877,9 @@ function createTriSeries(){
 // ===============================
 // CONFIRM TRI-SERIES TEAMS
 // ===============================
+// ===============================
+// CONFIRM TRI-SERIES TEAMS
+// ===============================
 
 function confirmTriSeriesTeams(){
 
@@ -2889,8 +2892,6 @@ function confirmTriSeriesTeams(){
     let name3 =
         document.getElementById("triTeamName3").value.trim();
 
-
-    // CHECK TEAM NAMES
 
     if(!name1 || !name2 || !name3){
 
@@ -2938,85 +2939,64 @@ function confirmTriSeriesTeams(){
     ];
 
 
-    // ===============================
-    // CREATE 6 LEAGUE FIXTURES
-    // ===============================
-
-    triSeriesFixtures = [
-
-        {
-            teamA: triSeriesTeams[0],
-            teamB: triSeriesTeams[1],
-            played: false,
-            scoreA: null,
-            scoreB: null
-        },
-
-        {
-            teamA: triSeriesTeams[1],
-            teamB: triSeriesTeams[0],
-            played: false,
-            scoreA: null,
-            scoreB: null
-        },
-
-        {
-            teamA: triSeriesTeams[1],
-            teamB: triSeriesTeams[2],
-            played: false,
-            scoreA: null,
-            scoreB: null
-        },
-
-        {
-            teamA: triSeriesTeams[2],
-            teamB: triSeriesTeams[1],
-            played: false,
-            scoreA: null,
-            scoreB: null
-        },
-
-        {
-            teamA: triSeriesTeams[2],
-            teamB: triSeriesTeams[0],
-            played: false,
-            scoreA: null,
-            scoreB: null
-        },
-
-        {
-            teamA: triSeriesTeams[0],
-            teamB: triSeriesTeams[2],
-            played: false,
-            scoreA: null,
-            scoreB: null
-        }
-
-    ];
-
-
-    // SHOW SUCCESS MESSAGE
+    // CREATE PLAYER SELECTION
 
     document.getElementById(
-        "triSeriesMessage"
-    ).innerHTML =
+        "triSeriesTeamsArea"
+    ).innerHTML = `
 
-    `
-        <h3>🏏 Tri-Series Created!</h3>
+        <h3>🏏 ${name1}</h3>
 
-        ${name1}
+        <select id="triPlayerSelect0">
+            <option value="">Select a player</option>
+        </select>
+
+        <button onclick="addTriSeriesPlayer(0)">
+            ➕ Add Player
+        </button>
+
+        <div id="triTeamList0"></div>
+
+        <hr>
+
+        <h3>🏏 ${name2}</h3>
+
+        <select id="triPlayerSelect1">
+            <option value="">Select a player</option>
+        </select>
+
+        <button onclick="addTriSeriesPlayer(1)">
+            ➕ Add Player
+        </button>
+
+        <div id="triTeamList1"></div>
+
+        <hr>
+
+        <h3>🏏 ${name3}</h3>
+
+        <select id="triPlayerSelect2">
+            <option value="">Select a player</option>
+        </select>
+
+        <button onclick="addTriSeriesPlayer(2)">
+            ➕ Add Player
+        </button>
+
+        <div id="triTeamList2"></div>
+
         <br>
 
-        ${name2}
-        <br>
+        <button onclick="confirmTriSeriesXIs()">
+            ✅ Confirm Playing XIs
+        </button>
 
-        ${name3}
+        <div id="triXIMessage"></div>
+
     `;
 
 
-    // DISPLAY FIXTURES
-
-    displayTriSeriesFixtures();
+    loadTriSeriesPlayerDropdowns();
 
 }
 // ===============================
