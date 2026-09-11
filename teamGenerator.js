@@ -2997,7 +2997,7 @@ function confirmTriSeriesTeams(){
 
 
     loadTriSeriesPlayerDropdowns();
-
+}
 // ===============================
 // LOAD TRI-SERIES PLAYER DROPDOWNS
 // ===============================
