@@ -2998,6 +2998,131 @@ function confirmTriSeriesTeams(){
 
     loadTriSeriesPlayerDropdowns();
 
+// ===============================
+// LOAD TRI-SERIES PLAYER DROPDOWNS
+// ===============================
+
+function loadTriSeriesPlayerDropdowns(){
+
+    for(let teamIndex = 0; teamIndex < 3; teamIndex++){
+
+        let select =
+            document.getElementById(
+                "triPlayerSelect" + teamIndex
+            );
+
+        players.forEach((player, index) => {
+
+            let option =
+                document.createElement("option");
+
+            option.value = index;
+
+            option.textContent =
+                player.name +
+                " - " +
+                player.role;
+
+            select.appendChild(option);
+
+        });
+
+    }
+
+}
+
+    // ===============================
+// ADD TRI-SERIES PLAYER
+// ===============================
+
+function addTriSeriesPlayer(teamIndex){
+
+    let select =
+        document.getElementById(
+            "triPlayerSelect" + teamIndex
+        );
+
+    let playerIndex = select.value;
+
+    if(playerIndex === ""){
+        return;
+    }
+
+    let player = players[playerIndex];
+
+
+    // CHECK IF PLAYER IS ALREADY IN ANY TRI-SERIES TEAM
+
+    for(let team of triSeriesTeams){
+
+        if(team.players.includes(player)){
+
+            alert(
+                "This player is already selected in the Tri-Series!"
+            );
+
+            return;
+
+        }
+
+    }
+
+
+    // CHECK 11 PLAYER LIMIT
+
+    if(
+        triSeriesTeams[teamIndex].players.length >= 11
+    ){
+
+        alert(
+            triSeriesTeams[teamIndex].name +
+            " already has 11 players!"
+        );
+
+        return;
+
+    }
+
+
+    triSeriesTeams[teamIndex].players.push(player);
+
+
+    displayTriSeriesTeams();
+
+
+    select.value = "";
+
+}
+
+    // ===============================
+// DISPLAY TRI-SERIES TEAMS
+// ===============================
+
+function displayTriSeriesTeams(){
+
+    for(let i = 0; i < 3; i++){
+
+        let team =
+            triSeriesTeams[i];
+
+        let html = "";
+
+        team.players.forEach((player, index) => {
+
+            html += `
+                ${index + 1}. ${player.name}
+                - ${player.role}
+                <br>
+            `;
+
+        });
+
+        document.getElementById(
+            "triTeamList" + i
+        ).innerHTML = html;
+
+    }
+
 }
 // ===============================
 // DISPLAY TRI-SERIES FIXTURES
