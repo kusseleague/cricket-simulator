@@ -2874,3 +2874,189 @@ function createTriSeries(){
 
     `;
 }
+// ===============================
+// CONFIRM TRI-SERIES TEAMS
+// ===============================
+
+function confirmTriSeriesTeams(){
+
+    let name1 =
+        document.getElementById("triTeamName1").value.trim();
+
+    let name2 =
+        document.getElementById("triTeamName2").value.trim();
+
+    let name3 =
+        document.getElementById("triTeamName3").value.trim();
+
+
+    // CHECK TEAM NAMES
+
+    if(!name1 || !name2 || !name3){
+
+        alert("Please enter all 3 team names.");
+
+        return;
+
+    }
+
+
+    // CREATE TEAMS
+
+    triSeriesTeams = [
+
+        {
+            name: name1,
+            players: [],
+            played: 0,
+            wins: 0,
+            losses: 0,
+            points: 0,
+            nrr: 0
+        },
+
+        {
+            name: name2,
+            players: [],
+            played: 0,
+            wins: 0,
+            losses: 0,
+            points: 0,
+            nrr: 0
+        },
+
+        {
+            name: name3,
+            players: [],
+            played: 0,
+            wins: 0,
+            losses: 0,
+            points: 0,
+            nrr: 0
+        }
+
+    ];
+
+
+    // ===============================
+    // CREATE 6 LEAGUE FIXTURES
+    // ===============================
+
+    triSeriesFixtures = [
+
+        {
+            teamA: triSeriesTeams[0],
+            teamB: triSeriesTeams[1],
+            played: false,
+            scoreA: null,
+            scoreB: null
+        },
+
+        {
+            teamA: triSeriesTeams[1],
+            teamB: triSeriesTeams[0],
+            played: false,
+            scoreA: null,
+            scoreB: null
+        },
+
+        {
+            teamA: triSeriesTeams[1],
+            teamB: triSeriesTeams[2],
+            played: false,
+            scoreA: null,
+            scoreB: null
+        },
+
+        {
+            teamA: triSeriesTeams[2],
+            teamB: triSeriesTeams[1],
+            played: false,
+            scoreA: null,
+            scoreB: null
+        },
+
+        {
+            teamA: triSeriesTeams[2],
+            teamB: triSeriesTeams[0],
+            played: false,
+            scoreA: null,
+            scoreB: null
+        },
+
+        {
+            teamA: triSeriesTeams[0],
+            teamB: triSeriesTeams[2],
+            played: false,
+            scoreA: null,
+            scoreB: null
+        }
+
+    ];
+
+
+    // SHOW SUCCESS MESSAGE
+
+    document.getElementById(
+        "triSeriesMessage"
+    ).innerHTML =
+
+    `
+        <h3>🏏 Tri-Series Created!</h3>
+
+        ${name1}
+        <br>
+
+        ${name2}
+        <br>
+
+        ${name3}
+    `;
+
+
+    // DISPLAY FIXTURES
+
+    displayTriSeriesFixtures();
+
+}
+// ===============================
+// DISPLAY TRI-SERIES FIXTURES
+// ===============================
+
+function displayTriSeriesFixtures(){
+
+    let html = `
+        <h3>🏏 TRI-SERIES FIXTURES</h3>
+    `;
+
+
+    triSeriesFixtures.forEach((fixture, index) => {
+
+        html += `
+
+            <div>
+
+                <b>
+                    Match ${index + 1}
+                </b>
+
+                <br>
+
+                ${fixture.teamA.name}
+                🆚
+                ${fixture.teamB.name}
+
+                <br><br>
+
+            </div>
+
+        `;
+
+    });
+
+
+    document.getElementById(
+        "triSeriesFixtureArea"
+    ).innerHTML = html;
+
+}
