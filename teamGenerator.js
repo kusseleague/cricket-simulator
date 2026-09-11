@@ -2791,3 +2791,86 @@ function returnToTournament(){
         behavior: "smooth"
     });
 }
+// ===============================
+// TRI-SERIES MODE
+// ===============================
+
+let triSeriesTeams = [];
+
+let triSeriesFixtures = [];
+
+let triSeriesStarted = false;
+
+
+// ===============================
+// CREATE TRI-SERIES
+// ===============================
+
+function createTriSeries(){
+
+    // Reset Tri-Series
+
+    triSeriesTeams = [];
+
+    triSeriesFixtures = [];
+
+    triSeriesStarted = true;
+
+
+    // Clear old Tri-Series areas
+
+    document.getElementById(
+        "triSeriesMessage"
+    ).innerHTML = "";
+
+    document.getElementById(
+        "triSeriesTeamsArea"
+    ).innerHTML = "";
+
+    document.getElementById(
+        "triSeriesTableArea"
+    ).innerHTML = "";
+
+    document.getElementById(
+        "triSeriesFixtureArea"
+    ).innerHTML = "";
+
+
+    // Ask for 3 team names
+
+    document.getElementById(
+        "triSeriesTeamsArea"
+    ).innerHTML = `
+
+        <h3>🏏 Enter Your 3 Teams</h3>
+
+        <input
+            type="text"
+            id="triTeamName1"
+            placeholder="Team 1"
+        >
+
+        <br><br>
+
+        <input
+            type="text"
+            id="triTeamName2"
+            placeholder="Team 2"
+        >
+
+        <br><br>
+
+        <input
+            type="text"
+            id="triTeamName3"
+            placeholder="Team 3"
+        >
+
+        <br><br>
+
+        <button onclick="confirmTriSeriesTeams()">
+            ✅ Confirm Teams
+        </button>
+
+    `;
+}
