@@ -1573,7 +1573,21 @@ function updateScoreboard(message){
                 🎯chaseInfo = `
     <br>
 
-    Need ${runsNeeded}
+    ${
+        secondInnings
+        ?
+        (
+            currentFirstInningsTeam === tournamentFixtures[currentTournamentFixtureIndex].teamA
+            ?
+            tournamentFixtures[currentTournamentFixtureIndex].teamB.name
+            :
+            tournamentFixtures[currentTournamentFixtureIndex].teamA.name
+        )
+        :
+        ""
+    }
+
+    need ${runsNeeded}
     runs from ${ballsRemaining}
     balls
 
@@ -1585,9 +1599,6 @@ function updateScoreboard(message){
 
     <br>
 `;
-}
-}
-
 
     document.getElementById("scoreboard").innerHTML =
 
