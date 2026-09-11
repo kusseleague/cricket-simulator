@@ -1570,35 +1570,23 @@ function updateScoreboard(message){
             chaseInfo = `
                 <br>
 
-                🎯 ${
-    secondInnings
-    ?
-    (
-        currentFirstInningsTeam === tournamentFixtures[currentTournamentFixtureIndex].teamA
-        ?
-        tournamentFixtures[currentTournamentFixtureIndex].teamB.name
-        :
-        tournamentFixtures[currentTournamentFixtureIndex].teamA.name
-    )
-    :
-    ""
+                🎯chaseInfo = `
+    <br>
+
+    Need ${runsNeeded}
+    runs from ${ballsRemaining}
+    balls
+
+    <br>
+
+    📈 CRR: ${currentRunRate.toFixed(2)}
+    |
+    📊 RRR: ${requiredRunRate.toFixed(2)}
+
+    <br>
+`;
 }
-                need ${runsNeeded}
-                runs from ${ballsRemaining}
-                balls
-
-                <br>
-
-                📈 CRR: ${currentRunRate.toFixed(2)}
-                |
-                📊 RRR: ${requiredRunRate.toFixed(2)}
-
-                <br>
-            `;
-
-        }
-
-    }
+}
 
 
     document.getElementById("scoreboard").innerHTML =
