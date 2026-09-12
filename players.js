@@ -7,7 +7,7 @@ name: "Virat Kohli",
 role: "Batsman",
 bat: 89,
 bowl: 15,
-stamina: 88
+stamina: 05
 },
 
 {
@@ -15,7 +15,7 @@ name: "Rohit Sharma",
 role: "Batsman",
 bat: 83,
 bowl: 15,
-stamina: 85
+stamina: 10
 },
 
 {
