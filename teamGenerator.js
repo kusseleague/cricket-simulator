@@ -1151,7 +1151,19 @@ else{
         batsmanStats[striker.name].out = true;
 
     }
+// Count balls during new batsman's settling period
 
+if(newBatsmanSettling){
+
+    ballsSinceWicket++;
+
+    if(ballsSinceWicket >= 10){
+
+        newBatsmanSettling = false;
+
+    }
+
+}
     wickets++;
 
     if(currentBowler && bowlerStats[currentBowler.name]){
