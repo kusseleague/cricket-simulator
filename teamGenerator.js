@@ -1023,74 +1023,95 @@ function nextBall(){
 
 else if(newBatsmanSettling){
 
-    // New batsman has a 70% chance of NOT hitting a boundary
+    // ===============================
+    // NEW BATSMAN SETTLING PERIOD
+    // ===============================
 
-    let settlingChance = Math.random() * 100;
+    let boundaryChance =
+        45 + difference / 2;
 
-    if(settlingChance < 70){
+    // Maximum 30% boundary chance
+    // during the first 10 balls
+    boundaryChance =
+        Math.min(boundaryChance, 30);
 
-        // Safe outcomes only: 0, 1 or 2
 
-        let safeChance = Math.random() * 100;
+    if(chance < boundaryChance / 2){
 
-        if(safeChance < 40){
+        result = 6;
 
-            result = 0;
+    }
 
-        }
+    else if(chance < boundaryChance){
 
-        else if(safeChance < 75){
+        result = 4;
 
-            result = 1;
+    }
 
-        }
+    else if(chance < 70){
 
-        else{
+        result = 1;
 
-            result = 2;
+    }
 
-        }
+    else if(chance < 85){
+
+        result = 2;
 
     }
 
     else{
 
-        // 30% chance: use normal batting ability
+        result = 0;
 
-        if(chance < 20 + difference/2){
+    }
 
-            result = 6;
+}else if(newBatsmanSettling){
 
-        }
+    // ===============================
+    // NEW BATSMAN SETTLING PERIOD
+    // ===============================
 
-        else if(chance < 45 + difference/2){
+    let boundaryChance =
+        45 + difference / 2;
 
-            result = 4;
+    // Maximum 30% boundary chance
+    // during the first 10 balls
+    boundaryChance =
+        Math.min(boundaryChance, 30);
 
-        }
 
-        else if(chance < 70){
+    if(chance < boundaryChance / 2){
 
-            result = 1;
+        result = 6;
 
-        }
+    }
 
-        else if(chance < 85){
+    else if(chance < boundaryChance){
 
-            result = 2;
+        result = 4;
 
-        }
+    }
 
-        else{
+    else if(chance < 70){
 
-            result = 0;
+        result = 1;
 
-        }
+    }
+
+    else if(chance < 85){
+
+        result = 2;
+
+    }
+
+    else{
+
+        result = 0;
 
     }
 
 }
-
 else if(chance < 20 + difference/2){
 
     result = 6;
