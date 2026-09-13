@@ -44,6 +44,8 @@ let commentary = "";
 let autoPlayTimer = null;
 let matchSession = 0;
 
+let ballsSinceWicket = 0;
+
 // ===============================
 // RANDOM FUNCTIONS
 // ===============================
