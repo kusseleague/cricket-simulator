@@ -1193,11 +1193,14 @@ if(secondInnings){
         // Normal wicket — bring in a new batsman
 
         striker = null;
-        newBatsmanSettling = true;
 
-        showNextBatsman();
+newBatsmanSettling = true;
 
-        return;
+ballsSinceWicket = 0;
+
+showNextBatsman();
+
+return;
 
     }
 
