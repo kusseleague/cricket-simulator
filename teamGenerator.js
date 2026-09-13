@@ -1194,6 +1194,21 @@ if(currentBowler && bowlerStats[currentBowler.name]){
     batsmanStats[striker.name].runs += result;
 
 
+// ===============================
+// CHANGE STRIKE
+// ===============================
+// Odd number of runs = batsmen swap
+
+if(result % 2 === 1){
+
+    let temp = striker;
+
+    striker = nonStriker;
+
+    nonStriker = temp;
+
+}
+
 
         if(result===6){
 batsmanStats[striker.name].sixes++;
