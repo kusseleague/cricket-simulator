@@ -1033,7 +1033,7 @@ else if(newBatsmanSettling){
     // Maximum 30% boundary chance
     // during the first 10 balls
     boundaryChance =
-        Math.min(boundaryChance, 30);
+        Math.min(boundaryChance, 10);
 
 
     if(chance < boundaryChance / 2){
