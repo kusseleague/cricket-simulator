@@ -2217,6 +2217,35 @@ function createTournament(){
         `;
 
 }
+
+function selectTournamentFormat(format){
+
+    tournamentFormat = format;
+
+
+    let formatName =
+        format === "oneOff"
+        ? "One-off"
+        : "Home & Away";
+
+
+    document.getElementById(
+        "tournamentFormatMessage"
+    ).innerHTML =
+
+        `
+        <br>
+
+        <h3>✅ ${formatName} selected!</h3>
+
+        <button onclick="confirmTournamentFormat()">
+            ✅ Confirm Format
+        </button>
+
+        `;
+
+}
+
 // ===============================
 // TOURNAMENT FIXTURE GENERATOR
 // ===============================
