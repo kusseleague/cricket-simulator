@@ -2245,7 +2245,15 @@ function selectTournamentFormat(format){
         `;
 
 }
+function confirmTournamentFormat(){
 
+    displayTournamentTeams();
+
+    displayPointsTable();
+
+    generateFixtures();
+
+}
 // ===============================
 // TOURNAMENT FIXTURE GENERATOR
 // ===============================
