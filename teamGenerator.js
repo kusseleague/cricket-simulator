@@ -46,6 +46,8 @@ let matchSession = 0;
 
 let ballsSinceWicket = 0;
 
+let tournamentFormat = "";
+
 // ===============================
 // RANDOM FUNCTIONS
 // ===============================
