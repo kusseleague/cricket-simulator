@@ -2280,11 +2280,14 @@ function generateFixtures(){
 
     tournamentFixtures = [];
 
+
     for(let i = 0; i < tournamentTeams.length; i++){
 
         for(let j = i + 1; j < tournamentTeams.length; j++){
 
-            // FIRST MATCH
+            // ===============================
+            // FIRST FIXTURE
+            // ===============================
 
             tournamentFixtures.push({
 
@@ -2301,30 +2304,37 @@ function generateFixtures(){
             });
 
 
-            // REVERSE MATCH
+            // ===============================
+            // SECOND FIXTURE
+            // HOME & AWAY ONLY
+            // ===============================
 
-            tournamentFixtures.push({
+            if(tournamentFormat === "homeAway"){
 
-                teamA: tournamentTeams[j],
-                teamB: tournamentTeams[i],
+                tournamentFixtures.push({
 
-                stage: "group",
+                    teamA: tournamentTeams[j],
+                    teamB: tournamentTeams[i],
 
-                played: false,
+                    stage: "group",
 
-                scoreA: null,
-                scoreB: null
+                    played: false,
 
-            });
+                    scoreA: null,
+                    scoreB: null
+
+                });
+
+            }
 
         }
 
     }
 
+
     displayFixtures();
 
 }
-
     // ===============================
 // CHECK SEMI-FINALS
 // ===============================
