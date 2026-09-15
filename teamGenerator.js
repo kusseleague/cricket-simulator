@@ -2132,14 +2132,16 @@ function createTournament(){
 
 
     tournamentTeams = [];
-knockoutStarted = false;
-semiFinalsCreated = false;
-finalCreated = false;
-thirdPlaceCreated = false;
 
-tournamentChampion = null;
-tournamentRunnerUp = null;
-tournamentThirdPlace = null;
+    knockoutStarted = false;
+    semiFinalsCreated = false;
+    finalCreated = false;
+    thirdPlaceCreated = false;
+
+    tournamentChampion = null;
+    tournamentRunnerUp = null;
+    tournamentThirdPlace = null;
+
 
     for(let i = 1; i <= count; i++){
 
@@ -2165,24 +2167,24 @@ tournamentThirdPlace = null;
         }
 
 
-     tournamentTeams.push({
+        tournamentTeams.push({
 
-    name: teamName,
+            name: teamName,
 
-    players: [],
+            players: [],
 
-    played: 0,
-    wins: 0,
-    losses: 0,
-    points: 0,
-    nrr: 0,
+            played: 0,
+            wins: 0,
+            losses: 0,
+            points: 0,
+            nrr: 0,
 
-runsFor: 0,
-    runsAgainst: 0,
-    ballsFaced: 0,
-    ballsBowled: 0
-         
-});
+            runsFor: 0,
+            runsAgainst: 0,
+            ballsFaced: 0,
+            ballsBowled: 0
+
+        });
 
     }
 
@@ -2198,10 +2200,22 @@ runsFor: 0,
             .map(team => `🏏 ${team.name}`)
             .join("<br>")}
 
+        <br><br>
+
+        <h3>🏆 Choose Tournament Format</h3>
+
+        <button onclick="selectTournamentFormat('oneOff')">
+            🏏 One-off
+        </button>
+
+        <button onclick="selectTournamentFormat('homeAway')">
+            🏠 Home & Away
+        </button>
+
+        <div id="tournamentFormatMessage"></div>
+
         `;
-    displayTournamentTeams();
-displayPointsTable();
-generateFixtures();
+
 }
 // ===============================
 // TOURNAMENT FIXTURE GENERATOR
