@@ -1202,21 +1202,58 @@ if(secondInnings){
 
     }
 
-    else{
+  else{
 
-        // Normal wicket — bring in a new batsman
+    // Normal wicket — bring in a new batsman
 
-        striker = null;
+    striker = null;
+    newBatsmanSettling = true;
 
-newBatsmanSettling = true;
+    // ===============================
+    // WICKET ON LAST BALL OF OVER
+    // ===============================
 
-ballsSinceWicket = 0;
+    if(balls % 6 === 0){
 
-showNextBatsman();
+        // End the over immediately
 
-return;
+        let availableBowlers =
+            bowlingTeam.filter(player => {
+
+                if(
+                    player.role !== "Bowler" &&
+                    player.role !== "All Rounder"
+                ){
+                    return false;
+                }
+
+                if(!bowlerStats[player.name]){
+                    return false;
+                }
+
+                // Maximum 4 overs
+                if(bowlerStats[player.name].balls >= 24){
+                    return false;
+                }
+
+                // Current bowler cannot bowl consecutive overs
+                if(player === currentBowler){
+                    return false;
+                }
+
+                return true;
+
+            });
+
+        chooseNextBowler(availableBowlers);
 
     }
+
+    showNextBatsman();
+
+    return;
+
+}
 
 }
 
