@@ -770,7 +770,13 @@ if(
     `
     <h2>🏆 MATCH RESULT</h2>
 
-    <h3>🏆 ${winnerTeam.name} WINS!</h3>
+  <h3>
+${
+    finalScoreA === finalScoreB
+    ? "🤝 MATCH TIED!"
+    : `🏆 ${winnerTeam.name} WINS!`
+}
+</h3>
 
     <br>
 
