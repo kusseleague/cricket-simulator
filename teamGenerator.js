@@ -851,15 +851,40 @@ fixture.teamB.ballsBowled +=
 fixture.teamB.nrr =
     (fixture.teamB.runsFor / (fixture.teamB.ballsFaced / 6)) -
     (fixture.teamB.runsAgainst / (fixture.teamB.ballsBowled / 6));
-            winnerTeam.wins++;
-            winnerTeam.points += 2;
+            // ===============================
+// RESULT / POINTS
+// ===============================
 
-            let loserTeam =
-                winnerTeam === fixture.teamA
-                ? fixture.teamB
-                : fixture.teamA;
+if(scoreA === scoreB){
 
-            loserTeam.losses++;
+    // TIE — 1 POINT EACH
+
+    fixture.winner = null;
+
+    fixture.teamA.points += 1;
+    fixture.teamB.points += 1;
+
+    console.log(
+        `🤝 TIE: ${fixture.teamA.name} ${scoreA} - ${scoreB} ${fixture.teamB.name}`
+    );
+
+}
+else{
+
+    // WIN — 2 POINTS
+    // LOSS — 0 POINTS
+
+    winnerTeam.wins++;
+    winnerTeam.points += 2;
+
+    let loserTeam =
+        winnerTeam === fixture.teamA
+        ? fixture.teamB
+        : fixture.teamA;
+
+    loserTeam.losses++;
+
+}
 
             // ===============================
 // CHECK GROUP STAGE COMPLETION
