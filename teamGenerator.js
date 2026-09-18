@@ -1364,7 +1364,10 @@ bowlerStats = {};
 
 bowlingTeam.forEach(player => {
 
-    if(player.role === "Bowler"){
+  if(
+    player.role === "Bowler" ||
+    player.role === "All Rounder"
+){
 
         bowlerStats[player.name] = {
 
