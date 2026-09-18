@@ -3352,3 +3352,36 @@ function displayTriSeriesFixtures(){
     ).innerHTML = html;
 
 }
+function forceTie(){
+
+    // TEST ONLY
+    // Forces the current tournament match to finish as a tie
+
+    if(
+        currentTournamentFixtureIndex === null ||
+        !tournamentFixtures[currentTournamentFixtureIndex]
+    ){
+        return;
+    }
+
+    let fixture =
+        tournamentFixtures[currentTournamentFixtureIndex];
+
+    // Give both teams the same score
+    firstInningsScore = 150;
+    secondInningsFinalScore = 150;
+
+    firstInningsWickets = 6;
+    secondInningsWickets = 6;
+
+    firstInningsBalls = 120;
+    secondInningsBalls = 120;
+
+    wickets = 6;
+
+    // Tell finishMatch that this is a tied result
+    finishMatch(
+        fixture.teamA,
+        150
+    );
+}
