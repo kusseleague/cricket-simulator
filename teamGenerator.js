@@ -3311,6 +3311,95 @@ function displayTriSeriesTeams(){
     }
 
 }
+
+// ===============================
+// CONFIRM TRI-SERIES PLAYING XIs
+// ===============================
+
+function confirmTriSeriesXIs(){
+
+    // Make sure all 3 teams have 11 players
+
+    for(let i = 0; i < 3; i++){
+
+        if(triSeriesTeams[i].players.length !== 11){
+
+            document.getElementById(
+                "triXIMessage"
+            ).innerHTML =
+                `❌ ${triSeriesTeams[i].name} needs 11 players.`;
+
+            return;
+        }
+
+    }
+
+    // Create the 7-match Tri-Series
+
+    triSeriesFixtures = [
+
+        {
+            teamA: triSeriesTeams[0],
+            teamB: triSeriesTeams[1],
+            played: false,
+            scoreA: null,
+            scoreB: null
+        },
+
+        {
+            teamA: triSeriesTeams[1],
+            teamB: triSeriesTeams[0],
+            played: false,
+            scoreA: null,
+            scoreB: null
+        },
+
+        {
+            teamA: triSeriesTeams[1],
+            teamB: triSeriesTeams[2],
+            played: false,
+            scoreA: null,
+            scoreB: null
+        },
+
+        {
+            teamA: triSeriesTeams[2],
+            teamB: triSeriesTeams[1],
+            played: false,
+            scoreA: null,
+            scoreB: null
+        },
+
+        {
+            teamA: triSeriesTeams[2],
+            teamB: triSeriesTeams[0],
+            played: false,
+            scoreA: null,
+            scoreB: null
+        },
+
+        {
+            teamA: triSeriesTeams[0],
+            teamB: triSeriesTeams[2],
+            played: false,
+            scoreA: null,
+            scoreB: null
+        }
+
+    ];
+
+    // Show confirmation
+
+    document.getElementById(
+        "triXIMessage"
+    ).innerHTML =
+        "✅ All Playing XIs confirmed!";
+
+    // Display fixtures
+
+    displayTriSeriesFixtures();
+
+}
 // ===============================
 // DISPLAY TRI-SERIES FIXTURES
 // ===============================
