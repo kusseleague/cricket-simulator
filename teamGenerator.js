@@ -3316,6 +3316,10 @@ function displayTriSeriesTeams(){
 // CONFIRM TRI-SERIES PLAYING XIs
 // ===============================
 
+// ===============================
+// CONFIRM TRI-SERIES PLAYING XIs
+// ===============================
+
 function confirmTriSeriesXIs(){
 
     // Make sure all 3 teams have 11 players
@@ -3334,68 +3338,105 @@ function confirmTriSeriesXIs(){
 
     }
 
-    // Create the 7-match Tri-Series
+
+    // ===============================
+    // CREATE 6 LEAGUE MATCHES
+    // ===============================
 
     triSeriesFixtures = [
 
         {
             teamA: triSeriesTeams[0],
             teamB: triSeriesTeams[1],
+            stage: "league",
             played: false,
             scoreA: null,
-            scoreB: null
+            scoreB: null,
+            winner: null
         },
 
         {
             teamA: triSeriesTeams[1],
             teamB: triSeriesTeams[0],
+            stage: "league",
             played: false,
             scoreA: null,
-            scoreB: null
+            scoreB: null,
+            winner: null
         },
 
         {
             teamA: triSeriesTeams[1],
             teamB: triSeriesTeams[2],
+            stage: "league",
             played: false,
             scoreA: null,
-            scoreB: null
+            scoreB: null,
+            winner: null
         },
 
         {
             teamA: triSeriesTeams[2],
             teamB: triSeriesTeams[1],
+            stage: "league",
             played: false,
             scoreA: null,
-            scoreB: null
+            scoreB: null,
+            winner: null
         },
 
         {
             teamA: triSeriesTeams[2],
             teamB: triSeriesTeams[0],
+            stage: "league",
             played: false,
             scoreA: null,
-            scoreB: null
+            scoreB: null,
+            winner: null
         },
 
         {
             teamA: triSeriesTeams[0],
             teamB: triSeriesTeams[2],
+            stage: "league",
             played: false,
             scoreA: null,
-            scoreB: null
+            scoreB: null,
+            winner: null
         }
 
     ];
 
-    // Show confirmation
+
+    // ===============================
+    // CONFIRMATION
+    // ===============================
 
     document.getElementById(
         "triXIMessage"
     ).innerHTML =
-        "✅ All Playing XIs confirmed!";
 
-    // Display fixtures
+        `
+        <h3>✅ All Playing XIs confirmed!</h3>
+
+        <p>
+        🏏 3 teams<br>
+        🏏 6 league matches<br>
+        🏏 Top 2 qualify for the Final
+        </p>
+        `;
+
+
+    // ===============================
+    // DISPLAY POINTS TABLE
+    // ===============================
+
+    displayTriSeriesTable();
+
+
+    // ===============================
+    // DISPLAY FIXTURES
+    // ===============================
 
     displayTriSeriesFixtures();
 
