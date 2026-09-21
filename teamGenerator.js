@@ -3441,6 +3441,83 @@ function confirmTriSeriesXIs(){
     displayTriSeriesFixtures();
 
 }
+
+// ===============================
+// TRI-SERIES POINTS TABLE
+// ===============================
+
+function displayTriSeriesTable(){
+
+    let sortedTeams = [...triSeriesTeams].sort((a,b) => {
+
+        if(b.points !== a.points){
+            return b.points - a.points;
+        }
+
+        if(b.nrr !== a.nrr){
+            return b.nrr - a.nrr;
+        }
+
+        return b.wins - a.wins;
+
+    });
+
+
+    let html = `
+
+        <h2>🏆 TRI-SERIES POINTS TABLE</h2>
+
+        <table border="1" cellpadding="8" cellspacing="0">
+
+            <tr>
+                <th>Pos</th>
+                <th>Team</th>
+                <th>P</th>
+                <th>W</th>
+                <th>L</th>
+                <th>Pts</th>
+                <th>NRR</th>
+            </tr>
+
+    `;
+
+
+    sortedTeams.forEach((team,index) => {
+
+        html += `
+
+            <tr>
+
+                <td>${index + 1}</td>
+
+                <td>🏏 ${team.name}</td>
+
+                <td>${team.played}</td>
+
+                <td>${team.wins}</td>
+
+                <td>${team.losses}</td>
+
+                <td><b>${team.points}</b></td>
+
+                <td>${team.nrr.toFixed(3)}</td>
+
+            </tr>
+
+        `;
+
+    });
+
+
+    html += `</table>`;
+
+
+    document.getElementById(
+        "triSeriesTableArea"
+    ).innerHTML = html;
+
+}
+
 // ===============================
 // DISPLAY TRI-SERIES FIXTURES
 // ===============================
