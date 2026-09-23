@@ -1292,7 +1292,19 @@ if(currentBowler && bowlerStats[currentBowler.name]){
     bowlerStats[currentBowler.name].balls++;
 
 }
+// Count balls during the 18-ball no-boundary period
+if(newBatsmanSettling){
 
+    ballsSinceWicket++;
+
+    if(ballsSinceWicket >= 18){
+
+        newBatsmanSettling = false;
+        ballsSinceWicket = 0;
+
+    }
+
+}
 // ===============================
 // CHECK SECOND INNINGS CHASE
 // ===============================
