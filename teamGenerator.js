@@ -1160,7 +1160,7 @@ else{
 
 
 
-    if(result==="W"){
+    if(result==="W" && balls % 6 !== 5){
 
     if(striker && batsmanStats[striker.name]){
 
