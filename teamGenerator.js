@@ -923,50 +923,51 @@ if(groupStageComplete && !knockoutStarted){
 }
         
         }
-        // Update tournament screens
+      // Update tournament screens
 
-        displayPointsTable();
-        displayFixtures();
+displayPointsTable();
+displayFixtures();
 
 
+// Show result
 
-        // Show result
+document.getElementById("scoreboard").innerHTML =
+`
+<h2>🏆 MATCH RESULT</h2>
 
-        document.getElementById("scoreboard").innerHTML =
-        `
-        <h2>🏆 MATCH RESULT</h2>
+<h3>🏆 ${winnerTeam.name} WINS!</h3>
 
-        <h3>🏆 ${winnerTeam.name} WINS!</h3>
+<br>
 
-        <br>
+${fixture.teamA.name}:
+${fixture.scoreA}
 
-        ${fixture.teamA.name}:
-        ${finalScoreA}
+<br>
 
-        <br>
+${fixture.teamB.name}:
+${fixture.scoreB}
 
-        ${fixture.teamB.name}:
-        ${finalScoreB}
+<br><br>
 
-        <button onclick="returnToTournament()">
-            🏆 TOURNAMENT
-        </button>
-        `;
+<button onclick="returnToTournament()">
+    🏆 TOURNAMENT
+</button>
+`;
 
-        document.querySelector(
-            "button[onclick='nextBall()']"
-        ).style.display = "none";
+document.querySelector(
+    "button[onclick='nextBall()']"
+).style.display = "none";
 
-        let autoButton =
-            document.querySelector(
-                "button[onclick='autoPlayMatch()']"
-            );
+let autoButton =
+    document.querySelector(
+        "button[onclick='autoPlayMatch()']"
+    );
 
-        if(autoButton){
-            autoButton.style.display = "none";
-        }
+if(autoButton){
+    autoButton.style.display = "none";
+}
 
-        return;
+return;
     }
 
     // ===============================
