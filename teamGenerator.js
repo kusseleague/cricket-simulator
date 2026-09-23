@@ -1031,7 +1031,7 @@ function nextBall(){
 
 
 
- if(chance < 8){
+if(chance < 8){
 
     result = "W";
 
@@ -1043,8 +1043,8 @@ else if(newBatsmanSettling){
     // 18 BALL NO-BOUNDARY PERIOD
     // ===============================
 
-    // New batsman can only score 0, 1 or 2
-    // No 4s or 6s allowed
+    // No 4s or 6s for 18 balls
+    // after a wicket
 
     if(chance < 45){
 
@@ -1066,13 +1066,6 @@ else if(newBatsmanSettling){
 
 }
 
-else if(chance < 20 + difference/2){
-
-    result = 6;
-
-}
-
-}
 else if(chance < 20 + difference/2){
 
     result = 6;
@@ -1103,22 +1096,36 @@ else{
 
 }
 
-// Wicket cannot fall on the final ball of an over
+
+// ===================================
+// NO WICKET ON FINAL BALL OF OVER
+// ===================================
+
 if(result === "W" && balls % 6 === 5){
+
     result = 0;
+
 }
 
-    if(result==="W" && balls % 6 !== 5){
+
+// ===================================
+// WICKET
+// ===================================
+
+if(result === "W"){
 
     if(striker && batsmanStats[striker.name]){
 
         batsmanStats[striker.name].out = true;
 
     }
-// Start an 18-ball no-boundary period after every wicket
-newBatsmanSettling = true;
-ballsSinceWicket = 0;
-}
+
+    // Start a fresh 18-ball no-boundary period
+    // after every wicket
+
+    newBatsmanSettling = true;
+    ballsSinceWicket = 0;
+
     wickets++;
 
     if(currentBowler && bowlerStats[currentBowler.name]){
