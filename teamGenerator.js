@@ -390,15 +390,21 @@ function startMatch(){
     // RESET MATCH COMPLETELY
     bowlerStats = {};
 
-    score = 0;
-    wickets = 0;
-    balls = 0;
+   score = 0;
+wickets = 0;
+balls = 0;
 
-    target = 0;
-    firstInningsScore = 0;
+target = 0;
 
-    secondInnings = false;
-    matchOver = false;
+firstInningsScore = 0;
+firstInningsWickets = 0;
+firstInningsBalls = 0;
+
+secondInningsWickets = 0;
+secondInningsBalls = 0;
+
+secondInnings = false;
+matchOver = false;
 
     newBatsmanSettling = false;
 
