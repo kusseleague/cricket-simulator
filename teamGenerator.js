@@ -1158,7 +1158,10 @@ else{
 
 }
 
-
+// Wicket cannot fall on the final ball of an over
+if(result === "W" && balls % 6 === 5){
+    result = 0;
+}
 
     if(result==="W" && balls % 6 !== 5){
 
