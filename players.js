@@ -784,4 +784,100 @@ stamina: 86
   stamina: 91
   },
 
+  {
+    name: "Lasith Malinga",
+  role: "Bowler",
+  bat: 10,
+  bowl: 92,
+  stamina: 90
+  },
+
+  {
+    name: "MD Rizwan",
+  role: "Batsman",
+  bat: 86,
+  bowl: 10,
+  stamina: 88
+  },
+
+  {
+    name: "S. Dhawan",
+  role: "Batsman",
+  bat: 88,
+  bowl: 10,
+  stamina: 90
+  },
+
+  {
+    name: "Chris Lynn",
+  role: "Batsman",
+  bat: 88,
+  bowl: 10,
+  stamina: 93
+  },
+
+  {
+    name: "George Bailey",
+  role: "Batsman",
+  bat: 85,
+  bowl: 10,
+  stamina: 90
+  },
+
+  {
+    name: "MS Dhoni",
+  role: "Batsman",
+  bat: 87,
+  bowl: 10,
+  stamina: 90
+  },
+
+  {
+    name: "Suresh Raina",
+  role: "Batsman",
+  bat: 87,
+  bowl: 10,
+  stamina: 88
+  },
+
+  {
+    name: "Shaun Marsh",
+  role: "Batsman",
+  bat: 86,
+  bowl: 10,
+  stamina: 89
+  },
+
+  {
+    name: "W. SAHA",
+  role: "Wicketkeeper",
+  bat: 86,
+  bowl: 10,
+  stamina: 91
+  },
+
+  {
+    name: "Mitchell Johnson",
+  role: "Bowler",
+  bat: 30,
+  bowl: 89,
+  stamina: 92
+  },
+
+  {
+    name: "Hashima Amla",
+  role: "Batsman",
+  bat: 86,
+  bowl: 10,
+  stamina: 89
+  },
+
+  {
+    name: "Ishant Sharma",
+  role: "Bowler",
+  bat: 10,
+  bowl: 86,
+  stamina: 91
+  },
+  
 ];
