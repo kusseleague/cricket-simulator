@@ -350,15 +350,15 @@ name: "Tim Southee",
 role: "Bowler",
 bat: 30,
 bowl: 85,
-stamina: 88
+stamina: 86
 },
 
 {
 name: "Lockie Ferguson",
 role: "Bowler",
 bat: 15,
-bowl: 84,
-stamina: 84
+bowl: 85,
+stamina: 88
 },
 
 {
@@ -382,7 +382,7 @@ name: "Scott Boland",
 role: "Bowler",
 bat: 25,
 bowl: 85,
-stamina: 91
+stamina: 85
 },
 
 {
@@ -390,7 +390,7 @@ name: "Keshav Maharaj",
 role: "Bowler",
 bat: 25,
 bowl: 84,
-stamina: 89
+stamina: 86
 },
 
 {
@@ -405,16 +405,16 @@ stamina: 85
 name: "Adil Rashid",
 role: "Bowler",
 bat: 10,
-bowl: 84,
+bowl: 86,
 stamina: 87
 },
 
 {
 name: "Mark Wood",
 role: "Bowler",
-bat: 25,
-bowl: 84,
-stamina: 86
+bat: 40,
+bowl: 86,
+stamina: 89
 },
 
 {
@@ -437,8 +437,8 @@ stamina: 88
 name: "Jofra Archer",
 role: "Bowler",
 bat: 30,
-bowl: 86,
-stamina: 85
+bowl: 88,
+stamina: 90
 },
 
 {
@@ -454,15 +454,15 @@ name: "Wanindu Hasaranga",
 role: "Bowler",
 bat: 20,
 bowl: 84,
-stamina: 90
+stamina: 85
 },
 
 {
 name: "Maheesh Theekshana",
 role: "Bowler",
 bat: 10,
-bowl: 81,
-stamina: 88
+bowl: 83,
+stamina: 86
 },
 
 {
@@ -478,13 +478,13 @@ name: "Akeal Hosein",
 role: "Bowler",
 bat: 10,
 bowl: 85,
-stamina: 88
+stamina: 87
 },
 {
 name: "Ben Stokes",
 role: "All Rounder",
-bat: 77,
-bowl: 80,
+bat: 79,
+bowl: 84,
 stamina: 94
 },
 
@@ -492,40 +492,40 @@ stamina: 94
 name: "Hardik Pandya",
 role: "All Rounder",
 bat: 82,
-bowl: 75,
-stamina: 88
+bowl: 76,
+stamina: 90
 },
 
 {
 name: "Ravindra Jadeja",
 role: "All Rounder",
 bat: 76,
-bowl: 85,
-stamina: 95
+bowl: 87,
+stamina: 92
 },
 
 {
 name: "Glenn Maxwell",
 role: "All Rounder",
-bat: 78,
-bowl: 81,
-stamina: 87
+bat: 79,
+bowl: 83,
+stamina: 91
 },
 
 {
 name: "Shakib Al Hasan",
 role: "All Rounder",
-bat: 73,
+bat: 70,
 bowl: 80,
-stamina: 91
+stamina: 88
 },
 
 {
 name: "Andre Russell",
 role: "All Rounder",
-bat: 80,
-bowl: 65,
-stamina: 85
+bat: 83,
+bowl: 73,
+stamina: 95
 },
 
 {
@@ -555,24 +555,24 @@ stamina: 88
 {
 name: "Mitchell Marsh",
 role: "All Rounder",
-bat: 84,
-bowl: 75,
-stamina: 89
+bat: 85,
+bowl: 70,
+stamina: 93
 },
 
 {
 name: "Marcus Stoinis",
 role: "All Rounder",
-bat: 82,
+bat: 83,
 bowl: 70,
-stamina: 86
+stamina: 92
 },
 
 {
 name: "Mohammad Nabi",
 role: "All Rounder",
-bat: 70,
-bowl: 70,
+bat: 75,
+bowl: 75,
 stamina: 88
 },
 
@@ -587,24 +587,24 @@ stamina: 86
 {
 name: "Sunil Narine",
 role: "All Rounder",
-bat: 75,
-bowl: 88,
+bat: 83,
+bowl: 90,
 stamina: 90
 },
 
 {
 name: "Jason Holder",
 role: "All Rounder",
-bat: 78,
+bat: 75,
 bowl: 85,
-stamina: 91
+stamina: 90
 },
 
 {
 name: "Sikandar Raza",
 role: "All Rounder",
-bat: 82,
-bowl: 75,
+bat: 84,
+bowl: 77,
 stamina: 90
 },
 
@@ -612,8 +612,8 @@ stamina: 90
 name: "Axar Patel",
 role: "All Rounder",
 bat: 65,
-bowl: 83,
-stamina: 91
+bowl: 85,
+stamina: 87
 },
 
 {
@@ -636,24 +636,24 @@ stamina: 82
 name: "Tilak Varma",
 role: "All Rounder",
 bat: 84,
-bowl: 60,
-stamina: 86
+bowl: 70,
+stamina: 88
 },
 
 {
 name: "Abhishek Sharma",
 role: "All Rounder",
-bat: 84,
+bat: 87,
 bowl: 35,
-stamina: 85
+stamina: 89
 },
 
 {
 name: "Marco Jansen",
 role: "All Rounder",
-bat: 70,
-bowl: 84,
-stamina: 90
+bat: 65,
+bowl: 85,
+stamina: 89
 },
 
 {
@@ -661,7 +661,7 @@ name: "Rachin Ravindra",
 role: "All Rounder",
 bat: 83,
 bowl: 65,
-stamina: 90
+stamina: 88
 },
 
 {
@@ -684,15 +684,15 @@ stamina: 91
 name: "Daryl Mitchell",
 role: "All Rounder",
 bat: 82,
-bowl: 72,
+bowl: 67,
 stamina: 90
 },
 
 {
 name: "Kyle Jamieson",
 role: "All Rounder",
-bat: 55,
-bowl: 83,
+bat: 50,
+bowl: 82,
 stamina: 86
 },
 
@@ -701,7 +701,7 @@ name: "Carlos Brathwaite",
 role: "All Rounder",
 bat: 76,
 bowl: 80,
-stamina: 84
+stamina: 89
 },
 
 {
@@ -709,23 +709,23 @@ name: "Dwayne Bravo",
 role: "All Rounder",
 bat: 75,
 bowl: 83,
-stamina: 85
+stamina: 87
 },
 
 {
 name: "Kieron Pollard",
 role: "All Rounder",
-bat: 85,
+bat: 84,
 bowl: 70,
-stamina: 82
+stamina: 93
 },
 
 {
 name: "Shane Watson",
 role: "All Rounder",
-bat: 83,
-bowl: 65,
-stamina: 86
+bat: 86,
+bowl: 70,
+stamina: 88
 },
 
 {
@@ -733,15 +733,15 @@ name: "Gus Atkinson",
 role: "All Rounder",
 bat: 60,
 bowl: 83,
-stamina: 94
+stamina: 89
 },
 
 {
 name: "Will Jacks",
 role: "All Rounder",
-bat: 84,
-bowl: 60,
-stamina: 91
+bat: 85,
+bowl: 65,
+stamina: 89
 },
 
 {
@@ -749,7 +749,7 @@ name: "Tom Curran",
 role: "All Rounder",
 bat: 55,
 bowl: 70,
-stamina: 94
+stamina: 86
 },
 
 {
@@ -757,7 +757,31 @@ name: "Noor Ahmed",
 role: "All Rounder",
 bat: 15,
 bowl: 84,
-stamina: 92
-}
+stamina: 86
+},
+
+  {
+  name: "Bhuvneshwar Kumar",
+  role: "Bowler",
+  bat: 20,
+  bowl: 91,
+  stamina: 89
+},
+
+  {
+    name: "Chris Gayle",
+  role: "Batsman",
+  bat: 92,
+  bowl: 40,
+  stamina: 96
+  },
+
+  {
+    name: "Faf du Plessis",
+  role: "Batsman",
+  bat: 89,
+  bowl: 10,
+  stamina: 91
+  },
 
 ];
