@@ -928,24 +928,7 @@ if(groupStageComplete && !knockoutStarted){
         displayPointsTable();
         displayFixtures();
 
-        // Calculate final scores again for display
 
-        let finalScoreA;
-        let finalScoreB;
-
-        if(currentFirstInningsTeam === fixture.teamA){
-
-            finalScoreA = firstInningsScore;
-            finalScoreB = secondInningsFinalScore;
-
-        }
-
-        else{
-
-            finalScoreA = secondInningsFinalScore;
-            finalScoreB = firstInningsScore;
-
-        }
 
         // Show result
 
