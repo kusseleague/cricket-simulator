@@ -5,17 +5,17 @@ const players = [
 {
 name: "Virat Kohli",
 role: "Batsman",
-bat: 89,
+bat: 91,
 bowl: 15,
-stamina: 05
+stamina: 88
 },
 
 {
 name: "Rohit Sharma",
 role: "Batsman",
-bat: 83,
+bat: 86,
 bowl: 15,
-stamina: 10
+stamina: 90
 },
 
 {
@@ -53,7 +53,7 @@ stamina: 88
 {
 name: "Ruturaj Gaikwad",
 role: "Batsman",
-bat: 82,
+bat: 80,
 bowl: 10,
 stamina: 86
 },
@@ -95,15 +95,15 @@ name: "Steve Smith",
 role: "Batsman",
 bat: 84,
 bowl: 35,
-stamina: 91
+stamina: 86
 },
 
 {
 name: "David Warner",
 role: "Batsman",
-bat: 88,
+bat: 89,
 bowl: 10,
-stamina: 84
+stamina: 87
 },
 
 {
@@ -111,7 +111,7 @@ name: "Travis Head",
 role: "Batsman",
 bat: 84,
 bowl: 35,
-stamina: 88
+stamina: 91
 },
 
 {
@@ -127,7 +127,7 @@ name: "Kane Williamson",
 role: "Batsman",
 bat: 85,
 bowl: 25,
-stamina: 90
+stamina: 86
 },
 
 {
@@ -135,7 +135,7 @@ name: "Joe Root",
 role: "Batsman",
 bat: 84,
 bowl: 40,
-stamina: 91
+stamina: 86
 },
 
 {
@@ -165,7 +165,7 @@ stamina: 85
 {
 name: "Quinton de Kock",
 role: "Wicketkeeper",
-bat: 84,
+bat: 85,
 bowl: 10,
 stamina: 85
 },
@@ -175,7 +175,7 @@ name: "Heinrich Klaasen",
 role: "Wicketkeeper",
 bat: 85,
 bowl: 10,
-stamina: 86
+stamina: 88
 },
 
 {
@@ -197,9 +197,9 @@ stamina: 88
 {
 name: "AB de Villiers",
 role: "Wicketkeeper",
-bat: 84,
+bat: 87,
 bowl: 10,
-stamina: 84
+stamina: 88
 },
 
 {
@@ -223,7 +223,7 @@ name: "Tim Seifert",
 role: "Batsman",
 bat: 82,
 bowl: 30,
-stamina: 90
+stamina: 86
 },
 
 {
@@ -231,29 +231,29 @@ name: "Nicholas Pooran",
 role: "Wicketkeeper",
 bat: 84,
 bowl: 10,
-stamina: 84
+stamina: 86
 },
 
 {
 name: "Shai Hope",
 role: "Wicketkeeper",
-bat: 83,
+bat: 82,
 bowl: 10,
 stamina: 86
 },
 {
 name: "Jasprit Bumrah",
 role: "Bowler",
-bat: 10,
-bowl: 92,
+bat: 20,
+bowl: 93,
 stamina: 93
 },
 
 {
 name: "Arshdeep Singh",
 role: "Bowler",
-bat: 10,
-bowl: 86,
+bat: 15,
+bowl: 88,
 stamina: 88
 },
 
@@ -261,15 +261,15 @@ stamina: 88
 name: "Mohammed Siraj",
 role: "Bowler",
 bat: 10,
-bowl: 84,
+bowl: 86,
 stamina: 90
 },
 
 {
 name: "Mohammed Shami",
 role: "Bowler",
-bat: 20,
-bowl: 86,
+bat: 25,
+bowl: 88,
 stamina: 88
 },
 
@@ -277,7 +277,7 @@ stamina: 88
 name: "Kuldeep Yadav",
 role: "Bowler",
 bat: 15,
-bowl: 84,
+bowl: 87,
 stamina: 87
 },
 
@@ -285,7 +285,7 @@ stamina: 87
 name: "Yuzvendra Chahal",
 role: "Bowler",
 bat: 10,
-bowl: 85,
+bowl: 88,
 stamina: 84
 },
 
@@ -293,7 +293,7 @@ stamina: 84
 name: "Ravichandran Ashwin",
 role: "Bowler",
 bat: 35,
-bowl: 84,
+bowl: 85,
 stamina: 92
 },
 
@@ -301,7 +301,7 @@ stamina: 92
 name: "Pat Cummins",
 role: "Bowler",
 bat: 35,
-bowl: 84,
+bowl: 86,
 stamina: 94
 },
 
@@ -309,7 +309,7 @@ stamina: 94
 name: "Mitchell Starc",
 role: "Bowler",
 bat: 20,
-bowl: 89,
+bowl: 91,
 stamina: 89
 },
 
@@ -317,7 +317,7 @@ stamina: 89
 name: "Josh Hazlewood",
 role: "Bowler",
 bat: 10,
-bowl: 86,
+bowl: 89,
 stamina: 92
 },
 
@@ -325,7 +325,7 @@ stamina: 92
 name: "Adam Zampa",
 role: "Bowler",
 bat: 10,
-bowl: 85,
+bowl: 86,
 stamina: 90
 },
 
@@ -333,7 +333,7 @@ stamina: 90
 name: "Nathan Lyon",
 role: "Bowler",
 bat: 15,
-bowl: 85,
+bowl: 86,
 stamina: 91
 },
 
@@ -341,16 +341,16 @@ stamina: 91
 name: "Trent Boult",
 role: "Bowler",
 bat: 15,
-bowl: 86,
+bowl: 88,
 stamina: 90
 },
 
 {
 name: "Tim Southee",
 role: "Bowler",
-bat: 25,
-bowl: 84,
-stamina: 86
+bat: 30,
+bowl: 85,
+stamina: 88
 },
 
 {
