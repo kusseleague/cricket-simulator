@@ -1278,6 +1278,18 @@ if(striker && batsmanStats[striker.name]){
 }
 
 balls++;
+
+if(secondInnings){
+
+    secondInningsBalls++;
+
+}
+else{
+
+    firstInningsBalls++;
+
+}
+
 if(currentBowler && bowlerStats[currentBowler.name]){
 
     bowlerStats[currentBowler.name].balls++;
