@@ -1208,6 +1208,7 @@ if(result === "W"){
 
     showNextBatsman();
 
+return;
 
 }
 
