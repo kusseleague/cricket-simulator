@@ -1031,7 +1031,7 @@ function nextBall(){
 
 
 
-   if(chance < 8){
+ if(chance < 8){
 
     result = "W";
 
@@ -1040,37 +1040,19 @@ function nextBall(){
 else if(newBatsmanSettling){
 
     // ===============================
-    // NEW BATSMAN SETTLING PERIOD
+    // 18 BALL NO-BOUNDARY PERIOD
     // ===============================
 
-    let boundaryChance =
-        45 + difference / 2;
+    // New batsman can only score 0, 1 or 2
+    // No 4s or 6s allowed
 
-    // Maximum 30% boundary chance
-    // during the first 10 balls
-    boundaryChance =
-        Math.min(boundaryChance, 10);
-
-
-    if(chance < boundaryChance / 2){
-
-        result = 6;
-
-    }
-
-    else if(chance < boundaryChance){
-
-        result = 4;
-
-    }
-
-    else if(chance < 70){
+    if(chance < 45){
 
         result = 1;
 
     }
 
-    else if(chance < 85){
+    else if(chance < 75){
 
         result = 2;
 
@@ -1082,50 +1064,13 @@ else if(newBatsmanSettling){
 
     }
 
-}else if(newBatsmanSettling){
+}
 
-    // ===============================
-    // NEW BATSMAN SETTLING PERIOD
-    // ===============================
+else if(chance < 20 + difference/2){
 
-    let boundaryChance =
-        45 + difference / 2;
+    result = 6;
 
-    // Maximum 30% boundary chance
-    // during the first 10 balls
-    boundaryChance =
-        Math.min(boundaryChance, 30);
-
-
-    if(chance < boundaryChance / 2){
-
-        result = 6;
-
-    }
-
-    else if(chance < boundaryChance){
-
-        result = 4;
-
-    }
-
-    else if(chance < 70){
-
-        result = 1;
-
-    }
-
-    else if(chance < 85){
-
-        result = 2;
-
-    }
-
-    else{
-
-        result = 0;
-
-    }
+}
 
 }
 else if(chance < 20 + difference/2){
