@@ -1170,18 +1170,9 @@ if(result === "W" && balls % 6 === 5){
         batsmanStats[striker.name].out = true;
 
     }
-// Count balls during new batsman's settling period
-
-if(newBatsmanSettling){
-
-    ballsSinceWicket++;
-
-    if(ballsSinceWicket >= 10){
-
-        newBatsmanSettling = false;
-
-    }
-
+// Start an 18-ball no-boundary period after every wicket
+newBatsmanSettling = true;
+ballsSinceWicket = 0;
 }
     wickets++;
 
