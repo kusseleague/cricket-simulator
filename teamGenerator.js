@@ -766,34 +766,34 @@ if(
 
     displayFixtures();
 
-    document.getElementById("scoreboard").innerHTML =
-    `
-    <h2>🏆 MATCH RESULT</h2>
+   document.getElementById("scoreboard").innerHTML =
+`
+<h2>🏆 MATCH RESULT</h2>
 
-  <h3>
+<h3>
 ${
-    finalScoreA === finalScoreB
+    scoreA === scoreB
     ? "🤝 MATCH TIED!"
     : `🏆 ${winnerTeam.name} WINS!`
 }
 </h3>
 
-    <br>
+<br>
 
-    ${fixture.teamA.name}:
-    ${fixture.scoreA}
+${fixture.teamA.name}:
+${scoreA}
 
-    <br>
+<br>
 
-    ${fixture.teamB.name}:
-    ${fixture.scoreB}
+${fixture.teamB.name}:
+${scoreB}
 
-    <br><br>
+<br><br>
 
-    <button onclick="returnToTournament()">
-        🏆 TOURNAMENT
-    </button>
-    `;
+<button onclick="returnToTournament()">
+    🏆 TOURNAMENT
+</button>
+`;
 
     // Hide Next Ball
 
