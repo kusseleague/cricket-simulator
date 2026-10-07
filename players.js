@@ -983,4 +983,36 @@ bat: 86,
 bowl: 10,
 stamina: 91
 },
+
+   {
+  name: "Dinesh Karthik",
+role: "Wicketkeeper",
+bat: 84,
+bowl: 10,
+stamina: 86
+},
+
+   {
+  name: "Murali Vijay",
+role: "Batsman",
+bat: 86,
+bowl: 10,
+stamina: 88
+},
+
+   {
+  name: "Mohit Sharma",
+role: "Bowler",
+bat: 15,
+bowl: 86,
+stamina: 85
+},
+  
+   {
+  name: "Sandeep Sharma",
+role: "Bowler",
+bat: 10,
+bowl: 86,
+stamina: 85
+},
 ];
