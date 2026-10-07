@@ -975,4 +975,12 @@ bat: 86,
 bowl: 25,
 stamina: 80
 },
+
+   {
+  name: "David Miller",
+role: "Batsman",
+bat: 86,
+bowl: 10,
+stamina: 91
+},
 ];
