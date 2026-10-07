@@ -888,14 +888,6 @@ bowl: 25,
 stamina: 88
 },
 
- {
-  name: "Rinku Singh",
-role: "All Rounder",
-bat: 84,
-bowl: 25,
-stamina: 88
-},
-
    {
   name: "Dale Steyn",
 role: "Bowler",
