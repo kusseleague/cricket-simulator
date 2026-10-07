@@ -927,4 +927,44 @@ bat: 15,
 bowl: 84,
 stamina: 86
 },
+
+   {
+  name: "Brendon McCullum",
+role: "Batsman",
+bat: 88,
+bowl: 15,
+stamina: 90
+},
+
+   {
+  name: "Harshal Patel",
+role: "All Rounder",
+bat: 40,
+bowl: 79,
+stamina: 85
+},
+  
+   {
+  name: "Azmatullah Omarzai",
+role: "All Rounder",
+bat: 40,
+bowl: 82,
+stamina: 85
+},
+
+   {
+  name: "Ishan Kishan",
+role: "Wicketkeeper",
+bat: 86,
+bowl: 10,
+stamina: 89
+},
+
+   {
+  name: "Chris Morris",
+role: "All Rounder",
+bat: 45,
+bowl: 79,
+stamina: 85
+},
 ];
