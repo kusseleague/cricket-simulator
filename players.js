@@ -967,4 +967,12 @@ bat: 45,
 bowl: 79,
 stamina: 85
 },
+
+   {
+  name: "Adam Gilchrist",
+role: "Batsman",
+bat: 86,
+bowl: 25,
+stamina: 80
+},
 ];
