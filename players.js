@@ -1015,4 +1015,12 @@ bat: 10,
 bowl: 86,
 stamina: 85
 },
+
+   {
+  name: "Shimron Hetmyer",
+role: "Batsman",
+bat: 84,
+bowl: 10,
+stamina: 87
+},
 ];
