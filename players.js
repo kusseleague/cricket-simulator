@@ -1,4 +1,4 @@
-// UPDATED DATABASE 20 PLAYERS
+// UPDATED PLAYER DATABASE
 
 const players = [
 
