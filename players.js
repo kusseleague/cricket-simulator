@@ -879,5 +879,52 @@ stamina: 86
   bowl: 86,
   stamina: 91
   },
-  
+
+  {
+  name: "Rinku Singh",
+role: "All Rounder",
+bat: 84,
+bowl: 25,
+stamina: 88
+},
+
+ {
+  name: "Rinku Singh",
+role: "All Rounder",
+bat: 84,
+bowl: 25,
+stamina: 88
+},
+
+   {
+  name: "Dale Steyn",
+role: "Bowler",
+bat: 25,
+bowl: 89,
+stamina: 88
+},
+
+   {
+  name: "Shardul Thakur",
+role: "Bowler",
+bat: 35,
+bowl: 85,
+stamina: 84
+},
+
+   {
+  name: "Phil Salt",
+role: "Batsman",
+bat: 86,
+bowl: 25,
+stamina: 90
+},
+
+   {
+  name: "Prasidh Krishna",
+role: "Bowler",
+bat: 15,
+bowl: 84,
+stamina: 86
+},
 ];
