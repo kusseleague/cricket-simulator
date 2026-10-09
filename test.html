@@ -147,16 +147,26 @@ select:focus, input:focus, textarea:focus {
     box-shadow: 0 12px 35px #00000030;
 }
 
+
 /* Scoreboard */
 
 #scoreboard {
-    margin: 18px 0;
-    padding: 22px;
+    margin: 18px auto;
+    padding: 28px 22px;
+    max-width: 850px;
+    text-align: center;
+    font-size: 1.2rem;
+    line-height: 1.9;
     background: linear-gradient(135deg, #102b1c, #0b1710);
     border: 1px solid #277d4b;
     border-radius: 14px;
     color: var(--white);
     overflow-wrap: anywhere;
+}
+
+#scoreboard strong,
+#scoreboard b {
+    font-size: 1.15em;
 }
 
 /* Dividers */
