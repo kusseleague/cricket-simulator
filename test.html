@@ -310,6 +310,22 @@ document.getElementById("result").innerHTML =
 <div id="tournamentSetup">
 
     <h2>🏆 STUMPS TOURNAMENT MODE</h2>
+    
+<label for="venueSelect">🏟️ Tournament Venue:</label>
+
+<select id="venueSelect" onchange="applyVenueTheme(this.value)">
+    <option value="chandigarh">Chandigarh</option>
+    <option value="chennai">Chennai</option>
+    <option value="mumbai">Mumbai</option>
+    <option value="brisbane">Brisbane</option>
+    <option value="napoli">Napoli (Fictional)</option>
+    <option value="birmingham">Birmingham</option>
+    <option value="london">London</option>
+    <option value="manchester">Manchester</option>
+    <option value="sydney">Sydney</option>
+    <option value="melbourne" selected>Melbourne</option>
+</select>
+
 
     <label>
         Number of Teams:
