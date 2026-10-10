@@ -472,6 +472,67 @@ Team B
 </div>
 
 
+<script>
+function applyVenueTheme(venue) {
+    const themes = {
+        chandigarh: {
+            accent: "#e53935", dark: "#a91e22",
+            glow: "#461414", secondary: "#251010"
+        },
+        chennai: {
+            accent: "#facc15", dark: "#d4a900",
+            glow: "#46380c", secondary: "#241e0a"
+        },
+        mumbai: {
+            accent: "#2583ed", dark: "#1555ad",
+            glow: "#102b50", secondary: "#0b1729"
+        },
+        brisbane: {
+            accent: "#35d6c2", dark: "#159c91",
+            glow: "#10443e", secondary: "#0b2524"
+        },
+        napoli: {
+            accent: "#55cfff", dark: "#209dcc",
+            glow: "#123d53", secondary: "#0b202e"
+        },
+        birmingham: {
+            accent: "#ff922b", dark: "#d9670b",
+            glow: "#4b2910", secondary: "#28190d"
+        },
+        london: {
+            accent: "#5269d9", dark: "#293d9b",
+            glow: "#151c49", secondary: "#0b1028"
+        },
+        manchester: {
+            accent: "#c52b43", dark: "#84182a",
+            glow: "#45101b", secondary: "#250b12"
+        },
+        sydney: {
+            accent: "#ff2ca8", dark: "#c20d78",
+            glow: "#4b1037", secondary: "#280b20"
+        },
+        melbourne: {
+            accent: "#24d17b", dark: "#159653",
+            glow: "#16442b", secondary: "#10251a"
+        }
+    };
+
+    const theme = themes[venue] || themes.melbourne;
+    const root = document.documentElement;
+
+    root.style.setProperty("--accent", theme.accent);
+    root.style.setProperty("--accent-dark", theme.dark);
+    root.style.setProperty("--accent-glow", theme.accent + "35");
+    root.style.setProperty("--glow", theme.glow);
+    root.style.setProperty("--glow-secondary", theme.secondary);
+    root.style.setProperty("--border", theme.dark);
+    root.style.setProperty("--green", theme.accent);
+    root.style.setProperty("--green-light", theme.accent);
+}
+
+applyVenueTheme("melbourne");
+</script>
+
 
 </body>
 
