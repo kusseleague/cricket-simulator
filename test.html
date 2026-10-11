@@ -49,6 +49,35 @@ body {
         var(--bg);
 }
 
+/* Stadium image layer */
+body {
+    position: relative;
+    isolation: isolate;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+
+    background-image:
+        linear-gradient(
+            to right,
+            #080e0b 0%,
+            rgba(8, 14, 11, 0.94) 30%,
+            rgba(8, 14, 11, 0.55) 60%,
+            rgba(8, 14, 11, 0.18) 100%
+        ),
+        var(--stadium-image, none);
+
+    background-size: 100% 100%, cover;
+    background-position: center, right center;
+    background-repeat: no-repeat;
+    opacity: 0.85;
+}
+
 /* Main title */
 
 h1 {
