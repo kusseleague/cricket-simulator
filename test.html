@@ -557,6 +557,10 @@ function applyVenueTheme(venue) {
     root.style.setProperty("--accent-glow", theme.accent + "35");
     root.style.setProperty("--glow", theme.glow);
     root.style.setProperty("--glow-secondary", theme.secondary);
+    root.style.setProperty(
+    "--stadium-image",
+    theme.image || "none"
+);
     root.style.setProperty("--border", theme.dark);
     root.style.setProperty("--green", theme.accent);
     root.style.setProperty("--green-light", theme.accent);
