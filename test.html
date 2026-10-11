@@ -43,10 +43,34 @@ body {
     color: var(--white);
     font-family: 'Inter', 'Segoe UI', sans-serif;
     line-height: 1.6;
-    background:
-        radial-gradient(ellipse at 50% 0%, #16442b 0%, transparent 42%),
-        radial-gradient(ellipse at 100% 50%, #10251a 0%, transparent 45%),
-        var(--bg);
+   
+background-color: var(--bg);
+background-image:
+    linear-gradient(
+        to right,
+        #080e0b 0%,
+        rgba(8, 14, 11, 0.95) 30%,
+        rgba(8, 14, 11, 0.65) 55%,
+        rgba(8, 14, 11, 0.15) 100%
+    ),
+    var(--stadium-image, none),
+    radial-gradient(ellipse at 50% 0%, var(--glow) 0%, transparent 42%),
+    radial-gradient(ellipse at 100% 50%, var(--glow-secondary) 0%, transparent 45%);
+
+background-size:
+    100% 100%,
+    auto 100vh,
+    auto,
+    auto;
+
+background-position:
+    center,
+    right center,
+    center top,
+    right center;
+
+background-repeat: no-repeat;
+
 }
 
 /* Stadium image layer */
