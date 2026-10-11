@@ -1015,4 +1015,15 @@ bat: 84,
 bowl: 10,
 stamina: 87
 },
+
+   {
+  name: "Krunal Pandya",
+role: "All Rounder",
+bat: 65,
+bowl: 80,
+stamina: 88
+},
 ];
+players.sort((a, b) =>
+    a.name.localeCompare(b.name, undefined, { sensitivity: "base" })
+);
