@@ -865,7 +865,7 @@ stamina: 86
   },
 
   {
-    name: "Hashima Amla",
+    name: "Hashim Amla",
   role: "Batsman",
   bat: 86,
   bowl: 10,
