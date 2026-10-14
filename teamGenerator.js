@@ -1719,7 +1719,7 @@ function updateScoreboard(message){
 
     Overs:
     ${overs}
-
+    ${projectedScoreInfo}
     ${chaseInfo}
 
     <br><br>
