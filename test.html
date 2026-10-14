@@ -324,7 +324,45 @@ body > *:not(#stumpsHud) {
     #scoreboard {
         font-family: 'Orbitron', sans-serif;
     }
+/* STUMPS - SCI-FI SCOREBOARD FONT */
+#scoreboard {
+    font-family: 'Orbitron', sans-serif;
+}
 
+/* STUMPS — FUTURISTIC MATCH WATERMARK */
+#matchWatermark {
+    position: fixed;
+    top: 10px;
+    left: 12px;
+    z-index: 5;
+    pointer-events: none;
+
+    font-family: 'Orbitron', sans-serif;
+    font-size: 9px;
+    line-height: 1.8;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    color: rgba(0, 221, 245, 0.65);
+    text-shadow: 0 0 8px rgba(0, 221, 245, 0.18);
+
+    padding-left: 8px;
+    border-left: 1px solid rgba(0, 221, 245, 0.45);
+}
+
+#matchWatermark .watermark-date {
+    color: rgba(160, 190, 205, 0.48);
+    letter-spacing: 1.5px;
+}
+
+@media (max-width: 600px) {
+    #matchWatermark {
+        top: 6px;
+        left: 7px;
+        font-size: 7px;
+        letter-spacing: 1.3px;
+    }
+}
 </style>
 <title>Stumps Cricket Simulator</title>
 </head>
