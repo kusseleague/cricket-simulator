@@ -1724,8 +1724,7 @@ function updateScoreboard(message){
 
     <br><br>
 
-    🏏 Batting:
-
+    🏏 BATTERS:
     <br><br>
 
     ${striker ? striker.name : "ALL OUT"}
@@ -1750,8 +1749,8 @@ function updateScoreboard(message){
 
     <br>
 
-    ⚾ Bowler:
-    ⚾ Bowling:
+
+    ⚾ BOWLER:
 
     <br><br>
 
