@@ -1713,7 +1713,7 @@ function updateScoreboard(message){
     <h2>🏏 LIVE MATCH</h2>
 
     Score:
-    ${score}/${wickets}
+   <span style="font-size: 1.6em;">${score}/${wickets}</span>
 
     <br>
 
