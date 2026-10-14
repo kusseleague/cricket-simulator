@@ -1624,6 +1624,24 @@ function updateScoreboard(message){
 
     }
 
+    // ===============================
+    // FIRST INNINGS PROJECTED SCORE
+    // ===============================
+
+    let projectedScoreInfo = "";
+
+    if(!secondInnings && balls > 0){
+
+        let projectedScore =
+            Math.round(currentRunRate * 20);
+
+        projectedScoreInfo = `
+            <br>
+            Projected: ${projectedScore} @${currentRunRate.toFixed(2)}
+        `;
+
+    }
+
 
     if(secondInnings && balls < 120){
 
