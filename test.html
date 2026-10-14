@@ -726,6 +726,374 @@ applyVenueTheme("melbourne");
 })();
 </script>
 
+    
+<!-- STUMPS FUTURISTIC ANALYTICS HUD -->
+<div id="stumpsHud" aria-hidden="true">
+    <canvas id="stumpsHudCanvas"></canvas>
+</div>
+
+<script>
+(function () {
+    const canvas = document.getElementById("stumpsHudCanvas");
+    const ctx = canvas.getContext("2d");
+
+    if (!canvas || !ctx) return;
+
+    let width = 0;
+    let height = 0;
+    let animationId = null;
+    let lastFrame = 0;
+    let time = 0;
+
+    const reducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    );
+
+    const nodes = [];
+    const dataPoints = [];
+
+    function resizeCanvas() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+        width = window.innerWidth;
+        height = window.innerHeight;
+
+        canvas.width = Math.round(width * dpr);
+        canvas.height = Math.round(height * dpr);
+
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        nodes.length = 0;
+        dataPoints.length = 0;
+
+        // HUD nodes stay around the outer edges.
+        for (let i = 0; i < 26; i++) {
+            const side = i % 2 === 0 ? "left" : "right";
+
+            nodes.push({
+                x: side === "left"
+                    ? Math.random() * width * 0.22
+                    : width * 0.78 + Math.random() * width * 0.22,
+                y: Math.random() * height,
+                phase: Math.random() * Math.PI * 2
+            });
+        }
+
+        for (let i = 0; i < 12; i++) {
+            dataPoints.push({
+                value: 0.2 + Math.random() * 0.8,
+                phase: Math.random() * Math.PI * 2
+            });
+        }
+    }
+
+    function getAccent() {
+        return getComputedStyle(document.documentElement)
+            .getPropertyValue("--accent")
+            .trim() || "#24d17b";
+    }
+
+    function drawGrid(accent) {
+        ctx.save();
+        ctx.strokeStyle = accent;
+        ctx.globalAlpha = 0.075;
+        ctx.lineWidth = 0.6;
+
+        const spacing = 42;
+
+        for (let x = 0; x < width; x += spacing) {
+            ctx.beginPath();
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, height);
+            ctx.stroke();
+        }
+
+        for (let y = 0; y < height; y += spacing) {
+            ctx.beginPath();
+            ctx.moveTo(0, y);
+            ctx.lineTo(width, y);
+            ctx.stroke();
+        }
+
+        ctx.restore();
+    }
+
+    function drawRadar(x, y, radius, accent, phase) {
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.strokeStyle = accent;
+        ctx.lineWidth = 1;
+
+        // Circular scanning rings
+        for (let i = 1; i <= 4; i++) {
+            ctx.globalAlpha = 0.11 - i * 0.015;
+            ctx.beginPath();
+            ctx.arc(0, 0, radius * i / 4, 0, Math.PI * 2);
+            ctx.stroke();
+        }
+
+        // Radar crosshairs
+        ctx.globalAlpha = 0.12;
+        ctx.beginPath();
+        ctx.moveTo(-radius, 0);
+        ctx.lineTo(radius, 0);
+        ctx.moveTo(0, -radius);
+        ctx.lineTo(0, radius);
+        ctx.stroke();
+
+        // Rotating scan beam
+        const angle = phase % (Math.PI * 2);
+
+        ctx.globalAlpha = 0.22;
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.arc(0, 0, radius, angle - 0.35, angle);
+        ctx.closePath();
+        ctx.fillStyle = accent;
+        ctx.fill();
+
+        ctx.globalAlpha = 0.6;
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(
+            Math.cos(angle) * radius,
+            Math.sin(angle) * radius
+        );
+        ctx.stroke();
+
+        // Radar contact
+        const px = Math.cos(angle * 1.7) * radius * 0.62;
+        const py = Math.sin(angle * 1.7) * radius * 0.62;
+
+        ctx.globalAlpha = 0.8;
+        ctx.fillStyle = accent;
+        ctx.beginPath();
+        ctx.arc(px, py, 2.2, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.restore();
+    }
+
+    function drawConnections(accent) {
+        ctx.save();
+        ctx.strokeStyle = accent;
+        ctx.lineWidth = 0.8;
+
+        nodes.forEach((node, i) => {
+            const pulse = 0.12 + (
+                Math.sin(time * 0.001 + node.phase) + 1
+            ) * 0.09;
+
+            ctx.globalAlpha = pulse;
+
+            // Connect nearby nodes on the same side.
+            for (let j = i + 1; j < nodes.length; j++) {
+                const other = nodes[j];
+
+                if ((node.x < width / 2) !==
+                    (other.x < width / 2)) continue;
+
+                const dx = node.x - other.x;
+                const dy = node.y - other.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+
+                if (distance < 145) {
+                    ctx.beginPath();
+                    ctx.moveTo(node.x, node.y);
+                    ctx.lineTo(other.x, other.y);
+                    ctx.stroke();
+                }
+            }
+
+            ctx.globalAlpha = pulse + 0.1;
+            ctx.fillStyle = accent;
+            ctx.beginPath();
+            ctx.arc(node.x, node.y, 1.5, 0, Math.PI * 2);
+            ctx.fill();
+        });
+
+        ctx.restore();
+    }
+
+    function drawTacticalLines(accent) {
+        ctx.save();
+        ctx.strokeStyle = accent;
+        ctx.lineWidth = 1;
+
+        // Short, angled tactical traces in the side margins.
+        for (let side = 0; side < 2; side++) {
+            const baseX = side === 0 ? 22 : width - 22;
+            const direction = side === 0 ? 1 : -1;
+
+            for (let i = 0; i < 4; i++) {
+                const y = height * (0.25 + i * 0.15);
+                const length = 18 + (
+                    Math.sin(time * 0.001 + i) + 1
+                ) * 14;
+
+                ctx.globalAlpha = 0.18;
+                ctx.beginPath();
+                ctx.moveTo(baseX, y);
+                ctx.lineTo(baseX + direction * length, y - 12);
+                ctx.lineTo(baseX + direction * length * 1.7, y - 12);
+                ctx.stroke();
+
+                ctx.globalAlpha = 0.55;
+                ctx.beginPath();
+                ctx.arc(
+                    baseX + direction * length * 1.7,
+                    y - 12,
+                    2,
+                    0,
+                    Math.PI * 2
+                );
+                ctx.stroke();
+            }
+        }
+
+        ctx.restore();
+    }
+
+    function drawDataBars(accent) {
+        ctx.save();
+
+        const barWidth = 4;
+        const gap = 4;
+        const totalWidth = dataPoints.length * (barWidth + gap);
+
+        // Small analytics display in the bottom corner.
+        const xStart = width - totalWidth - 26;
+        const yBase = height - 35;
+
+        dataPoints.forEach((point, i) => {
+            const animated = (
+                Math.sin(time * 0.0012 + point.phase) + 1
+            ) / 2;
+
+            const barHeight = 5 + animated * 23;
+            const x = xStart + i * (barWidth + gap);
+
+            ctx.globalAlpha = 0.35 + animated * 0.35;
+            ctx.fillStyle = accent;
+            ctx.fillRect(x, yBase - barHeight, barWidth, barHeight);
+        });
+
+        // Tiny HUD label
+        ctx.globalAlpha = 0.48;
+        ctx.fillStyle = accent;
+        ctx.font = "9px monospace";
+        ctx.textAlign = "right";
+        ctx.fillText("LIVE DATA", width - 26, height - 14);
+
+        ctx.restore();
+    }
+
+    function drawCornerMarks(accent) {
+        ctx.save();
+        ctx.strokeStyle = accent;
+        ctx.lineWidth = 1;
+
+        const size = 17;
+        const inset = 16;
+
+        const corners = [
+            [inset, inset, 1, 1],
+            [width - inset, inset, -1, 1],
+            [inset, height - inset, 1, -1],
+            [width - inset, height - inset, -1, -1]
+        ];
+
+        corners.forEach(([x, y, dx, dy]) => {
+            ctx.globalAlpha = 0.48;
+            ctx.beginPath();
+            ctx.moveTo(x + dx * size, y);
+            ctx.lineTo(x, y);
+            ctx.lineTo(x, y + dy * size);
+            ctx.stroke();
+        });
+
+        ctx.restore();
+    }
+
+    function render(timestamp) {
+        if (document.hidden) {
+            animationId = null;
+            return;
+        }
+
+        // Limit animation to about 30 FPS.
+        if (timestamp - lastFrame < 33) {
+            animationId = requestAnimationFrame(render);
+            return;
+        }
+
+        lastFrame = timestamp;
+        time = reducedMotion.matches ? 0 : timestamp;
+
+        ctx.clearRect(0, 0, width, height);
+
+        const accent = getAccent();
+
+        drawGrid(accent);
+
+        drawRadar(
+            width * 0.12,
+            height * 0.35,
+            Math.min(95, width * 0.12),
+            accent,
+            time * 0.00025
+        );
+
+        drawRadar(
+            width * 0.88,
+            height * 0.68,
+            Math.min(78, width * 0.10),
+            accent,
+            -time * 0.0002
+        );
+
+        drawConnections(accent);
+        drawTacticalLines(accent);
+        drawDataBars(accent);
+        drawCornerMarks(accent);
+
+        if (!reducedMotion.matches) {
+            animationId = requestAnimationFrame(render);
+        }
+    }
+
+    function startAnimation() {
+        if (animationId !== null) return;
+        animationId = requestAnimationFrame(render);
+    }
+
+    function stopAnimation() {
+        if (animationId !== null) {
+            cancelAnimationFrame(animationId);
+            animationId = null;
+        }
+    }
+
+    document.addEventListener("visibilitychange", function () {
+        if (document.hidden) {
+            stopAnimation();
+        } else {
+            startAnimation();
+        }
+    });
+
+    reducedMotion.addEventListener?.("change", function () {
+        stopAnimation();
+        startAnimation();
+    });
+
+    window.addEventListener("resize", resizeCanvas);
+
+    resizeCanvas();
+    startAnimation();
+})();
+</script>
+
 
 </body>
 
