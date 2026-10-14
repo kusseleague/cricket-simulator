@@ -1737,7 +1737,7 @@ function updateScoreboard(message){
 
     ⭐
 
-    <br>
+   &nbsp; | &nbsp;
 
     ${nonStriker ? nonStriker.name : "-"}
     ${nonStriker && batsmanStats[nonStriker.name]
