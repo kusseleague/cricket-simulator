@@ -647,6 +647,81 @@ function applyVenueTheme(venue) {
 applyVenueTheme("melbourne");
 </script>
 
+    
+<!-- STUMPS BACKGROUND MUSIC -->
+<audio id="stumpsMusic" loop preload="auto">
+    <source src="stumps-theme.mp3" type="audio/mpeg">
+</audio>
+
+<div id="musicControls">
+    <button id="musicToggle" type="button" aria-label="Mute background music">
+        🔊 MUSIC ON
+    </button>
+</div>
+
+<style>
+#musicControls {
+    position: fixed;
+    bottom: 18px;
+    right: 18px;
+    z-index: 9999;
+}
+
+#musicToggle {
+    background: var(--panel, #111713);
+    color: var(--accent, #24d17b);
+    border: 1px solid var(--accent, #24d17b);
+    border-radius: 12px;
+    padding: 11px 15px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 14px var(--accent-glow, #24d17b35);
+}
+
+#musicToggle:hover {
+    opacity: 0.85;
+}
+</style>
+
+<script>
+(function () {
+    const music = document.getElementById("stumpsMusic");
+    const toggle = document.getElementById("musicToggle");
+
+    if (!music || !toggle) return;
+
+    music.volume = 0.35;
+
+    function updateButton() {
+        toggle.textContent = music.paused || music.muted
+            ? "🔇 MUSIC OFF"
+            : "🔊 MUSIC ON";
+
+        toggle.setAttribute(
+            "aria-label",
+            music.paused || music.muted
+                ? "Play background music"
+                : "Mute background music"
+        );
+    }
+
+    toggle.addEventListener("click", function () {
+        if (music.paused || music.muted) {
+            music.muted = false;
+            music.play().then(updateButton).catch(updateButton);
+        } else {
+            music.muted = true;
+            updateButton();
+        }
+    });
+
+    // Attempt autoplay when Stumps opens.
+    music.play().then(updateButton).catch(function () {
+        updateButton();
+    });
+})();
+</script>
+
 
 </body>
 
