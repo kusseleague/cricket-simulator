@@ -1121,6 +1121,10 @@ if(result === "W" && balls % 6 === 5){
 
 if(result === "W"){
 
+if (window.triggerStumpsWicketEffect) {
+    window.triggerStumpsWicketEffect();
+}
+    
     if(striker && batsmanStats[striker.name]){
 
         batsmanStats[striker.name].out = true;
