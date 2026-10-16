@@ -1448,112 +1448,91 @@ applyVenueTheme("melbourne");
 
 
 
-    /* ==========================================
-   STUMPS - MATCH END FIREWORKS
-   ========================================== */
+   
+</script>
 
-
-
-    
 <script>
 /* ==========================================
    STUMPS - VENUE-COLOURED MATCH FIREWORKS
    ========================================== */
-
 (() => {
-    let canvas;
-    let ctx;
+    let canvas = null;
+    let ctx = null;
     let particles = [];
-    let animationFrame = null;
+    let frame = null;
     let running = false;
-    let startTime = 0;
+    let startedAt = 0;
     let lastBurst = 0;
-    let accent = "#24d17b";
 
-    const DURATION = 6500;
-
-    function setupCanvas() {
-        if (canvas) return;
-
-        canvas = document.createElement("canvas");
-        canvas.id = "matchFireworksCanvas";
-        document.body.appendChild(canvas);
-
-        ctx = canvas.getContext("2d");
-
-        resizeCanvas();
-
-        window.addEventListener("resize", resizeCanvas);
+    function getVenueColour() {
+        return getComputedStyle(document.documentElement)
+            .getPropertyValue("--accent").trim() || "#24d17b";
     }
 
-    function resizeCanvas() {
-        if (!canvas) return;
+    function burst(x, y) {
+        const colour = getVenueColour();
 
-        const ratio = Math.min(window.devicePixelRatio || 1, 2);
-
-        canvas.width = window.innerWidth * ratio;
-        canvas.height = window.innerHeight * ratio;
-
-        canvas.style.width = window.innerWidth + "px";
-        canvas.style.height = window.innerHeight + "px";
-
-        ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
-    }
-
-    function launchBurst(x, y) {
-        const count = 85 + Math.floor(Math.random() * 45);
-
-        for (let i = 0; i < count; i++) {
+        for (let i = 0; i < 100; i++) {
             const angle = Math.random() * Math.PI * 2;
-            const speed = 1.2 + Math.random() * 5.5;
+            const speed = 1.5 + Math.random() * 5;
 
             particles.push({
-                x: x,
-                y: y,
+                x, y,
                 vx: Math.cos(angle) * speed,
                 vy: Math.sin(angle) * speed,
                 life: 1,
-                decay: 0.009 + Math.random() * 0.012,
+                decay: 0.008 + Math.random() * 0.012,
                 size: 1.5 + Math.random() * 2.5,
-                color: accent,
-                gravity: 0.035 + Math.random() * 0.045
+                colour
             });
         }
     }
 
-    function animate(timestamp) {
-        if (!running) return;
+    function stop() {
+        running = false;
 
-        const elapsed = timestamp - startTime;
-        const width = window.innerWidth;
-        const height = window.innerHeight;
+        if (frame !== null) cancelAnimationFrame(frame);
+        if (canvas) canvas.remove();
 
-        ctx.clearRect(0, 0, width, height);
+        canvas = null;
+        ctx = null;
+        frame = null;
+        particles = [];
+    }
 
-        if (elapsed - lastBurst > 350 && elapsed < DURATION - 900) {
-            launchBurst(
-                width * (0.12 + Math.random() * 0.76),
-                height * (0.12 + Math.random() * 0.58)
-            );
+    function animate(now) {
+        if (!running || !canvas) return;
 
-            lastBurst = elapsed;
+        const w = window.innerWidth;
+        const h = window.innerHeight;
+        const elapsed = now - startedAt;
+
+        ctx.clearRect(0, 0, w, h);
+
+        if (now - lastBurst > 450 && elapsed < 6500) {
+            burst(w * (0.12 + Math.random() * 0.76),
+                  h * (0.12 + Math.random() * 0.52));
+            lastBurst = now;
         }
 
-        particles = particles.filter(p => p.life > 0);
+        for (let i = particles.length - 1; i >= 0; i--) {
+            const p = particles[i];
 
-        for (const p of particles) {
             p.x += p.vx;
             p.y += p.vy;
-            p.vy += p.gravity;
+            p.vy += 0.035;
             p.vx *= 0.99;
-            p.vy *= 0.99;
             p.life -= p.decay;
 
-            ctx.globalAlpha = Math.max(0, p.life);
-            ctx.fillStyle = p.color;
-            ctx.shadowBlur = 12;
-            ctx.shadowColor = p.color;
+            if (p.life <= 0) {
+                particles.splice(i, 1);
+                continue;
+            }
 
+            ctx.globalAlpha = p.life;
+            ctx.fillStyle = p.colour;
+            ctx.shadowBlur = 12;
+            ctx.shadowColor = p.colour;
             ctx.beginPath();
             ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
             ctx.fill();
@@ -1562,44 +1541,60 @@ applyVenueTheme("melbourne");
         ctx.globalAlpha = 1;
         ctx.shadowBlur = 0;
 
-        if (elapsed >= DURATION && particles.length === 0) {
-            running = false;
-            ctx.clearRect(0, 0, width, height);
-            canvas.remove();
-            canvas = null;
-            ctx = null;
-            animationFrame = null;
+        if (elapsed > 7500 && particles.length === 0) {
+            stop();
             return;
         }
 
-        animationFrame = requestAnimationFrame(animate);
+        frame = requestAnimationFrame(animate);
     }
 
     window.triggerMatchFireworks = function () {
         if (running) return;
 
-        setupCanvas();
+        canvas = document.createElement("canvas");
+        canvas.id = "matchFireworksCanvas";
 
-        if (typeof getAccent === "function") {
-            accent = getAccent() || "#24d17b";
-        }
+        Object.assign(canvas.style, {
+            position: "fixed",
+            inset: "0",
+            width: "100%",
+            height: "100%",
+            pointerEvents: "none",
+            zIndex: "99999"
+        });
+
+        document.body.appendChild(canvas);
+        ctx = canvas.getContext("2d");
+
+        const ratio = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = window.innerWidth * ratio;
+        canvas.height = window.innerHeight * ratio;
+        ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
 
         particles = [];
         running = true;
-        startTime = performance.now();
-        lastBurst = -1000;
+        startedAt = performance.now();
+        lastBurst = 0;
 
-        launchBurst(
-            window.innerWidth * 0.5,
-            window.innerHeight * 0.35
-        );
-
-        animationFrame = requestAnimationFrame(animate);
+        burst(window.innerWidth * 0.5, window.innerHeight * 0.3);
+        frame = requestAnimationFrame(animate);
     };
 })();
-
-
 </script>
+
+<script>
+/* Connect fireworks to the existing match-ending function */
+if (typeof window.finishMatch === "function") {
+    const originalFinishMatch = window.finishMatch;
+
+    window.finishMatch = function (...args) {
+        window.triggerMatchFireworks();
+        return originalFinishMatch.apply(this, args);
+    };
+}
+</script>
+
 </body>
 
 </html>
