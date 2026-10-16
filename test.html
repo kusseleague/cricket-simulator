@@ -369,8 +369,8 @@ body > *:not(#stumpsHud) {
 
 <body onload="createTeamNameInputs()">
 <div id="matchWatermark">
-    <div id="watermarkTeams">PUNJAB / GUJARAT</div>
-    <div class="watermark-date" id="watermarkDate">14.10.2026</div>
+   <div id="matchWatermark"></div>
+    
 </div>
 <h1>Stumps Cricket Simulator</h1>
 
@@ -1417,7 +1417,22 @@ applyVenueTheme("melbourne");
 })();
 
     </script>
+<script>
+    function updateMatchWatermark() {
+        const watermark = document.getElementById("matchWatermark");
 
+        if (watermark) {
+            watermark.textContent = new Date().toLocaleDateString("en-GB", {
+                day: "2-digit",
+                month: "2-digit",
+                year: "numeric"
+            });
+        }
+    }
+
+    updateMatchWatermark();
+    
+</script>
 </body>
 
 </html>
