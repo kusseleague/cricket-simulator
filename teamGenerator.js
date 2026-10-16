@@ -1666,6 +1666,49 @@ function updateScoreboard(message){
 
 
     // ===============================
+    // ADAPTIVE CHASE SPECTRUM
+    // ===============================
+
+    let chaseSpectrum = "";
+
+    if (secondInnings && score < target && balls < 120) {
+
+        let runRateDifference =
+            currentRunRate - requiredRunRate;
+
+        let chaseColour;
+
+        if (runRateDifference <= -4) {
+            chaseColour = "#ff3030"; // RED
+        } else if (runRateDifference <= -2) {
+            chaseColour = "#ffad32"; // AMBER
+        } else if (runRateDifference < -1) {
+            chaseColour = "#f4d738"; // YELLOW
+        } else if (runRateDifference <= 1) {
+            chaseColour = "#31c96b"; // GREEN
+        } else {
+            chaseColour = "#319cff"; // BLUE
+        }
+
+        chaseSpectrum = `
+            <div style="
+                margin: 12px auto;
+                text-align: center;
+                font-family: monospace;
+                font-size: clamp(14px, 3vw, 24px);
+                font-weight: bold;
+                letter-spacing: 1px;
+                white-space: nowrap;
+                overflow: hidden;
+                color: ${chaseColour};
+                text-shadow: 0 0 8px ${chaseColour};
+                transition: color 0.4s ease;
+            "> &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; </div>
+        `;
+
+    }
+
+    // ===============================
     // CHASE INFORMATION
     // ===============================
 
@@ -1699,11 +1742,17 @@ function updateScoreboard(message){
 
                 <br>
 
+                
                 📈 CRR: ${currentRunRate.toFixed(2)}
                 |
                 📊 RRR: ${requiredRunRate.toFixed(2)}
 
                 <br>
+
+                ${chaseSpectrum}
+
+                <br>
+
             `;
 
         }
