@@ -1104,6 +1104,50 @@ applyVenueTheme("melbourne");
         ctx.restore();
     }
 
+
+    // ==========================================
+    // WICKET IMPACT - RADAR PULSE
+    // ==========================================
+
+    let wicketPulseStart = -1;
+
+    window.triggerStumpsWicketEffect = function () {
+        if (reducedMotion.matches) return;
+        wicketPulseStart = performance.now();
+    };
+
+    function drawWicketPulse(accent, timestamp) {
+        if (wicketPulseStart < 0) return;
+
+        const elapsed = timestamp - wicketPulseStart;
+        const duration = 900;
+
+        if (elapsed >= duration) {
+            wicketPulseStart = -1;
+            return;
+        }
+
+        const progress = elapsed / duration;
+        const radius = 30 + progress * Math.min(width, height) * 0.45;
+
+        ctx.save();
+        ctx.globalAlpha = 1 - progress;
+        ctx.strokeStyle = accent;
+        ctx.lineWidth = 3;
+
+        ctx.beginPath();
+        ctx.arc(width / 2, height / 2, radius, 0, Math.PI * 2);
+        ctx.stroke();
+
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.arc(width / 2, height / 2, radius * 0.65, 0, Math.PI * 2);
+        ctx.stroke();
+
+        ctx.restore();
+    }
+
+    
     function render(timestamp) {
         if (document.hidden) {
             animationId = null;
