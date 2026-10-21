@@ -2368,7 +2368,7 @@ function confirmTournamentFormat(){
 
 let tournamentFixtures = [];
 let currentTournamentFixtureIndex = null;
-
+let playoffFormat = "";
 // ===============================
 // KNOCKOUT STAGE
 // ===============================
