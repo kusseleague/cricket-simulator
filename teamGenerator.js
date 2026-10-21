@@ -2506,23 +2506,23 @@ function generateFixtures(){
 // GENERATE KNOCKOUT STAGE
 // ===============================
 
-function generateKnockoutStage(){
 
-    if(knockoutStarted){
+function generateKnockoutStage() {
+
+    if (knockoutStarted) {
         return;
     }
 
     knockoutStarted = true;
 
-    // Rank teams using the same points-table rules
+    // Rank teams using the existing points-table rules
+    let sortedTeams = [...tournamentTeams].sort((a, b) => {
 
-    let sortedTeams = [...tournamentTeams].sort((a,b) => {
-
-        if(b.points !== a.points){
+        if (b.points !== a.points) {
             return b.points - a.points;
         }
 
-        if(b.nrr !== a.nrr){
+        if (b.nrr !== a.nrr) {
             return b.nrr - a.nrr;
         }
 
@@ -2530,14 +2530,68 @@ function generateKnockoutStage(){
 
     });
 
-    let first = sortedTeams[0];
-    let second = sortedTeams[1];
+    // ===============================
+    // TOP 4 PLAYOFFS — SEMI-FINALS
+    // SF1: 1st vs 3rd
+    // SF2: 2nd vs 4th
+    // ===============================
 
+    if (playoffFormat === "top4") {
+
+        if (sortedTeams.length < 4) {
+            knockoutStarted = false;
+            alert("At least four teams are required for the semi-finals.");
+            return;
+        }
+
+        let first = sortedTeams[0];
+        let second = sortedTeams[1];
+        let third = sortedTeams[2];
+        let fourth = sortedTeams[3];
+
+        tournamentFixtures.push({
+
+            teamA: first,
+            teamB: third,
+
+            stage: "semi",
+            semiNumber: 1,
+
+            played: false,
+            scoreA: null,
+            scoreB: null,
+            winner: null
+
+        });
+
+        tournamentFixtures.push({
+
+            teamA: second,
+            teamB: fourth,
+
+            stage: "semi",
+            semiNumber: 2,
+
+            played: false,
+            scoreA: null,
+            scoreB: null,
+            winner: null
+
+        });
+
+        semiFinalsCreated = true;
+
+        displayFixtures();
+        return;
+    }
 
     // ===============================
-    // QUALIFIER
+    // TOP 3 PLAYOFFS — QUALIFIER 1
     // 1st vs 2nd
     // ===============================
+
+    let first = sortedTeams[0];
+    let second = sortedTeams[1];
 
     tournamentFixtures.push({
 
@@ -2547,10 +2601,8 @@ function generateKnockoutStage(){
         stage: "qualifier",
 
         played: false,
-
         scoreA: null,
         scoreB: null,
-
         winner: null
 
     });
@@ -2560,6 +2612,7 @@ function generateKnockoutStage(){
     displayFixtures();
 
 }
+
   
 function displayFixtures(){
 
