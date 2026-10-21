@@ -586,6 +586,7 @@ fixture.winner = winnerTeam;
 // ===============================
 
 if(
+    fixture.stage === "semi" ||
     fixture.stage === "qualifier" ||
     fixture.stage === "eliminator" ||
     fixture.stage === "third" ||
