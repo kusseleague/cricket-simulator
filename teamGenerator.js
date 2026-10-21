@@ -2377,6 +2377,7 @@ let knockoutStarted = false;
 
 let qualifierCreated = false;
 let eliminatorCreated = false;
+let semiFinalsCreated = false;
 let thirdPlaceCreated = false;
 let finalCreated = false;
 
