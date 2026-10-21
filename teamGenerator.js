@@ -2671,7 +2671,15 @@ function displayFixtures(){
 
     tournamentFixtures.forEach((fixture,index) => {
 
-        let matchTitle = `🏏 MATCH ${index + 1}`;
+     let matchTitle = `🏏 MATCH ${index + 1}`;
+
+if (fixture.stage === "qualifier") {
+    matchTitle = "🏆 QUALIFIER 1";
+}
+
+else if (fixture.stage === "eliminator") {
+    matchTitle = "🏆 QUALIFIER 2";
+}
 
         if(fixture.stage === "semi"){
             matchTitle =
