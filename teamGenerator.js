@@ -593,6 +593,56 @@ if(
     fixture.stage === "final"
 ){
 
+
+    // ===============================
+    // SEMI-FINALS
+    // SF1: 1st vs 3rd
+    // SF2: 2nd vs 4th
+    // ===============================
+
+    if (fixture.stage === "semi") {
+
+        const semi1 = tournamentFixtures.find(
+            f => f.stage === "semi" && f.semiNumber === 1
+        );
+
+        const semi2 = tournamentFixtures.find(
+            f => f.stage === "semi" && f.semiNumber === 2
+        );
+
+        if (
+            semi1 &&
+            semi2 &&
+            semi1.played &&
+            semi2.played &&
+            semi1.winner &&
+            semi2.winner &&
+            !finalCreated
+        ) {
+
+            tournamentFixtures.push({
+
+                teamA: semi1.winner,
+                teamB: semi2.winner,
+
+                stage: "final",
+
+                played: false,
+                scoreA: null,
+                scoreB: null,
+                winner: null
+
+            });
+
+            finalCreated = true;
+        }
+    }
+
+    // Continue to the existing result display below.
+    // Do not add a return here.
+    else
+
+    
     // ===============================
     // QUALIFIER
     // ===============================
