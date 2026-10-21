@@ -2355,13 +2355,68 @@ function selectTournamentFormat(format){
 }
 function confirmTournamentFormat(){
 
-    displayTournamentTeams();
+   
+function confirmTournamentFormat() {
+    const container = document.getElementById("tournamentFormatMessage");
 
-    displayPointsTable();
+    container.innerHTML = `
+        <div style="margin-top: 15px;">
+            <h3>Choose Playoff Format</h3>
 
-    generateFixtures();
+            <button onclick="selectPlayoffFormat('top3')">
+                Top 3 Qualifiers
+            </button>
 
+            <button onclick="selectPlayoffFormat('top4')">
+                Top 4 Semi-Finals
+            </button>
+
+            <div id="playoffFormatMessage" style="margin-top: 10px;"></div>
+        </div>
+    `;
 }
+
+function selectPlayoffFormat(format) {
+    playoffFormat = format;
+
+    const message = document.getElementById("playoffFormatMessage");
+
+    if (format === "top3") {
+        message.innerHTML = `
+            <p><strong>Top 3 Qualifiers</strong></p>
+            <p>Qualifier 1: 1st vs 2nd</p>
+            <p>Qualifier 2: Loser of Q1 vs 3rd</p>
+            <p>Final: Winner of Q1 vs Winner of Q2</p>
+        `;
+    } else {
+        message.innerHTML = `
+            <p><strong>Top 4 Semi-Finals</strong></p>
+            <p>Semi-Final 1: 1st vs 3rd</p>
+            <p>Semi-Final 2: 2nd vs 4th</p>
+            <p>Final: Winner of SF1 vs Winner of SF2</p>
+        `;
+    }
+
+    message.innerHTML += `
+        <button onclick="confirmPlayoffFormat()">
+            Confirm Playoff Format
+        </button>
+    `;
+}
+
+function confirmPlayoffFormat() {
+    if (playoffFormat !== "top3" && playoffFormat !== "top4") {
+        alert("Please select a playoff format first.");
+        return;
+    }
+
+    displayTournamentTeams();
+    displayPointsTable();
+    generateFixtures();
+}
+
+
+
 // ===============================
 // TOURNAMENT FIXTURE GENERATOR
 // ===============================
