@@ -2404,7 +2404,7 @@ function selectTournamentFormat(format){
         `;
 
 }
-function confirmTournamentFormat(){
+
 
    
 function confirmTournamentFormat() {
