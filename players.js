@@ -1023,6 +1023,31 @@ bat: 65,
 bowl: 80,
 stamina: 88
 },
+
+  {
+name: "F. Zaman",
+role: "Batsman",
+bat: 86,
+bowl: 10,
+stamina: 90
+  },
+
+   {
+name: "Shaheen Afridi",
+role: "All Rounder",
+bat: 40,
+bowl: 86,
+stamina: 85
+  },
+
+ {
+name: "Shahid Afridi",
+role: "All Rounder",
+bat: 87,
+bowl: 35,
+stamina: 90
+  },
+  
 ];
 players.sort((a, b) =>
     a.name.localeCompare(b.name, undefined, { sensitivity: "base" })
