@@ -675,7 +675,7 @@ stamina: 87
 {
 name: "Glenn Phillips",
 role: "All Rounder",
-bat: 85,
+bat: 84,
 bowl: 65,
 stamina: 91
 },
