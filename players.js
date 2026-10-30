@@ -507,8 +507,8 @@ stamina: 92
 {
 name: "Glenn Maxwell",
 role: "All Rounder",
-bat: 79,
-bowl: 83,
+bat: 83,
+bowl: 80,
 stamina: 91
 },
 
