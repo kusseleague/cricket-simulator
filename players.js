@@ -1025,7 +1025,7 @@ stamina: 88
 },
 
   {
-name: "F. Zaman",
+name: "Fakhar Zaman",
 role: "Batsman",
 bat: 86,
 bowl: 10,
