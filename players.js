@@ -237,7 +237,7 @@ stamina: 86
 {
 name: "Shai Hope",
 role: "Wicketkeeper",
-bat: 99,
+bat: 85,
 bowl: 10,
 stamina: 86
 },
