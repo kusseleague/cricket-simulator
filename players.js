@@ -1079,6 +1079,15 @@ bat: 86,
 bowl: 10,
 stamina: 86
 },
+
+  {
+name: "Lendl Simmons",
+role: "Batsman",
+bat: 87,
+bowl: 15,
+stamina: 91
+},
+  
 ];
 players.sort((a, b) =>
     a.name.localeCompare(b.name, undefined, { sensitivity: "base" })
