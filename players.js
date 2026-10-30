@@ -675,7 +675,7 @@ stamina: 87
 {
 name: "Glenn Phillips",
 role: "All Rounder",
-bat: 79,
+bat: 85,
 bowl: 65,
 stamina: 91
 },
@@ -811,7 +811,7 @@ stamina: 86
   {
     name: "Chris Lynn",
   role: "Batsman",
-  bat: 88,
+  bat: 87,
   bowl: 10,
   stamina: 93
   },
@@ -1047,7 +1047,38 @@ bat: 87,
 bowl: 35,
 stamina: 90
   },
+
+  {
+name: "Martin Guptill",
+role: "Batsman",
+bat: 87,
+bowl: 10,
+stamina: 87
+},
+
+  {
+name: "Jimmy Neesham",
+role: "All Rounder",
+bat: 55,
+bowl: 84,
+stamina: 87
+},
+
+  {
+name: "Mitchell McClenaghan",
+role: "Bowler",
+bat: 25,
+bowl: 84,
+stamina: 86
+},
   
+  {
+name: "Aaron Finch",
+role: "Batsman",
+bat: 86,
+bowl: 10,
+stamina: 86
+},
 ];
 players.sort((a, b) =>
     a.name.localeCompare(b.name, undefined, { sensitivity: "base" })
