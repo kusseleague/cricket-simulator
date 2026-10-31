@@ -10,6 +10,7 @@ bowl: 15,
 stamina: 88
 },
 
+
 {
 name: "Rohit Sharma",
 role: "Batsman",
@@ -1087,7 +1088,32 @@ bat: 87,
 bowl: 15,
 stamina: 91
 },
+
   
+{
+name: "Eoin Morgan",
+role: "Batsman",
+bat: 83,
+bowl: 15,
+stamina: 86
+},
+
+
+{
+name: "James Faulkner",
+role: "All Rounder",
+bat: 35,
+bowl: 84,
+stamina: 86
+},
+  
+{
+name: "Josh Inglis",
+role: "Wicketkeeper",
+bat: 85,
+bowl: 15,
+stamina: 88
+},
 ];
 players.sort((a, b) =>
     a.name.localeCompare(b.name, undefined, { sensitivity: "base" })
