@@ -376,6 +376,66 @@ body > *:not(#stumpsHud) {
     pointer-events: none;
     z-index: 99999;
 }
+
+/* =================================
+   STUMPS MODE NAVIGATION
+   ================================= */
+
+#stumpsModeNav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 25px auto 30px;
+    max-width: 900px;
+}
+
+#stumpsModeNav button {
+    flex: 1;
+    min-width: 160px;
+    padding: 16px 20px;
+    margin: 0;
+
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+
+    background: rgba(12, 25, 17, 0.92);
+    color: var(--accent);
+    border: 1px solid var(--accent-dark);
+    border-radius: 12px;
+
+    transition: all 0.25s ease;
+}
+
+#stumpsModeNav button:hover {
+    background: var(--accent-dark);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 0 18px var(--accent-glow);
+}
+
+#stumpsModeNav button.active {
+    background: var(--accent-dark);
+    color: white;
+    border-color: var(--accent);
+    box-shadow: 0 0 20px var(--accent-glow);
+}
+
+@media (max-width: 600px) {
+    #stumpsModeNav {
+        gap: 6px;
+    }
+
+    #stumpsModeNav button {
+        min-width: 0;
+        padding: 12px 6px;
+        font-size: 9px;
+        letter-spacing: 0;
+    }
+}
     
 </style>
 <title>Stumps Cricket Simulator</title>
