@@ -150,7 +150,24 @@
           <label>Away team <select id="stumpsSchedulerAway" ${disabled}>${options(Math.min(1,teams().length-1))}</select></label>
           <label>Date <input type="date" id="stumpsSchedulerNewDate" ${disabled}></label>
           <label>Time <input type="time" id="stumpsSchedulerNewTime" ${disabled}></label>
-          <label>Stadium <input type="text" id="stumpsSchedulerNewVenue" placeholder="e.g. Wankhede Stadium" maxlength="100" ${disabled}></label>
+        <label>Stadium
+  <select id="stumpsSchedulerNewVenue" ${disabled}>
+    <option value="">Select Stadium</option>
+    <option value="chandigarh">Chandigarh</option>
+    <option value="chennai">Chennai</option>
+    <option value="mumbai">Mumbai</option>
+    <option value="brisbane">Brisbane</option>
+    <option value="napoli">Napoli</option>
+    <option value="birmingham">Birmingham</option>
+    <option value="london">London</option>
+    <option value="manchester">Manchester</option>
+    <option value="sydney">Sydney</option>
+    <option value="melbourne">Melbourne</option>
+    <option value="abudhabi">Abu Dhabi</option>
+    <option value="dubai">Dubai</option>
+    <option value="milano">Milano</option>
+  </select>
+</label>
         </div><button type="button" data-global="add" ${disabled}>➕ Add Fixture</button>
       </details>
       <div class="stumps-sched-list">${rows||'<p>No group fixtures yet. Add one manually or generate automatically.</p>'}</div>`}
