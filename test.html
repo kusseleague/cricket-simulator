@@ -1682,6 +1682,43 @@ if (typeof window.finishMatch === "function") {
 }
 </script>
 
+<script>
+/* =================================
+   STUMPS MODE NAVIGATION
+   ================================= */
+
+function switchStumpsMode(mode) {
+
+    const oneVsOne = document.getElementById("stumpsOneVsOne");
+    const tournament = document.getElementById("tournamentSetup");
+    const triSeries = document.getElementById("triSeriesSetup");
+
+    if (!oneVsOne || !tournament || !triSeries) {
+        console.warn("Stumps mode section not found.");
+        return;
+    }
+
+    oneVsOne.style.display = mode === "1vs1" ? "block" : "none";
+    tournament.style.display = mode === "tournament" ? "block" : "none";
+
+    // Tri-Series is currently nested inside tournamentSetup.
+    if (mode === "tri") {
+        tournament.style.display = "block";
+        triSeries.style.display = "block";
+    } else {
+        triSeries.style.display = "none";
+    }
+
+    document.querySelectorAll("#stumpsModeNav button")
+        .forEach((button, index) => {
+            button.classList.toggle(
+                "active",
+                index === ["1vs1", "tournament", "tri"].indexOf(mode)
+            );
+        });
+}
+</script>
+    
 </body>
 
 </html>
