@@ -240,6 +240,44 @@
       window[name]=function(...args){const result=original.apply(this,args);scheduleRefresh();return result;};
     });
   }
+     // AUTO-LOAD THE SCHEDULED STADIUM WHEN A FIXTURE STARTS
+
+  function installFixtureVenueSwitch() {
+
+    const originalStart = window.startTournamentMatch;
+
+    if (typeof originalStart !== 'function') {
+      console.warn('[Stumps Scheduler] Tournament start function not found.');
+      return;
+    }
+
+    window.startTournamentMatch = function (...args) {
+
+      const fixtureIndex = args[0];
+      const fixture = tournamentFixtures[fixtureIndex];
+
+      if (fixture && fixture.scheduleVenue) {
+
+        const venue = fixture.scheduleVenue;
+
+        const venueSelect = document.getElementById('venueSelect');
+
+        if (venueSelect) {
+          venueSelect.value = venue;
+        }
+
+        if (typeof applyVenueTheme === 'function') {
+          applyVenueTheme(venue);
+        }
+
+        console.log('[Stumps] Fixture stadium loaded:', venue);
+      }
+
+      return originalStart.apply(this, args);
+    };
+  }
+
+  document.addEventListener('DOMContentLoaded', installFixtureVenueSwitch);
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install);
   else install();
 })();
