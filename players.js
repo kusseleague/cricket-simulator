@@ -1131,6 +1131,29 @@ bowl: 65,
 stamina: 89
 },
 
+{
+name: "Sanju Samson",
+role: "Wicketkeeper",
+bat: 87,
+bowl: 10,
+stamina: 87
+},
+
+{
+name: "Ryan Rickleton",
+role: "Wicketkeeper",
+bat: 86,
+bowl: 10,
+stamina: 90
+},
+
+{
+name: "Vaibhav Sooryavanshi",
+role: "Batsman",
+bat: 90,
+bowl: 10,
+stamina: 96
+},
   
 {
 name: "Josh Inglis",
