@@ -1154,6 +1154,14 @@ bat: 90,
 bowl: 10,
 stamina: 96
 },
+
+{
+name: "Gautam Gambhir",
+role: "Batsman",
+bat: 86,
+bowl: 10,
+stamina: 87
+},
   
 {
 name: "Josh Inglis",
