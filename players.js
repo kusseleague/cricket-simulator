@@ -1114,6 +1114,23 @@ bat: 10,
 bowl: 86,
 stamina: 86
 },
+
+{
+name: "Babar Azam",
+role: "Batsman",
+bat: 84,
+bowl: 10,
+stamina: 86
+},
+
+{
+name: "Shashank Singh",
+role: "All Rounder",
+bat: 85,
+bowl: 65,
+stamina: 89
+},
+
   
 {
 name: "Josh Inglis",
