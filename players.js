@@ -1178,6 +1178,14 @@ bat: 84,
 bowl: 10,
 stamina: 86
 },
+
+{
+name: "Ambati Rayudu",
+role: "Batsman",
+bat: 84,
+bowl: 10,
+stamina: 86
+},
   
 {
 name: "Josh Inglis",
