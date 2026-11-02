@@ -1162,6 +1162,14 @@ bat: 86,
 bowl: 10,
 stamina: 87
 },
+
+{
+name: "Dewald Brevis",
+role: "Batsman",
+bat: 84,
+bowl: 10,
+stamina: 89
+},
   
 {
 name: "Josh Inglis",
