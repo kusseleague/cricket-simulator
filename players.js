@@ -1106,6 +1106,14 @@ bat: 35,
 bowl: 84,
 stamina: 86
 },
+
+{
+name: "MD Amir",
+role: "Bowler",
+bat: 10,
+bowl: 86,
+stamina: 86
+},
   
 {
 name: "Josh Inglis",
