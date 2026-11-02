@@ -1186,6 +1186,38 @@ bat: 84,
 bowl: 10,
 stamina: 86
 },
+
+{
+name: "VC Varun",
+role: "Bowler",
+bat: 10,
+bowl: 87,
+stamina: 86
+},
+
+{
+name: "Rahul Chahar",
+role: "Bowler",
+bat: 20,
+bowl: 84,
+stamina: 86
+},
+
+{
+name: "Deepak Chahar",
+role: "Bowler",
+bat: 20,
+bowl: 84,
+stamina: 86
+},
+
+{
+name: "Andrew Tye",
+role: "Bowler",
+bat: 10,
+bowl: 85,
+stamina: 86
+},
   
 {
 name: "Josh Inglis",
