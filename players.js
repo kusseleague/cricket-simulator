@@ -1243,6 +1243,21 @@ bowl: 86,
 stamina: 89
 },
 
+{
+name: "Mayank Agarwal",
+role: "Batsman",
+bat: 83,
+bowl: 10,
+stamina: 86
+},
+
+{
+name: "Naseem Shah",
+role: "Bowler",
+bat: 20,
+bowl: 83,
+stamina: 84
+},
 
 ];
 players.sort((a, b) =>
