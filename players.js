@@ -1235,6 +1235,14 @@ bowl: 15,
 stamina: 86
 },
 
+{
+name: "Mitchell Santner",
+role: "Bowler",
+bat: 35,
+bowl: 86,
+stamina: 89
+},
+
 
 ];
 players.sort((a, b) =>
