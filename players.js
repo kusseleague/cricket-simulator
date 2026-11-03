@@ -1226,6 +1226,16 @@ bat: 85,
 bowl: 15,
 stamina: 88
 },
+
+{
+name: "Justin Mosca",
+role: "Batsman",
+bat: 83,
+bowl: 15,
+stamina: 86
+},
+
+
 ];
 players.sort((a, b) =>
     a.name.localeCompare(b.name, undefined, { sensitivity: "base" })
