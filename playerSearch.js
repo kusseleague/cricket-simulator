@@ -1,45 +1,40 @@
 
 /*
 ========================================
-STUMPS PLAYER SEARCH v1.0
-Standalone Player Search Add-on
+STUMPS PLAYER SEARCH v1.1
+FIXED PLAYER DATABASE ACCESS
 ========================================
 
-FEATURES:
-- Live player search
-- 1vs1 Team A search
-- 1vs1 Team B search
-- Tournament Playing XI search
-- Search by player name or role
-- Preserve original player indexes
-- Preserve selected players
-- No changes to cricket match engine
+- Live search for 1vs1 Team A and B
+- Live search for tournament Playing XIs
+- Preserves original player indexes
+- Preserves XI selections
+- Preserves already-used player restrictions
+- No match engine modifications
 ========================================
 */
 
 (function () {
-
-    'use strict';
+    "use strict";
 
     // ===============================
-    // SEARCH BAR STYLING
+    // STYLING
     // ===============================
 
-    const style = document.createElement('style');
+    const style = document.createElement("style");
 
     style.textContent = `
-
         .stumps-player-search {
             display: block;
             width: min(100%, 460px);
-            margin: 9px 0 13px;
             padding: 12px 15px;
+            margin: 10px 0;
+
+            background: #0b140e;
+            color: white;
 
             border: 1px solid var(--accent, #24d17b);
             border-radius: 10px;
-
-            background: #0b140e;
-            color: #ffffff;
 
             font: inherit;
         }
@@ -50,80 +45,84 @@ FEATURES:
         }
 
         .stumps-search-note {
-            font-size: 12px;
             color: var(--muted, #a4b5a9);
-            margin: 0 0 10px;
+            font-size: 12px;
+            margin: 0 0 12px;
         }
-
     `;
 
     document.head.appendChild(style);
 
-
     // ===============================
-    // SEARCH HELPERS
+    // DATABASE ACCESS
     // ===============================
 
-    const normalize = value =>
-        String(value || '')
-            .toLocaleLowerCase()
+    function getPlayers() {
+        // Access the original global lexical variable.
+        // This works with const players and let players.
+
+        if (typeof players !== "undefined" &&
+            Array.isArray(players)) {
+            return players;
+        }
+
+        return [];
+    }
+
+    function normalize(value) {
+        return String(value || "")
+            .toLowerCase()
             .trim();
+    }
 
-    const matches = (player, term) =>
-        normalize(
-            player.name + ' ' + player.role
-        ).includes(normalize(term));
-
+    function matches(player, query) {
+        return normalize(
+            player.name + " " + player.role
+        ).includes(normalize(query));
+    }
 
     // ===============================
-    // 1vs1 PLAYER SEARCH
+    // 1VS1 SEARCH
     // ===============================
 
     function filterOneVsOne(side) {
 
         const input = document.getElementById(
-            'stumpsSearch' + side
+            "stumpsSearch" + side
         );
 
         const select = document.getElementById(
-            'playerSelect' + side
+            "playerSelect" + side
         );
 
-        if (
-            !input ||
-            !select ||
-            !Array.isArray(window.players)
-        ) {
-            return;
-        }
+        if (!input || !select) return;
 
-        const previous = select.value;
-        const term = input.value;
+        const database = getPlayers();
+        const previousValue = select.value;
 
         const fragment =
             document.createDocumentFragment();
 
         const placeholder =
-            document.createElement('option');
+            document.createElement("option");
 
-        placeholder.value = '';
-        placeholder.textContent =
-            'Select a player';
+        placeholder.value = "";
+        placeholder.textContent = "Select a player";
 
         fragment.appendChild(placeholder);
 
         let count = 0;
 
-        window.players.forEach((player, index) => {
+        database.forEach((player, index) => {
 
-            if (!matches(player, term)) {
+            if (!matches(player, input.value)) {
                 return;
             }
 
             const option =
-                document.createElement('option');
+                document.createElement("option");
 
-            // Keep original database index
+            // Original database index is preserved.
             option.value = String(index);
 
             option.textContent =
@@ -132,138 +131,116 @@ FEATURES:
             fragment.appendChild(option);
 
             count++;
-
         });
 
         select.replaceChildren(fragment);
 
-        // Preserve previous selection
+        // Restore selection if it still matches.
         if (
-            previous &&
+            previousValue !== "" &&
             [...select.options].some(
-                option => option.value === previous
+                option => option.value === previousValue
             )
         ) {
-            select.value = previous;
+            select.value = previousValue;
+        } else {
+            select.value = "";
         }
 
         const note = document.getElementById(
-            'stumpsSearchCount' + side
+            "stumpsSearchCount" + side
         );
 
         if (note) {
             note.textContent =
                 `${count} matching players`;
         }
-
     }
-
-
-    // ===============================
-    // INSTALL 1vs1 SEARCH BARS
-    // ===============================
 
     function installOneVsOne() {
 
-        for (const side of ['A', 'B']) {
+        ["A", "B"].forEach(side => {
 
             const select = document.getElementById(
-                'playerSelect' + side
+                "playerSelect" + side
             );
 
-            if (
-                !select ||
-                document.getElementById(
-                    'stumpsSearch' + side
-                )
-            ) {
-                continue;
+            if (!select) return;
+
+            if (!document.getElementById(
+                "stumpsSearch" + side
+            )) {
+
+                const input =
+                    document.createElement("input");
+
+                input.type = "search";
+                input.id = "stumpsSearch" + side;
+                input.className =
+                    "stumps-player-search";
+
+                input.placeholder =
+                    `🔎 Search Team ${side} players...`;
+
+                input.autocomplete = "off";
+
+                const note =
+                    document.createElement("p");
+
+                note.id =
+                    "stumpsSearchCount" + side;
+
+                note.className =
+                    "stumps-search-note";
+
+                select.before(input, note);
+
+                input.addEventListener(
+                    "input",
+                    () => filterOneVsOne(side)
+                );
             }
 
-            const input =
-                document.createElement('input');
-
-            input.type = 'search';
-
-            input.id =
-                'stumpsSearch' + side;
-
-            input.className =
-                'stumps-player-search';
-
-            input.placeholder =
-                `🔎 Search Team ${side} players...`;
-
-            input.autocomplete = 'off';
-
-            input.setAttribute(
-                'aria-label',
-                `Search Team ${side} players`
-            );
-
-            const note =
-                document.createElement('p');
-
-            note.id =
-                'stumpsSearchCount' + side;
-
-            note.className =
-                'stumps-search-note';
-
-            select.before(input, note);
-
-            input.addEventListener(
-                'input',
-                () => filterOneVsOne(side)
-            );
-
             filterOneVsOne(side);
-
-        }
-
+        });
     }
 
-
     // ===============================
-    // TOURNAMENT PLAYER SEARCH
+    // TOURNAMENT SEARCH
     // ===============================
 
     function filterTournament() {
 
         const input = document.getElementById(
-            'stumpsTournamentSearch'
+            "stumpsTournamentSearch"
         );
 
         const list = document.getElementById(
-            'tournamentPlayerList'
+            "tournamentPlayerList"
         );
 
-        if (
-            !input ||
-            !list ||
-            !Array.isArray(window.players)
-        ) {
-            return;
-        }
+        if (!input || !list) return;
 
+        const database = getPlayers();
         let count = 0;
 
-        list.querySelectorAll(
+        const buttons = list.querySelectorAll(
             'button[onclick^="toggleTournamentPlayer("]'
-        ).forEach(button => {
+        );
 
-            const match = button
-                .getAttribute('onclick')
-                .match(
-                    /toggleTournamentPlayer\((\d+)\)/
-                );
+        buttons.forEach(button => {
 
-            if (!match) {
-                return;
-            }
+            const onclick =
+                button.getAttribute("onclick") || "";
 
-            const player =
-                window.players[Number(match[1])];
+            const match = onclick.match(
+                /toggleTournamentPlayer\(\s*(\d+)\s*\)/
+            );
+
+            if (!match) return;
+
+            const index = Number(match[1]);
+            const player = database[index];
 
             const visible =
                 !!player &&
@@ -273,201 +250,145 @@ FEATURES:
 
             if (row) {
                 row.style.display =
-                    visible ? '' : 'none';
+                    visible ? "" : "none";
             }
 
-            if (visible) {
-                count++;
-            }
-
+            if (visible) count++;
         });
 
         const note = document.getElementById(
-            'stumpsTournamentSearchCount'
+            "stumpsTournamentSearchCount"
         );
 
         if (note) {
             note.textContent =
                 `${count} matching players`;
         }
-
     }
-
-
-    // ===============================
-    // INSTALL TOURNAMENT SEARCH
-    // ===============================
 
     function installTournament() {
 
         const list = document.getElementById(
-            'tournamentPlayerList'
+            "tournamentPlayerList"
         );
 
-        if (
-            !list ||
-            document.getElementById(
-                'stumpsTournamentSearch'
-            )
-        ) {
+        if (!list) return;
+
+        if (!document.getElementById(
+            "stumpsTournamentSearch"
+        )) {
+
+            const input =
+                document.createElement("input");
+
+            input.type = "search";
+            input.id = "stumpsTournamentSearch";
+
+            input.className =
+                "stumps-player-search";
+
+            input.placeholder =
+                "🔎 Search cricketers by name or role...";
+
+            input.autocomplete = "off";
+
+            const note =
+                document.createElement("p");
+
+            note.id =
+                "stumpsTournamentSearchCount";
+
+            note.className =
+                "stumps-search-note";
+
+            list.before(input, note);
+
+            input.addEventListener(
+                "input",
+                filterTournament
+            );
+        }
+
+        filterTournament();
+    }
+
+    // ===============================
+    // WRAP ORIGINAL FUNCTIONS
+    // ===============================
+
+    function wrapFunction(name, callback) {
+
+        const original = window[name];
+
+        if (typeof original !== "function") {
             return;
         }
 
-        const input =
-            document.createElement('input');
+        if (original.stumpsSearchWrapped) {
+            return;
+        }
 
-        input.type = 'search';
+        const wrapped = function (...args) {
 
-        input.id =
-            'stumpsTournamentSearch';
+            const result =
+                original.apply(this, args);
 
-        input.className =
-            'stumps-player-search';
+            callback();
 
-        input.placeholder =
-            '🔎 Search players by name or role...';
+            return result;
+        };
 
-        input.autocomplete = 'off';
+        wrapped.stumpsSearchWrapped = true;
 
-        input.setAttribute(
-            'aria-label',
-            'Search tournament players'
-        );
-
-        const note =
-            document.createElement('p');
-
-        note.id =
-            'stumpsTournamentSearchCount';
-
-        note.className =
-            'stumps-search-note';
-
-        list.before(input, note);
-
-        input.addEventListener(
-            'input',
-            filterTournament
-        );
-
-        filterTournament();
-
+        window[name] = wrapped;
     }
 
-
     // ===============================
-    // CONNECT TO EXISTING FUNCTIONS
+    // INITIALISATION
     // ===============================
 
-    function installHooks() {
+    function initialise() {
 
-        // 1vs1 dropdown loading
+        // Preserve original 1vs1 dropdown loading.
+        wrapFunction(
+            "loadPlayerDropdowns",
+            installOneVsOne
+        );
 
-        if (
-            typeof window.loadPlayerDropdowns ===
-            'function'
-        ) {
+        // Install search whenever an XI is opened.
+        wrapFunction(
+            "startTournamentTeamSelection",
+            installTournament
+        );
 
-            const original =
-                window.loadPlayerDropdowns;
+        // Reapply search when tournament
+        // player buttons are rebuilt.
+        wrapFunction(
+            "displayTournamentPlayers",
+            installTournament
+        );
 
-            window.loadPlayerDropdowns =
-                function (...args) {
-
-                    const result =
-                        original.apply(this, args);
-
-                    installOneVsOne();
-
-                    filterOneVsOne('A');
-                    filterOneVsOne('B');
-
-                    return result;
-
-                };
-
-        }
-
-
-        // Tournament XI selection
-
-        if (
-            typeof window.startTournamentTeamSelection ===
-            'function'
-        ) {
-
-            const original =
-                window.startTournamentTeamSelection;
-
-            window.startTournamentTeamSelection =
-                function (...args) {
-
-                    const result =
-                        original.apply(this, args);
-
-                    installTournament();
-
-                    return result;
-
-                };
-
-        }
-
-
-        // Tournament player list updates
-
-        if (
-            typeof window.displayTournamentPlayers ===
-            'function'
-        ) {
-
-            const original =
-                window.displayTournamentPlayers;
-
-            window.displayTournamentPlayers =
-                function (...args) {
-
-                    const result =
-                        original.apply(this, args);
-
-                    installTournament();
-
-                    // Preserve search after re-render
-                    filterTournament();
-
-                    return result;
-
-                };
-
-        }
-
-
-        // Initial installation
-
+        // Initial search bars.
         installOneVsOne();
         installTournament();
 
+        console.log(
+            "🏏 STUMPS Player Search v1.1 loaded",
+            getPlayers().length,
+            "players available"
+        );
     }
 
-
-    // ===============================
-    // INITIALISE AFTER PAGE LOAD
-    // ===============================
-
-    if (
-        document.readyState === 'loading'
-    ) {
+    if (document.readyState === "loading") {
 
         document.addEventListener(
-            'DOMContentLoaded',
-            installHooks,
+            "DOMContentLoaded",
+            initialise,
             { once: true }
         );
 
     } else {
-
-        installHooks();
-
+        initialise();
     }
 
 })();
