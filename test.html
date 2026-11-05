@@ -438,33 +438,42 @@ body > *:not(#stumpsHud) {
 }
 
 
-/* STUMPS - AUTO PLAY ON RIGHT */
 
-#matchArea button[onclick="autoPlayMatch()"] {
-    position: fixed;
-    right: 25px;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 100;
+/* ====================================
+   STUMPS - MATCH BUTTON ALIGNMENT
+   ==================================== */
+
+.stumpsMatchControls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    margin-top: 20px;
 }
 
-#matchArea button[onclick="autoPlayMatch()"]:hover {
-    transform: translateY(-50%);
+.stumpsMatchControls button {
+    position: static !important;
+    transform: none !important;
+    margin: 0;
+}
+
+.stumpsMatchControls button:hover {
+    transform: translateY(-2px) !important;
 }
 
 /* MOBILE */
 @media (max-width: 600px) {
-    #matchArea button[onclick="autoPlayMatch()"] {
-        right: 10px;
-        top: auto;
-        bottom: 80px;
-        transform: none;
+    .stumpsMatchControls {
+        gap: 8px;
     }
 
-    #matchArea button[onclick="autoPlayMatch()"]:hover {
-        transform: none;
+    .stumpsMatchControls button {
+        padding: 10px 12px;
+        font-size: 11px;
     }
 }
+
 
     
 </style>
