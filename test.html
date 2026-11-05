@@ -436,6 +436,36 @@ body > *:not(#stumpsHud) {
         letter-spacing: 0;
     }
 }
+
+
+/* STUMPS - AUTO PLAY ON RIGHT */
+
+#matchArea button[onclick="autoPlayMatch()"] {
+    position: fixed;
+    right: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+}
+
+#matchArea button[onclick="autoPlayMatch()"]:hover {
+    transform: translateY(-50%);
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    #matchArea button[onclick="autoPlayMatch()"] {
+        right: 10px;
+        top: auto;
+        bottom: 80px;
+        transform: none;
+    }
+
+    #matchArea button[onclick="autoPlayMatch()"]:hover {
+        transform: none;
+    }
+}
+
     
 </style>
 <title>Stumps Cricket Simulator</title>
