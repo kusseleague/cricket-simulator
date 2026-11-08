@@ -3139,6 +3139,41 @@ return b.wins - a.wins;
         "pointsTableArea"
     ).innerHTML = html;
 
+
+/* Display saved team logos in the points table */
+
+const savedLogos = JSON.parse(
+    localStorage.getItem("stumps:team-logos:v1") || "{}"
+);
+
+document.querySelectorAll(
+    "#pointsTableArea .stumpsTableLogo"
+).forEach(slot => {
+
+    const name = decodeURIComponent(slot.dataset.teamName)
+        .trim()
+        .toLowerCase();
+
+    const logo = savedLogos[name];
+
+    if (!logo) {
+        slot.textContent = "🏏";
+        return;
+    }
+
+    const img = document.createElement("img");
+    img.src = logo;
+    img.alt = "";
+    img.loading = "lazy";
+
+    img.onerror = () => {
+        slot.textContent = "🏏";
+    };
+
+    slot.appendChild(img);
+});
+
+    
 }
 // ===============================
 // PLAY NEXT TOURNAMENT MATCH
