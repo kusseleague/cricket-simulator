@@ -1131,19 +1131,21 @@ applyVenueTheme("melbourne");
     function drawRadar(x, y, radius, accent, phase) {
         ctx.save();
         ctx.translate(x, y);
-        ctx.strokeStyle = accent;
-        ctx.lineWidth = 1;
+       
+ctx.strokeStyle = accent;
+ctx.lineWidth = 1.2;
 
-        // Circular scanning rings
-        for (let i = 1; i <= 4; i++) {
-            ctx.globalAlpha = 0.11 - i * 0.015;
-            ctx.beginPath();
-            ctx.arc(0, 0, radius * i / 4, 0, Math.PI * 2);
-            ctx.stroke();
-        }
+// Circular scanning rings - brighter
+for (let i = 1; i <= 4; i++) {
+    ctx.globalAlpha = 0.24 - i * 0.025;
+    ctx.beginPath();
+    ctx.arc(0, 0, radius * i / 4, 0, Math.PI * 2);
+    ctx.stroke();
+}
+
 
         // Radar crosshairs
-        ctx.globalAlpha = 0.12;
+        ctx.globalAlpha = 0.30;
         ctx.beginPath();
         ctx.moveTo(-radius, 0);
         ctx.lineTo(radius, 0);
