@@ -617,6 +617,43 @@ body > *:not(#stumpsHud) {
 }
 
 
+/* STUMPS - TEAM LOGOS IN POINTS TABLE */
+
+#pointsTableArea .stumpsTableTeam {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+#pointsTableArea .stumpsTableLogo {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+#pointsTableArea .stumpsTableLogo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+@media (max-width: 600px) {
+    #pointsTableArea .stumpsTableLogo {
+        width: 24px;
+        height: 24px;
+    }
+
+    #pointsTableArea .stumpsTableTeam {
+        gap: 6px;
+    }
+}
+
     
 </style>
 <title>Stumps Cricket Simulator</title>
