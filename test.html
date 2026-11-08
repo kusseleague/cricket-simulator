@@ -552,6 +552,71 @@ body > *:not(#stumpsHud) {
     }
 }
 
+
+/* ===================================
+   STUMPS POINTS TABLE - FINAL POLISH
+   =================================== */
+
+/* Small gaps between teams */
+#pointsTableArea .stumpsPointsTable {
+    border-collapse: separate !important;
+    border-spacing: 0 7px !important;
+    table-layout: fixed;
+    width: 100%;
+}
+
+/* Exact column alignment */
+#pointsTableArea .stumpsPointsTable th,
+#pointsTableArea .stumpsPointsTable td {
+    box-sizing: border-box;
+    text-align: center !important;
+    padding: 12px 6px !important;
+    vertical-align: middle;
+}
+
+/* Position column */
+#pointsTableArea .stumpsPointsTable th:nth-child(1),
+#pointsTableArea .stumpsPointsTable td:nth-child(1) {
+    width: 8%;
+}
+
+/* Team name column */
+#pointsTableArea .stumpsPointsTable th:nth-child(2),
+#pointsTableArea .stumpsPointsTable td:nth-child(2) {
+    width: 32%;
+    text-align: left !important;
+    padding-left: 14px !important;
+    min-width: 0 !important;
+}
+
+/* Matches, wins and losses */
+#pointsTableArea .stumpsPointsTable th:nth-child(3),
+#pointsTableArea .stumpsPointsTable td:nth-child(3),
+#pointsTableArea .stumpsPointsTable th:nth-child(4),
+#pointsTableArea .stumpsPointsTable td:nth-child(4),
+#pointsTableArea .stumpsPointsTable th:nth-child(5),
+#pointsTableArea .stumpsPointsTable td:nth-child(5) {
+    width: 9%;
+}
+
+/* Points */
+#pointsTableArea .stumpsPointsTable th:nth-child(6),
+#pointsTableArea .stumpsPointsTable td:nth-child(6) {
+    width: 10%;
+}
+
+/* NRR */
+#pointsTableArea .stumpsPointsTable th:nth-child(7),
+#pointsTableArea .stumpsPointsTable td:nth-child(7) {
+    width: 23%;
+}
+
+/* Keep numbers consistently aligned */
+#pointsTableArea .stumpsPointsTable td {
+    font-variant-numeric: tabular-nums;
+}
+
+
     
 </style>
 <title>Stumps Cricket Simulator</title>
