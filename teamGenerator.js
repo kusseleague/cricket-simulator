@@ -3691,11 +3691,11 @@ function displayTriSeriesTable(){
 
         html += `
 
-            <tr>
+           <tr class="stumpsPointsRow">
 
-                <td>${index + 1}</td>
+    <td>${index + 1}</td>
 
-                <td>🏏 ${team.name}</td>
+    <td>🏏 ${team.name}</td>
 
                 <td>${team.played}</td>
 
