@@ -3108,7 +3108,12 @@ return b.wins - a.wins;
 
                 <td>${index + 1}</td>
 
-                <td>🏏 ${team.name}</td>
+               <td>
+    <span class="stumpsTableTeam">
+        <span class="stumpsTableLogo" data-team-name="${encodeURIComponent(team.name)}"></span>
+        <span>${team.name}</span>
+    </span>
+</td>
 
                 <td>${team.played}</td>
 
