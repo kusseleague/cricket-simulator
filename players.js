@@ -940,7 +940,7 @@ stamina: 85
    {
   name: "Azmatullah Omarzai",
 role: "All Rounder",
-bat: 40,
+bat: 60,
 bowl: 82,
 stamina: 85
 },
