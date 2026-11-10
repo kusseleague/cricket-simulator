@@ -3086,6 +3086,7 @@ function displayPointsTable(){
                 <th>P</th>
                 <th>W</th>
                 <th>L</th>
+                <th>T</th>
                 <th>Pts</th>
                 <th>NRR</th>
             </tr>
@@ -3126,11 +3127,13 @@ return b.wins - a.wins;
 
                 <td>${team.played}</td>
 
-                <td>${team.wins}</td>
+<td>${team.wins}</td>
 
-                <td>${team.losses}</td>
+<td>${team.played - team.wins - team.losses}</td>
 
-                <td><b>${team.points}</b></td>
+<td>${team.losses}</td>
+
+<td><b>${team.points}</b></td>
 
                 <td>${team.nrr.toFixed(3)}</td>
  
