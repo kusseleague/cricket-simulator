@@ -3085,8 +3085,8 @@ function displayPointsTable(){
                 <th>Team</th>
                 <th>P</th>
                 <th>W</th>
-                <th>L</th>
                 <th>T</th>
+                <th>L</th>
                 <th>Pts</th>
                 <th>NRR</th>
             </tr>
