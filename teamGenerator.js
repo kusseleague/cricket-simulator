@@ -992,7 +992,13 @@ document.getElementById("scoreboard").innerHTML =
 `
 <h2>🏆 MATCH RESULT</h2>
 
-<h3>🏆 ${winnerTeam.name} WINS!</h3>
+<h3>
+${
+    fixture.scoreA === fixture.scoreB
+    ? "🤝 MATCH TIED — 1 POINT EACH"
+    : `🏆 ${winnerTeam.name} WINS!`
+}
+</h3>
 
 <br>
 
