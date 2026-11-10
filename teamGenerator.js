@@ -2727,8 +2727,11 @@ else if (fixture.stage === "eliminator") {
 
                 <br><br>
 
-                🏆 Winner:
-                ${fixture.winner.name}
+                ${
+    fixture.winner
+    ? `🏆 Winner: ${fixture.winner.name}`
+    : "🤝 MATCH TIED — 1 POINT EACH"
+}
             `;
 
         } else {
