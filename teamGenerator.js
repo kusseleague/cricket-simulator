@@ -3236,7 +3236,6 @@ function returnToTournament(){
     });
 }
 
-</div>
 
 // ===============================
 // TRI-SERIES MODE
@@ -3397,7 +3396,6 @@ function confirmTriSeriesTeams(){
 // LOAD TRI-SERIES PLAYER DROPDOWNS
 // ===============================
 
-function loadTriSeriesPlayerDropdowns(){
 
 // ===============================
 // LOAD TRI-SERIES PLAYER DROPDOWNS
