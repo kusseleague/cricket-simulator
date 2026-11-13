@@ -1007,10 +1007,17 @@ Team B
 
 
 
+
 <div class="stumpsMatchControls">
 
     <button onclick="nextBall()">
         🏏 Next Ball
+    </button>
+
+    <button id="stumpsStatsButton"
+            type="button"
+            onclick="stumpsOpenStats()">
+        📊 Stats
     </button>
 
     <button onclick="autoPlayMatch()">
@@ -1018,6 +1025,34 @@ Team B
     </button>
 
 </div>
+
+<div id="stumpsStatsPanel" hidden>
+
+    <div class="stumpsStatsTabs">
+
+        <button type="button"
+                data-stumps-tab="comparison"
+                onclick="stumpsStatsTab('comparison')">
+            Comparison
+        </button>
+
+        <button type="button"
+                data-stumps-tab="scoreboard"
+                onclick="stumpsStatsTab('scoreboard')">
+            Scoreboard
+        </button>
+
+        <button type="button"
+                onclick="stumpsCloseStats()">
+            ✕ Close
+        </button>
+
+    </div>
+
+    <div id="stumpsStatsContent"></div>
+
+</div>
+
 
 
 </div>
