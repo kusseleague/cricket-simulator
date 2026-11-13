@@ -3235,6 +3235,9 @@ function returnToTournament(){
         behavior: "smooth"
     });
 }
+
+</div>
+
 // ===============================
 // TRI-SERIES MODE
 // ===============================
