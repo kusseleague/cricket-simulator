@@ -3831,3 +3831,40 @@ ${
     ).innerHTML = html;
 
 }
+
+
+function playTriSeriesMatch(index){
+
+    const fixture = triSeriesFixtures[index];
+
+    if(!fixture || fixture.played){
+        return;
+    }
+
+    if(
+        fixture.teamA.players.length !== 11 ||
+        fixture.teamB.players.length !== 11
+    ){
+        alert("Both teams need a complete Playing XI.");
+        return;
+    }
+
+    // Load selected Tri-Series squads
+    teamA = [...fixture.teamA.players];
+    teamB = [...fixture.teamB.players];
+
+    // Keep regular tournament fixture processing inactive
+    currentTournamentFixtureIndex = null;
+
+    // Open existing toss and match setup
+    document.getElementById("triSeriesSetup").style.display = "none";
+    document.getElementById("matchSetup").style.display = "block";
+
+    document.getElementById("batBowlChoice").innerHTML = "";
+
+    document.getElementById("matchSetup").scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
+
