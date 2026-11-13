@@ -3801,11 +3801,23 @@ function displayTriSeriesFixtures(){
 
                 <br>
 
-                ${fixture.teamA.name}
-                🆚
-                ${fixture.teamB.name}
+                
+${fixture.teamA.name}
+🆚
+${fixture.teamB.name}
 
-                <br><br>
+<br><br>
+
+${
+    fixture.played
+    ? "✅ Match Completed"
+    : `<button onclick="playTriSeriesMatch(${index})">
+           🏏 Play Match
+       </button>`
+}
+
+<br><br>
+
 
             </div>
 
