@@ -3868,3 +3868,178 @@ function playTriSeriesMatch(index){
 
 }
 
+
+/* ==========================================
+   TRI-SERIES — TOURNAMENT STYLE XI SELECTOR
+   ========================================== */
+
+let triSelectingTeam = null;
+let triSelectedPlayers = [];
+
+function displayTriSeriesSelection() {
+
+    let html = "<h2>🏏 TRI-SERIES PLAYING XIs</h2>";
+
+    triSeriesTeams.forEach((team, index) => {
+
+        html += `
+            <div>
+                <h3>${team.name}</h3>
+
+                <p>Playing XI: ${team.players.length}/11</p>
+
+                <button onclick="startTriSeriesSelection(${index})">
+                    👥 CHOOSE PLAYING XI
+                </button>
+
+                <hr>
+            </div>
+        `;
+    });
+
+    html += `
+        <button onclick="confirmTriSeriesXIs()">
+            ✅ CONFIRM ALL PLAYING XIs
+        </button>
+
+        <div id="triXIMessage"></div>
+    `;
+
+    document.getElementById(
+        "triSeriesTeamsArea"
+    ).innerHTML = html;
+}
+
+function startTriSeriesSelection(index) {
+
+    triSelectingTeam = index;
+
+    // Preserve existing selections when editing an XI
+    triSelectedPlayers = [
+        ...triSeriesTeams[index].players
+    ];
+
+    const team = triSeriesTeams[index];
+
+    document.getElementById(
+        "triSeriesTeamsArea"
+    ).innerHTML = `
+        <h2>🏏 SELECT PLAYING XI</h2>
+
+        <h3>${team.name}</h3>
+
+        <p>
+            Selected:
+            <span id="triSelectedCount">
+                ${triSelectedPlayers.length}
+            </span>/11
+        </p>
+
+        <div id="triPlayerList"></div>
+
+        <br>
+
+        <button onclick="confirmTriSeriesSelection()">
+            ✅ CONFIRM PLAYING XI
+        </button>
+
+        <button onclick="displayTriSeriesSelection()">
+            ❌ CANCEL
+        </button>
+    `;
+
+    displayTriSeriesPlayers();
+}
+
+function displayTriSeriesPlayers() {
+
+    let html = "";
+
+    players.forEach((player, index) => {
+
+        const alreadyUsed = triSeriesTeams.some(
+            (team, teamIndex) =>
+                teamIndex !== triSelectingTeam &&
+                team.players.some(
+                    p => p.name === player.name
+                )
+        );
+
+        const selected = triSelectedPlayers.some(
+            p => p.name === player.name
+        );
+
+        html += `
+            <div>
+                <button
+                    onclick="toggleTriSeriesPlayer(${index})"
+                    ${alreadyUsed ? "disabled" : ""}>
+
+                    ${selected ? "✅" : "⬜"}
+                    ${player.name} (${player.role})
+
+                </button>
+            </div>
+        `;
+    });
+
+    document.getElementById(
+        "triPlayerList"
+    ).innerHTML = html;
+}
+
+function toggleTriSeriesPlayer(index) {
+
+    const player = players[index];
+
+    const selected = triSelectedPlayers.some(
+        p => p.name === player.name
+    );
+
+    if(selected) {
+
+        triSelectedPlayers = triSelectedPlayers.filter(
+            p => p.name !== player.name
+        );
+
+    } else {
+
+        const used = triSeriesTeams.some(
+            (team, teamIndex) =>
+                teamIndex !== triSelectingTeam &&
+                team.players.some(
+                    p => p.name === player.name
+                )
+        );
+
+        if(used || triSelectedPlayers.length >= 11) {
+            return;
+        }
+
+        triSelectedPlayers.push(player);
+    }
+
+    document.getElementById(
+        "triSelectedCount"
+    ).textContent = triSelectedPlayers.length;
+
+    displayTriSeriesPlayers();
+}
+
+function confirmTriSeriesSelection() {
+
+    if(triSelectedPlayers.length !== 11) {
+
+        alert("Select exactly 11 players.");
+        return;
+    }
+
+    triSeriesTeams[triSelectingTeam].players = [
+        ...triSelectedPlayers
+    ];
+
+    triSelectingTeam = null;
+    triSelectedPlayers = [];
+
+    displayTriSeriesSelection();
+}
