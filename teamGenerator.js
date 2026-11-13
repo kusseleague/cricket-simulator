@@ -3386,65 +3386,19 @@ function confirmTriSeriesTeams(){
     ];
 
 
-    // CREATE PLAYER SELECTION
+  
+    // USE NEW TOURNAMENT-STYLE PLAYER SELECTION
 
-    document.getElementById(
-        "triSeriesTeamsArea"
-    ).innerHTML = `
+    displayTriSeriesSelection();
 
-        <h3>🏏 ${name1}</h3>
-
-        <select id="triPlayerSelect0">
-            <option value="">Select a player</option>
-        </select>
-
-        <button onclick="addTriSeriesPlayer(0)">
-            ➕ Add Player
-        </button>
-
-        <div id="triTeamList0"></div>
-
-        <hr>
-
-        <h3>🏏 ${name2}</h3>
-
-        <select id="triPlayerSelect1">
-            <option value="">Select a player</option>
-        </select>
-
-        <button onclick="addTriSeriesPlayer(1)">
-            ➕ Add Player
-        </button>
-
-        <div id="triTeamList1"></div>
-
-        <hr>
-
-        <h3>🏏 ${name3}</h3>
-
-        <select id="triPlayerSelect2">
-            <option value="">Select a player</option>
-        </select>
-
-        <button onclick="addTriSeriesPlayer(2)">
-            ➕ Add Player
-        </button>
-
-        <div id="triTeamList2"></div>
-
-        <br>
-
-        <button onclick="confirmTriSeriesXIs()">
-            ✅ Confirm Playing XIs
-        </button>
-
-        <div id="triXIMessage"></div>
-
-    `;
-
-
-    loadTriSeriesPlayerDropdowns();
 }
+
+// ===============================
+// LOAD TRI-SERIES PLAYER DROPDOWNS
+// ===============================
+
+function loadTriSeriesPlayerDropdowns(){
+
 // ===============================
 // LOAD TRI-SERIES PLAYER DROPDOWNS
 // ===============================
