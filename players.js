@@ -989,7 +989,7 @@ stamina: 86
    {
   name: "Murali Vijay",
 role: "Batsman",
-bat: 86,
+bat: 84,
 bowl: 10,
 stamina: 88
 },
@@ -1022,7 +1022,7 @@ stamina: 87
   name: "Krunal Pandya",
 role: "All Rounder",
 bat: 65,
-bowl: 80,
+bowl: 82,
 stamina: 88
 },
 
@@ -1167,7 +1167,7 @@ stamina: 87
 {
 name: "Dewald Brevis",
 role: "Batsman",
-bat: 84,
+bat: 85,
 bowl: 10,
 stamina: 89
 },
