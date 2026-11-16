@@ -133,7 +133,7 @@ stamina: 86
 
 {
 name: "Joe Root",
-role: "Batsman",
+role: "Allrounder",
 bat: 84,
 bowl: 40,
 stamina: 86
@@ -942,7 +942,7 @@ stamina: 85
   name: "Azmatullah Omarzai",
 role: "All Rounder",
 bat: 60,
-bowl: 82,
+bowl: 84,
 stamina: 85
 },
 
@@ -957,9 +957,9 @@ stamina: 89
    {
   name: "Chris Morris",
 role: "All Rounder",
-bat: 45,
-bowl: 79,
-stamina: 85
+bat: 70,
+bowl: 86,
+stamina: 89
 },
 
    {
@@ -1137,7 +1137,7 @@ name: "Sanju Samson",
 role: "Wicketkeeper",
 bat: 87,
 bowl: 10,
-stamina: 87
+stamina: 90
 },
 
 {
@@ -1288,7 +1288,7 @@ stamina: 90
 {
 name: "Naman Dhir",
 role: "Allrounder",
-bat: 85,
+bat: 84,
 bowl: 70,
 stamina: 88
 },
