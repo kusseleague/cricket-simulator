@@ -1325,6 +1325,14 @@ bowl: 90,
 stamina: 85
 },
 
+{
+name: "Paul Stirling",
+role: "Batsman",
+bat: 83,
+bowl: 10,
+stamina: 88
+},
+
 ];
 players.sort((a, b) =>
     a.name.localeCompare(b.name, undefined, { sensitivity: "base" })
