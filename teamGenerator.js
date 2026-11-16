@@ -1808,8 +1808,6 @@ function updateScoreboard(message){
 
                 ${chaseSpectrum}
 
-                <br>
-
             `;
 
         }
