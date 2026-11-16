@@ -1333,6 +1333,22 @@ bowl: 10,
 stamina: 88
 },
 
+{
+name: "Colin Munro",
+role: "Batsman",
+bat: 83,
+bowl: 20,
+stamina: 88
+},
+
+{
+name: "Colin de Grandhomme",
+role: "Allrounder",
+bat: 76,
+bowl: 55,
+stamina: 82
+},
+
 ];
 players.sort((a, b) =>
     a.name.localeCompare(b.name, undefined, { sensitivity: "base" })
