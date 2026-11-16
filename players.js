@@ -1267,6 +1267,46 @@ bowl: 86,
 stamina: 88
 },
 
+{
+name: "Priyansh Arya",
+role: "Batsman",
+bat: 86,
+bowl: 10,
+stamina: 93
+},
+
+
+{
+name: "Prabhsimran Singh",
+role: "Batsman",
+bat: 86,
+bowl: 10,
+stamina: 90
+},
+
+{
+name: "Naman Dhir",
+role: "Allrounder",
+bat: 85,
+bowl: 70,
+stamina: 88
+},
+
+{
+name: "Jason Roy",
+role: "Batsman",
+bat: 86,
+bowl: 10,
+stamina: 91
+},
+
+{
+name: "Cooper Connolly",
+role: "Batsman",
+bat: 85,
+bowl: 10,
+stamina: 88
+},
 
 ];
 players.sort((a, b) =>
