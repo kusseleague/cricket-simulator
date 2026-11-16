@@ -242,6 +242,7 @@ bat: 85,
 bowl: 10,
 stamina: 86
 },
+  
 {
 name: "Jasprit Bumrah",
 role: "Bowler",
