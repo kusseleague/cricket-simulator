@@ -549,7 +549,7 @@ stamina: 90
 {
 name: "Cameron Green",
 role: "All Rounder",
-bat: 78,
+bat: 82,
 bowl: 70,
 stamina: 88
 },
@@ -702,7 +702,7 @@ stamina: 86
 name: "Carlos Brathwaite",
 role: "All Rounder",
 bat: 76,
-bowl: 80,
+bowl: 81,
 stamina: 89
 },
 
@@ -750,15 +750,15 @@ stamina: 89
 name: "Tom Curran",
 role: "All Rounder",
 bat: 55,
-bowl: 70,
+bowl: 72,
 stamina: 86
 },
 
 {
 name: "Noor Ahmed",
-role: "All Rounder",
+role: "Bowler",
 bat: 15,
-bowl: 84,
+bowl: 86,
 stamina: 86
 },
 
@@ -772,7 +772,7 @@ stamina: 86
 
   {
     name: "Chris Gayle",
-  role: "Batsman",
+  role: "All Rounder",
   bat: 92,
   bowl: 40,
   stamina: 96
@@ -805,9 +805,9 @@ stamina: 86
   {
     name: "S. Dhawan",
   role: "Batsman",
-  bat: 88,
+  bat: 87,
   bowl: 10,
-  stamina: 90
+  stamina: 88
   },
 
   {
@@ -821,7 +821,7 @@ stamina: 86
   {
     name: "George Bailey",
   role: "Batsman",
-  bat: 85,
+  bat: 84,
   bowl: 10,
   stamina: 90
   },
@@ -847,7 +847,7 @@ stamina: 86
   role: "Batsman",
   bat: 86,
   bowl: 10,
-  stamina: 89
+  stamina: 90
   },
 
   {
