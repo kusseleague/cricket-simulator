@@ -805,9 +805,9 @@ stamina: 86
   {
     name: "S. Dhawan",
   role: "Batsman",
-  bat: 87,
+  bat: 88,
   bowl: 10,
-  stamina: 88
+  stamina: 86
   },
 
   {
