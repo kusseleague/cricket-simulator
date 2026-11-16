@@ -189,9 +189,9 @@ stamina: 86
 
 {
 name: "Aiden Markram",
-role: "Batsman",
-bat: 81,
-bowl: 55,
+role: "Allrounder",
+bat: 82,
+bowl: 60,
 stamina: 88
 },
 
