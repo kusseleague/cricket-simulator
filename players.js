@@ -78,7 +78,7 @@ stamina: 88
 {
 name: "Jos Buttler",
 role: "Wicketkeeper",
-bat: 86,
+bat: 87,
 bowl: 10,
 stamina: 87
 },
