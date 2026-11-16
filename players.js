@@ -718,7 +718,7 @@ stamina: 87
 name: "Kieron Pollard",
 role: "All Rounder",
 bat: 84,
-bowl: 73,
+bowl: 74,
 stamina: 93
 },
 
