@@ -86,7 +86,7 @@ stamina: 87
 {
 name: "Jonny Bairstow",
 role: "Wicketkeeper",
-bat: 81,
+bat: 84,
 bowl: 10,
 stamina: 82
 },
