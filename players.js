@@ -1349,6 +1349,14 @@ bowl: 55,
 stamina: 82
 },
 
+{
+name: "Ross Taylor",
+role: "Batsman",
+bat: 82,
+bowl: 10,
+stamina: 83
+},
+
 ];
 players.sort((a, b) =>
     a.name.localeCompare(b.name, undefined, { sensitivity: "base" })
