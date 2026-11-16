@@ -1259,6 +1259,15 @@ bowl: 83,
 stamina: 84
 },
 
+{
+name: "Matt Henry",
+role: "Bowler",
+bat: 25,
+bowl: 86,
+stamina: 88
+},
+
+
 ];
 players.sort((a, b) =>
     a.name.localeCompare(b.name, undefined, { sensitivity: "base" })
