@@ -1270,7 +1270,7 @@ stamina: 88
 {
 name: "Priyansh Arya",
 role: "Batsman",
-bat: 86,
+bat: 84,
 bowl: 10,
 stamina: 93
 },
@@ -1278,8 +1278,8 @@ stamina: 93
 
 {
 name: "Prabhsimran Singh",
-role: "Batsman",
-bat: 86,
+role: "Wicketkeeper",
+bat: 85,
 bowl: 10,
 stamina: 90
 },
@@ -1306,6 +1306,14 @@ role: "Batsman",
 bat: 85,
 bowl: 10,
 stamina: 88
+},
+
+{
+name: "Alex Carey",
+role: "Wicketkeeper",
+bat: 80,
+bowl: 10,
+stamina: 87
 },
 
 ];
