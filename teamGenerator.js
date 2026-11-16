@@ -1749,7 +1749,7 @@ function updateScoreboard(message){
 
         chaseSpectrum = `
             <div style="
-                margin: 12px auto;
+                margin: 4px auto;
                 text-align: center;
                 font-family: monospace;
                 font-size: clamp(14px, 3vw, 24px);
