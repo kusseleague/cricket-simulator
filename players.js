@@ -1316,6 +1316,14 @@ bowl: 10,
 stamina: 87
 },
 
+{
+name: "Imran Tahir",
+role: "Bowler",
+bat: 10,
+bowl: 90,
+stamina: 85
+},
+
 ];
 players.sort((a, b) =>
     a.name.localeCompare(b.name, undefined, { sensitivity: "base" })
