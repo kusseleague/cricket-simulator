@@ -718,7 +718,7 @@ stamina: 87
 name: "Kieron Pollard",
 role: "All Rounder",
 bat: 84,
-bowl: 70,
+bowl: 73,
 stamina: 93
 },
 
@@ -726,7 +726,7 @@ stamina: 93
 name: "Shane Watson",
 role: "All Rounder",
 bat: 86,
-bowl: 70,
+bowl: 76,
 stamina: 88
 },
 
