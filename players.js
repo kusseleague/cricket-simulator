@@ -1357,6 +1357,14 @@ bowl: 10,
 stamina: 83
 },
 
+{
+name: "Shardul Thakur",
+role: "All Rounder",
+bat: 45,
+bowl: 86,
+stamina: 85
+},
+
 ];
 players.sort((a, b) =>
     a.name.localeCompare(b.name, undefined, { sensitivity: "base" })
