@@ -254,7 +254,7 @@ stamina: 93
 {
 name: "Arshdeep Singh",
 role: "Bowler",
-bat: 15,
+bat: 20,
 bowl: 88,
 stamina: 88
 },
