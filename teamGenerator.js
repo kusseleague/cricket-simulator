@@ -44,6 +44,9 @@ let commentary = "";
 let autoPlayTimer = null;
 let matchSession = 0;
 
+let isAutoPlaying = false;
+
+
 let ballsSinceWicket = 0;
 
 let tournamentFormat = "";
