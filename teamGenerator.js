@@ -1170,11 +1170,18 @@ if (pitch && pitch.name === "The Vale") {
 
 
 
-if(chance < 8){
+
+const wicketChance = pitch
+    ? 8 * pitch.wicketMultiplier /
+      (secondInnings ? pitch.chasingAdvantage : 1)
+    : 8;
+
+if (chance < wicketChance) {
 
     result = "W";
 
 }
+
 
 else if(newBatsmanSettling){
 
