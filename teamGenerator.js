@@ -1115,59 +1115,6 @@ if (pitch) {
 }
 
 
-// ===================================
-// SEASON 9 - VENUE PITCH CONDITIONS
-// ===================================
-
-const activeFixture =
-    currentTournamentFixtureIndex !== null
-        ? tournamentFixtures[currentTournamentFixtureIndex]
-        : null;
-
-const activeVenue =
-    activeFixture?.scheduleVenue ||
-    document.getElementById("venueSelect")?.value;
-
-const pitch = getPitchConditions(activeVenue);
-
-if (pitch && pitch.name === "The Vale") {
-
-    // Stronger bowling conditions at The Vale
-    // Chasing receives a small advantage
-
-    const chaseBoost = secondInnings
-        ? pitch.chasingAdvantage
-        : 1;
-
-    const wicketChance =
-        (8 * pitch.wicketMultiplier) / chaseBoost;
-
-    const sixChance =
-        (12 * pitch.scoringMultiplier * chaseBoost)
-        + difference / 2;
-
-    const fourChance =
-        (25 * pitch.scoringMultiplier * chaseBoost);
-
-    // Adjust the random roll for The Vale
-    // while keeping the existing outcome logic
-
-    if (chance < wicketChance) {
-        chance = 0;
-    }
-    else if (chance < 8 + sixChance) {
-        chance = 10;
-    }
-    else if (chance < 8 + sixChance + fourChance) {
-        chance = 30;
-    }
-    else {
-        chance = 90;
-    }
-
-}
-
-
 
 
 
