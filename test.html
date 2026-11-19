@@ -752,6 +752,7 @@ body > *:not(#stumpsHud) {
 <script src="fixtureVenue.js" defer></script>
 <script src="playerSearch.js" defer></script>
 <script src="teamLogos.js" defer></script>
+<script src="superOver.js" defer></script>
     
 <!-- RANDOM PLAYER TEST -->
 
@@ -796,8 +797,12 @@ document.getElementById("result").innerHTML =
         🏆 Create Tournament
     </button>
 
-    <button onclick="switchStumpsMode('tri')">
+      <button onclick="switchStumpsMode('tri')">
         🏏 Tri-Series
+    </button>
+
+    <button onclick="openSuperOver()">
+        ⚡ Super Over
     </button>
 
 </div>
