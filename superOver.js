@@ -264,7 +264,7 @@ window.superRemovePlayer = function (t, i) {
 // CONFIRM TEAMS
 // =====================================
 
-let names = ["Team A", "Team B"];
+let names = ["Team Batting 1st", "Team Batting 2nd"];
 
 window.superConfirmTeams = function () {
 
