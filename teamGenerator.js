@@ -1212,13 +1212,22 @@ else if(newBatsmanSettling){
 
 }
 
-else if(chance < 20 + difference/2){
+
+else if (
+    chance <
+    20 + difference / 2 -
+    (pitch ? (1 - pitch.scoringMultiplier) * 20 : 0)
+) {
 
     result = 6;
 
 }
 
-else if(chance < 45 + difference/2){
+else if (
+    chance <
+    45 + difference / 2 -
+    (pitch ? (1 - pitch.scoringMultiplier) * 35 : 0)
+) {
 
     result = 4;
 
