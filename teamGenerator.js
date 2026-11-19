@@ -1083,15 +1083,37 @@ function nextBall(){
 
 
 
-    let difference =
-    battingPower - bowlingPower;
+    
+let difference = battingPower - bowlingPower;
 
-
-
-   
 let chance = Math.random() * 100;
 
 let result;
+
+// =====================================
+// SEASON 9 - VENUE PITCH CONDITIONS
+// =====================================
+
+const venue =
+    document.getElementById("venueSelect")?.value;
+
+const pitch =
+    typeof getPitchConditions === "function"
+        ? getPitchConditions(venue)
+        : null;
+
+if (pitch) {
+
+    // Stronger bowling conditions
+    difference -= pitch.paceAssistance * 0.1;
+
+    // Slight batting advantage when chasing
+    if (secondInnings) {
+        difference += (pitch.chasingAdvantage - 1) * 100;
+    }
+
+}
+
 
 // ===================================
 // SEASON 9 - VENUE PITCH CONDITIONS
