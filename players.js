@@ -1365,6 +1365,14 @@ bowl: 86,
 stamina: 85
 },
 
+{
+name: "Lungi Ngidi",
+role: "Bowler",
+bat: 20,
+bowl: 87,
+stamina: 87
+},
+  
 ];
 players.sort((a, b) =>
     a.name.localeCompare(b.name, undefined, { sensitivity: "base" })
