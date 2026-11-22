@@ -707,7 +707,7 @@ stamina: 89
 },
 
 {
-name: "Dwayne Bravo",
+name: "DJ Bravo",
 role: "All Rounder",
 bat: 75,
 bowl: 83,
