@@ -1287,7 +1287,7 @@ stamina: 90
 
 {
 name: "Naman Dhir",
-role: "Allrounder",
+role: "All Rounder",
 bat: 84,
 bowl: 70,
 stamina: 88
@@ -1343,7 +1343,7 @@ stamina: 88
 
 {
 name: "Colin de Grandhomme",
-role: "Allrounder",
+role: "All Rounder",
 bat: 76,
 bowl: 55,
 stamina: 82
@@ -1370,6 +1370,14 @@ name: "Lungi Ngidi",
 role: "Bowler",
 bat: 20,
 bowl: 87,
+stamina: 87
+},
+
+{
+name: "Chris Jordan",
+role: "All Rounder",
+bat: 35,
+bowl: 84,
 stamina: 87
 },
   
