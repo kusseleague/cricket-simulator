@@ -1380,6 +1380,14 @@ bat: 35,
 bowl: 84,
 stamina: 87
 },
+
+{
+name: "Matthew Hayden",
+role: "Batsman",
+bat: 88,
+bowl: 15,
+stamina: 87
+},
   
 ];
 players.sort((a, b) =>
