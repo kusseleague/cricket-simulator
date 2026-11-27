@@ -1272,6 +1272,10 @@ else{
 
 if(secondInnings && score >= target){
 
+    secondInningsWickets = wickets;
+
+    secondInningsBalls = balls;
+
     finishMatch(
         currentSecondInningsTeam,
         score
