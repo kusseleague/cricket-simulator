@@ -1171,7 +1171,43 @@ const batterRecord =
 const bowlerRecord =
     bowlerStats[deliveringBowler.name];
 
+// =====================================
+// SEASON 9 - HANDLE EXTRAS
+// =====================================
 
+if(result === "WD" || result === "NB"){
+
+    score += 1;
+
+    bowlerRecord.runs += 1;
+
+    commentary = result === "WD"
+        ? `Wide ball by ${deliveringBowler.name} (+1)`
+        : `No-ball by ${deliveringBowler.name} (+1)`;
+
+    // Check if the extra wins the match
+
+    if(secondInnings && score >= target){
+
+        secondInningsWickets = wickets;
+
+        secondInningsBalls = balls;
+
+        finishMatch(
+            currentSecondInningsTeam,
+            score
+        );
+
+        return;
+
+    }
+
+    updateScoreboard(commentary);
+
+    return;
+
+}
+    
 // =====================================
 // COUNT DELIVERY ONCE
 // =====================================
