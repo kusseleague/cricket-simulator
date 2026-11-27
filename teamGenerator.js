@@ -40,6 +40,7 @@ let batsmanStats = {};
 let newBatsmanSettling = false;
 let bowlerStats = {};
 let commentary = "";
+let freeHit = false;
 
 let autoPlayTimer = null;
 let matchSession = 0;
