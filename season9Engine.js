@@ -461,7 +461,23 @@ function s9CalculateProbabilities(
 
     }
 
+// =================================
+// PLAYER FORM AND CONSISTENCY
+// =================================
 
+const battingForm = s9GetPlayerForm(batsman);
+const bowlingForm = s9GetPlayerForm(bowler);
+
+// Batting performance
+
+expectedRuns *= battingForm;
+wicketProbability /= battingForm;
+
+// Bowling performance
+
+expectedRuns /= bowlingForm;
+wicketProbability *= bowlingForm;
+    
     // Numerical safety limits
     // These are NOT innings score caps
 
