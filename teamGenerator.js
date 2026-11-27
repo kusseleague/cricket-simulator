@@ -1402,6 +1402,20 @@ return;
 
 }
 
+// =====================================
+// HANDLE INCOMING BATSMAN
+// =====================================
+
+if(result === "W"){
+
+    updateScoreboard(commentary);
+
+    showNextBatsman();
+
+    return;
+
+}
+    
   if(balls % 6 === 0){
 
     // Swap batsmen at the end of the over
