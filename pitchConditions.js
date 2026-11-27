@@ -196,12 +196,27 @@ const pitchConditions = {
         0.95, 1.01
     ),
 
-    vale: createPitch(
+      vale: createPitch(
         "The Vale",
         135, 35, 70, 60, 35,
         1.06, 0.85, 1.12,
         0.95, 1.02
+    ),
+
+    harare: createPitch(
+        "Harare",
+        158, 45, 55, 45, 75,
+        1.03, 0.92, 1.09,
+        0.99, 0.96
+    ),
+
+    johannesburg: createPitch(
+        "Johannesburg",
+        195, 95, 80, 45, 25,
+        1.04, 1.12, 0.95,
+        0.99, 1.06
     )
+
 
 };
 
