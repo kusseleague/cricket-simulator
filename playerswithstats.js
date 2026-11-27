@@ -178,6 +178,7 @@ const players = [
 ["Lungi Ngidi","Bowler",20,87,87,8.5,0.81,30,87,21.29,8.34,15.28,80,90],
 ["Chris Jordan","All Rounder",35,84,87,15,1.3,65,87,27.3,8.62,18.9,75,85],
 ["Matthew Hayden","Batsman",88,15,87,36.9,1.3751,65,92,null,null,null,null,null],
+["Sai Sudharsan", "Batsman", 87, 10, 90, 43.63, 1.4295, 75, 84, null, null, null, null, null],
 
 // NEW SEASON 9 PLAYERS
 
