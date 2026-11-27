@@ -384,6 +384,7 @@ function startMatch(){
 
     // Reset Season 9 player form
     s9ResetPlayerForm();
+    freeHit = false;
     
     // Stop any Auto Play from the previous match
     if(autoPlayTimer){
