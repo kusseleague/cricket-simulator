@@ -1076,139 +1076,68 @@ return;
 
 function nextBall(){
 
+    // =====================================
+    // SEASON 9 - SAFETY CHECKS
+    // =====================================
 
-    let battingPower = striker.bat;
-
-    let bowlingPower = currentBowler.bowl;
-
-
-
-    
-let difference = battingPower - bowlingPower;
-
-let chance = Math.random() * 100;
-
-let result;
-
-// =====================================
-// SEASON 9 - VENUE PITCH CONDITIONS
-// =====================================
-
-const venue =
-    document.getElementById("venueSelect")?.value;
-
-const pitch =
-    typeof getPitchConditions === "function"
-        ? getPitchConditions(venue)
-        : null;
-
-if (pitch) {
-
-    // Stronger bowling conditions
-    difference -= pitch.paceAssistance * 0.1;
-
-    // Slight batting advantage when chasing
-    if (secondInnings) {
-        difference += (pitch.chasingAdvantage - 1) * 100;
+    if (
+        matchOver ||
+        !striker ||
+        !nonStriker ||
+        !currentBowler ||
+        balls >= 120 ||
+        wickets >= 10
+    ) {
+        return;
     }
 
-}
+
+    // =====================================
+    // SEASON 9 - MATCH CONTEXT
+    // =====================================
+
+    const venue =
+        document.getElementById("venueSelect")?.value
+        || "melbourne";
+
+    const matchContext = {
+
+        venue: venue,
+
+        balls: balls,
+
+        score: score,
+
+        wickets: wickets,
+
+        target: target,
+
+        secondInnings: secondInnings,
+
+        batsmanBalls:
+            batsmanStats[striker.name]?.balls ?? 0,
+
+        bowlerBalls:
+            bowlerStats[currentBowler.name]?.balls ?? 0,
+
+        bowlerRuns:
+            bowlerStats[currentBowler.name]?.runs ?? 0,
+
+        bowlerWickets:
+            bowlerStats[currentBowler.name]?.wickets ?? 0
+
+    };
 
 
+    // =====================================
+    // SEASON 9 - SIMULATE DELIVERY
+    // =====================================
 
-
-
-const wicketChance = pitch
-    ? 8 * pitch.wicketMultiplier /
-      (secondInnings ? pitch.chasingAdvantage : 1)
-    : 8;
-
-if (chance < wicketChance) {
-
-    result = "W";
-
-}
-
-
-else if(newBatsmanSettling){
-
-    // ===============================
-    // 18 BALL NO-BOUNDARY PERIOD
-    // ===============================
-
-    // No 4s or 6s for 18 balls
-    // after a wicket
-
-    if(chance < 45){
-
-        result = 1;
-
-    }
-
-    else if(chance < 75){
-
-        result = 2;
-
-    }
-
-    else{
-
-        result = 0;
-
-    }
-
-}
-
-
-else if (
-    chance <
-    20 + difference / 2 -
-    (pitch ? (1 - pitch.scoringMultiplier) * 20 : 0)
-) {
-
-    result = 6;
-
-}
-
-else if (
-    chance <
-    45 + difference / 2 -
-    (pitch ? (1 - pitch.scoringMultiplier) * 35 : 0)
-) {
-
-    result = 4;
-
-}
-
-else if(chance < 70){
-
-    result = 1;
-
-}
-
-else if(chance < 85){
-
-    result = 2;
-
-}
-
-else{
-
-    result = 0;
-
-}
-
-
-// ===================================
-// NO WICKET ON FINAL BALL OF OVER
-// ===================================
-
-if(result === "W" && balls % 6 === 5){
-
-    result = 0;
-
-}
-
+    let result = s9SimulateBall(
+        striker,
+        currentBowler,
+        matchContext
+    );
 
 // ===================================
 // WICKET
