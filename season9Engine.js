@@ -660,6 +660,35 @@ function s9SimulateBall(
     context = {}
 ) {
 
+        // =================================
+    // EXTRAS - WIDES AND NO-BALLS
+    // =================================
+
+    const accuracy = s9Clamp(
+        s9Stat(bowler.accuracy, 75),
+        0, 100
+    );
+
+    const wideProbability = s9Clamp(
+        0.008 + (95 - accuracy) * 0.0004,
+        0.004, 0.035
+    );
+
+    const noBallProbability = s9Clamp(
+        0.002 + (95 - accuracy) * 0.0001,
+        0.001, 0.008
+    );
+
+    const extraRoll = Math.random();
+
+    if (extraRoll < wideProbability) {
+        return "WD";
+    }
+
+    if (extraRoll < wideProbability + noBallProbability) {
+        return "NB";
+    }
+
     const probabilities =
         s9CalculateProbabilities(
             batsman,
