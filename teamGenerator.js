@@ -2027,26 +2027,82 @@ function showNextBatsman(){
 
 function confirmNextBatsman(){
 
-    let selectedName =
-        document.getElementById("nextBatsman").value;
+    const selectedName =
+        document.getElementById("nextBatsman")?.value;
+
+    if(!selectedName || striker !== null){
+        return;
+    }
+
+    const selectedPlayer = battingTeam.find(player => {
+
+        return player.name === selectedName &&
+               player !== nonStriker &&
+               !batsmanStats[player.name]?.out;
+
+    });
+
+    if(!selectedPlayer){
+        return;
+    }
+
+    striker = selectedPlayer;
+
+    newBatsmanSettling = true;
+
+    const message =
+        `🏏 ${striker.name} comes to the crease!`;
 
 
-    if(!selectedName){
+    // =====================================
+    // WICKET ON LAST BALL OF OVER
+    // =====================================
+
+    if(balls > 0 && balls % 6 === 0){
+
+        // Surviving batsman faces next over
+
+        let temp = striker;
+
+        striker = nonStriker;
+
+        nonStriker = temp;
+
+
+        // Find eligible bowlers
+
+        let availableBowlers =
+            bowlingTeam.filter(player => {
+
+                if(!bowlerStats[player.name]){
+                    return false;
+                }
+
+                if(bowlerStats[player.name].balls >= 24){
+                    return false;
+                }
+
+                if(player === currentBowler){
+                    return false;
+                }
+
+                return true;
+
+            });
+
+
+        updateScoreboard(message);
+
+        chooseNextBowler(availableBowlers);
 
         return;
 
     }
 
 
-    striker =
-        battingTeam.find(
-            player => player.name === selectedName
-        );
+    // Normal mid-over wicket
 
-
-    updateScoreboard(
-        `🏏 ${striker.name} comes to the crease!`
-    );
+    updateScoreboard(message);
 
 }
 // ===============================
