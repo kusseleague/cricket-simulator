@@ -501,6 +501,32 @@ wicketProbability /= battingForm;
 
 expectedRuns /= bowlingForm;
 wicketProbability *= bowlingForm;
+
+// =================================
+// PLAYER STAMINA AND FATIGUE
+// =================================
+
+const battingFatigue = s9GetFatigue(
+    batsman,
+    context.batsmanBalls ?? 0,
+    false
+);
+
+const bowlingFatigue = s9GetFatigue(
+    bowler,
+    context.bowlerBalls ?? 0,
+    true
+);
+
+// Batting fatigue
+
+expectedRuns *= battingFatigue;
+wicketProbability /= battingFatigue;
+
+// Bowling fatigue
+
+expectedRuns /= bowlingFatigue;
+wicketProbability *= bowlingFatigue;
     
     // Numerical safety limits
     // These are NOT innings score caps
