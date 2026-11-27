@@ -60,6 +60,30 @@ function s9GetPlayerForm(player) {
     return s9PlayerForm.get(player.name);
 
 }
+
+// =====================================
+// PLAYER STAMINA AND FATIGUE
+// =====================================
+
+function s9GetFatigue(player, ballsPlayed, isBowler = false) {
+
+    const stamina = s9Clamp(
+        s9Stat(player.stamina, 80),
+        0, 100
+    );
+
+    const workload = s9Clamp(
+        ballsPlayed / (isBowler ? 24 : 60),
+        0, 1
+    );
+
+    const fatigue =
+        workload * (100 - stamina) / 100 * 0.30;
+
+    return 1 - fatigue;
+
+}
+
 // =====================================
 // BOWLING STYLE DATABASE
 // =====================================
