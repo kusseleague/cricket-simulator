@@ -1143,218 +1143,125 @@ function nextBall(){
 // WICKET
 // ===================================
 
-if(result === "W"){
+// =====================================
+// SEASON 9 - PROCESS DELIVERY
+// =====================================
 
-if (window.triggerStumpsWicketEffect) {
-    window.triggerStumpsWicketEffect();
+// Remember who actually faced the ball
+
+const facingBatsman = striker;
+const deliveringBowler = currentBowler;
+
+const batterRecord =
+    batsmanStats[facingBatsman.name];
+
+const bowlerRecord =
+    bowlerStats[deliveringBowler.name];
+
+
+// =====================================
+// COUNT DELIVERY ONCE
+// =====================================
+
+balls++;
+
+batterRecord.balls++;
+
+bowlerRecord.balls++;
+
+if(secondInnings){
+
+    secondInningsBalls++;
+
 }
-    
-    if(striker && batsmanStats[striker.name]){
+else{
 
-        batsmanStats[striker.name].out = true;
+    firstInningsBalls++;
 
-    }
+}
 
-    // Start a fresh 18-ball no-boundary period
-    // after every wicket
 
-    newBatsmanSettling = true;
-    ballsSinceWicket = 0;
+// =====================================
+// WICKET
+// =====================================
+
+if(result === "W"){
 
     wickets++;
 
-    if(currentBowler && bowlerStats[currentBowler.name]){
+    batterRecord.out = true;
 
-        bowlerStats[currentBowler.name].wickets++;
-
-    }
+    bowlerRecord.wickets++;
 
     commentary =
-        `💥 OUT! ${striker.name} dismissed by ${currentBowler.name}`;
+        `💥 OUT! ${facingBatsman.name} dismissed by ${deliveringBowler.name}`;
 
-balls++;
+    if(window.triggerStumpsWicketEffect){
 
-if(secondInnings){
-
-    secondInningsBalls++;
-
-}
-else{
-
-    firstInningsBalls++;
-
-}
-
-if(currentBowler && bowlerStats[currentBowler.name]){
-
-    bowlerStats[currentBowler.name].balls++;
-
-}
-
-    // ===============================
-    // ALL OUT
-    // ===============================
-
-    if(wickets >= 10){
-
-        striker = null;
-
-        // Let the innings-end section below
-        // handle the change of innings.
+        window.triggerStumpsWicketEffect();
 
     }
-
-  else{
-
-    // Normal wicket — bring in a new batsman
 
     striker = null;
-    newBatsmanSettling = true;
-
-    // ===============================
-    // WICKET ON LAST BALL OF OVER
-    // ===============================
-
-    if(balls % 6 === 0){
-
-        // End the over immediately
-
-        let availableBowlers =
-            bowlingTeam.filter(player => {
-
-                if(
-                    player.role !== "Bowler" &&
-                    player.role !== "All Rounder"
-                ){
-                    return false;
-                }
-
-                if(!bowlerStats[player.name]){
-                    return false;
-                }
-
-                // Maximum 4 overs
-                if(bowlerStats[player.name].balls >= 24){
-                    return false;
-                }
-
-                // Current bowler cannot bowl consecutive overs
-                if(player === currentBowler){
-                    return false;
-                }
-
-                return true;
-
-            });
-
-        chooseNextBowler(availableBowlers);
-
-    }
-
-    showNextBatsman();
-
-return;
-
-}
 
 }
 
 
+// =====================================
+// RUNS
+// =====================================
 
- if(result !== "W"){
-
-
-        score += result;
-if(currentBowler && bowlerStats[currentBowler.name]){
-
-    bowlerStats[currentBowler.name].runs += result;
-
-}
-    batsmanStats[striker.name].runs += result;
-
-
-// ===============================
-// CHANGE STRIKE
-// ===============================
-// Odd number of runs = batsmen swap
-
-if(result % 2 === 1){
-
-    let temp = striker;
-
-    striker = nonStriker;
-
-    nonStriker = temp;
-
-}
-
-
-        if(result===6){
-batsmanStats[striker.name].sixes++;
-            commentary =
-            `🚀 SIX! ${striker.name} hits ${currentBowler.name}`;
-
-        }
-
-        else if(result===4){
-batsmanStats[striker.name].fours++;
-            commentary =
-            `🔥 FOUR! ${striker.name} finds the boundary`;
-
-        }
-
-        else if(result===0){
-
-            commentary =
-            `Dot ball by ${currentBowler.name}`;
-
-        }
-
-        else{
-
-            commentary =
-            `${striker.name} scores ${result}`;
-
-        }
-
-
-
-    }
-
-
-if(striker && batsmanStats[striker.name]){
-
-    batsmanStats[striker.name].balls++;
-
-}
-
-balls++;
-
-if(secondInnings){
-
-    secondInningsBalls++;
-
-}
 else{
 
-    firstInningsBalls++;
+    score += result;
 
-}
+    batterRecord.runs += result;
 
-if(currentBowler && bowlerStats[currentBowler.name]){
+    bowlerRecord.runs += result;
 
-    bowlerStats[currentBowler.name].balls++;
 
-}
-// Count balls during the 18-ball no-boundary period
-if(newBatsmanSettling){
+    if(result === 6){
 
-    ballsSinceWicket++;
+        batterRecord.sixes++;
 
-    if(ballsSinceWicket >= 18){
+        commentary =
+            `🚀 SIX! ${facingBatsman.name} hits ${deliveringBowler.name}`;
 
-        newBatsmanSettling = false;
-        ballsSinceWicket = 0;
+    }
+
+    else if(result === 4){
+
+        batterRecord.fours++;
+
+        commentary =
+            `🔥 FOUR! ${facingBatsman.name} finds the boundary`;
+
+    }
+
+    else if(result === 0){
+
+        commentary =
+            `Dot ball by ${deliveringBowler.name}`;
+
+    }
+
+    else{
+
+        commentary =
+            `${facingBatsman.name} scores ${result}`;
+
+    }
+
+
+    // Rotate strike AFTER recording runs
+
+    if(result % 2 === 1){
+
+        let temp = striker;
+
+        striker = nonStriker;
+
+        nonStriker = temp;
 
     }
 
