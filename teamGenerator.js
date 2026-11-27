@@ -381,6 +381,9 @@ function chooseDecision(choice,winner){
 
 function startMatch(){
 
+    // Reset Season 9 player form
+    s9ResetPlayerForm();
+    
     // Stop any Auto Play from the previous match
     if(autoPlayTimer){
         clearTimeout(autoPlayTimer);
