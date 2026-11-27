@@ -523,6 +523,36 @@ const bowlingFatigue = s9GetFatigue(
 expectedRuns *= battingFatigue;
 wicketProbability /= battingFatigue;
 
+    // =================================
+// ADVANCED BOWLING INTELLIGENCE
+// =================================
+
+// Bowling accuracy
+
+const accuracyModifier =
+    1 - (bowl.accuracy - 75) * 0.002;
+
+// Wicket-taking ability
+
+const wicketTakingModifier =
+    1 + (bowl.wicketTaking - 75) * 0.003;
+
+// Bowling average
+
+const bowlingAverageModifier = s9Clamp(
+    Math.pow(30 / bowl.average, 0.15),
+    0.85,
+    1.15
+);
+
+// Apply bowling intelligence
+
+expectedRuns *= accuracyModifier;
+
+wicketProbability *= wicketTakingModifier;
+
+wicketProbability *= bowlingAverageModifier;
+
 // Bowling fatigue
 
 expectedRuns /= bowlingFatigue;
