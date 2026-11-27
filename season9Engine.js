@@ -26,7 +26,40 @@ function s9Stat(value, fallback) {
 
 }
 
+// =====================================
+// PLAYER FORM AND CONSISTENCY
+// =====================================
 
+const s9PlayerForm = new Map();
+
+function s9ResetPlayerForm() {
+
+    s9PlayerForm.clear();
+
+}
+
+function s9GetPlayerForm(player) {
+
+    if (!s9PlayerForm.has(player.name)) {
+
+        const consistency = s9Clamp(
+            s9Stat(player.consistency, 75),
+            0, 100
+        );
+
+        const variation =
+            0.04 + (100 - consistency) * 0.003;
+
+        const form =
+            1 + (Math.random() * 2 - 1) * variation;
+
+        s9PlayerForm.set(player.name, form);
+
+    }
+
+    return s9PlayerForm.get(player.name);
+
+}
 // =====================================
 // BOWLING STYLE DATABASE
 // =====================================
