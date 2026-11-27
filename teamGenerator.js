@@ -1213,6 +1213,20 @@ if(result === "WD" || result === "NB"){
     return;
 
 }
+
+// =====================================
+// FREE HIT PROTECTION
+// =====================================
+
+if(freeHit){
+
+    if(result === "W"){
+        result = 0;
+    }
+
+    freeHit = false;
+
+}
     
 // =====================================
 // COUNT DELIVERY ONCE
