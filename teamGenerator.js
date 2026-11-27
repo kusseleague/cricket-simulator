@@ -1179,6 +1179,10 @@ const bowlerRecord =
 
 if(result === "WD" || result === "NB"){
 
+        if(result === "NB"){
+        freeHit = true;
+    }
+
     score += 1;
 
     bowlerRecord.runs += 1;
