@@ -1189,7 +1189,7 @@ if(result === "WD" || result === "NB"){
 
     commentary = result === "WD"
         ? `Wide ball by ${deliveringBowler.name} (+1)`
-        : `No-ball by ${deliveringBowler.name} (+1)`;
+        : `No-ball by ${deliveringBowler.name} (+1) — FREE HIT!`;
 
     // Check if the extra wins the match
 
