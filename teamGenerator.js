@@ -1475,72 +1475,72 @@ newBatsmanSettling = false;
 
 function autoPlayMatch(){
 
+    if(autoPlayTimer){
+
+        clearTimeout(autoPlayTimer);
+
+        autoPlayTimer = null;
+
+    }
+
     if(matchOver){
         return;
     }
 
     const thisSession = matchSession;
 
-    // If there is no striker because of a wicket,
-    // automatically bring in the next batsman
 
-    if(striker === null){
+    // Pause while user selections are pending
 
-        let available = battingTeam.filter(player => {
-
-            return !batsmanStats[player.name].out &&
-                   player !== nonStriker;
-
-        });
-
-        if(available.length === 0){
-            return;
-        }
-
-        striker = available[0];
-
-        newBatsmanSettling = true;
-    }
-
-    // Play one ball
-    nextBall();
-
-    // Stop if this match has finished
-    if(matchOver || thisSession !== matchSession){
+    if(
+        document.getElementById("nextBatsman") ||
+        document.getElementById("nextBowler") ||
+        !striker ||
+        !nonStriker ||
+        !currentBowler
+    ){
         return;
     }
 
+
+    // Play one delivery
+
+    nextBall();
+
+
+    // Check match status
+
+    if(
+        matchOver ||
+        thisSession !== matchSession
+    ){
+        return;
+    }
+
+
+    // Stop for manual selections
+
+    if(
+        document.getElementById("nextBatsman") ||
+        document.getElementById("nextBowler")
+    ){
+        return;
+    }
+
+
+    // Continue autoplay
+
     autoPlayTimer = setTimeout(function(){
 
-        // Make sure this is still the same match
-        if(matchOver || thisSession !== matchSession){
+        autoPlayTimer = null;
+
+        if(
+            matchOver ||
+            thisSession !== matchSession
+        ){
             return;
         }
 
-        // If a wicket happened, bring in the next batsman
-        if(striker === null){
-
-            let available = battingTeam.filter(player => {
-
-                return !batsmanStats[player.name].out &&
-                       player !== nonStriker;
-
-            });
-
-            if(available.length > 0){
-
-                striker = available[0];
-
-                newBatsmanSettling = true;
-
-                autoPlayMatch();
-
-            }
-
-            return;
-        }
-
-        // Continue automatically
         autoPlayMatch();
 
     }, 100);
