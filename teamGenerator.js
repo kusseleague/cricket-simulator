@@ -1368,6 +1368,7 @@ firstInningsBalls = balls;
         target = score + 1;
 
         secondInnings = true;
+        freeHit = false;
 
         score = 0;
         wickets = 0;
