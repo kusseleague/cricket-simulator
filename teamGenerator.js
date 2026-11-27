@@ -1076,6 +1076,16 @@ return;
 
 function nextBall(){
 
+     // Do not bowl while a selection is pending
+
+    if(
+        document.getElementById("nextBatsman") ||
+        document.getElementById("nextBowler")
+    ){
+        return;
+    }
+
+
     // =====================================
     // SEASON 9 - SAFETY CHECKS
     // =====================================
