@@ -139,7 +139,8 @@ const s9SpinBowlers = new Set([
     "Rohit Sharma",
     "Rinku Singh",
     "Piyush Chawla",
-    "Mujeeb ur Rahman"
+    "Mujeeb ur Rahman",
+    "Yuvraj Singh"
 
 ]);
 
