@@ -206,6 +206,10 @@ const players = [
 ["Romario Shepherd","All Rounder",76,79,88,23.61,1.5362,95,73,27.57,9.35,17.6,69,86],
 ["Rilee Rossouw","Batsman",83,10,85,29.71,1.4503,88,78,null,null,null,null,null],
 ["Amit Mishra","Bowler",20,90,82,13.69,0.9688,40,87,22.28,7.16,18.6,89,88],
+["Sreesanth","Bowler",15,78,85,9.12,0.7684,25,85,33.57,8.36,24.0,80,70],
+["Evin Lewis","Batsman",83,10,85,28.81,1.4281,75,90,null,null,null,null,null],
+["Alex Hales","Batsman",86,10,85,29.69,1.4428,75,95,null,null,null,null,null],
+["Jason Behrendorff","Bowler",20,86,85,13.69,1.0348,45,90,22.68,7.66,17.7,85,85],
     
 ].map(([
     name,
