@@ -154,7 +154,7 @@ const players = [
 ["Ajinkya Rahane","Batsman",84,10,86,30.15,1.256,55,87,null,null,null,null,null],
 ["Ambati Rayudu","Batsman",84,10,86,28.23,1.2754,55,92,null,null,null,null,null],
 ["VC Varun","Bowler",10,87,86,5.89,0.78,25,87,23.39,7.69,18.21,85,85],
-["Rahul Chahar","Bowler",20,84,86,8.06,1.0403,45,87,28.05,7.74,21.69,85,75],
+["Rahul Chahar","Bowler",20,85,86,8.06,1.0403,45,87,28.05,7.74,21.69,85,75],
 ["Deepak Chahar","Bowler",20,84,86,20,0.95,30,87,27.55,8.14,20.27,80,80],
 ["Andrew Tye","Bowler",10,85,86,11.67,1.21,55,87,22.43,8.46,15.84,80,90],
 ["Josh Inglis","Wicketkeeper",85,15,88,38.85,1.7324,85,87,null,null,null,null,null],
