@@ -169,7 +169,7 @@ const players = [
 ["Jason Roy","Batsman",86,10,91,32.31,1.386,65,87,null,null,null,null,null],
 ["Cooper Connolly","Batsman",85,10,88,44.63,1.6312,85,75,18.25,6.84,16,95,90],
 ["Alex Carey","Wicketkeeper",80,10,87,37.71,1.526,80,87,null,null,null,null,null],
-["Imran Tahir","Bowler",10,90,85,10,1.01,45,92,20.16,7.37,16.42,90,90],
+["Imran Tahir","Bowler",10,90,85,10,1.01,45,92,20.16,6.90,16.42,90,90],
 ["Paul Stirling","Batsman",83,10,88,26.6,1.6625,85,92,null,null,null,null,null],
 ["Colin Munro","Batsman",83,20,88,33.32,1.4981,75,87,null,null,null,null,null],
 ["Colin de Grandhomme","All Rounder",76,55,82,16,1.36,65,87,39.13,9.39,24.9,70,70],
