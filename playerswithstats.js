@@ -186,7 +186,7 @@ const players = [
 ["Sam Billings","Wicketkeeper",81,10,86,24.42,1.3473,65,89,null,null,null,null,null],
 ["Bhanuka Rajapaksa","Batsman",82,40,87,22.55,1.3725,65,85,19.03,7.45,15.3,90,90],
 ["James Vince","Batsman",85,25,88,32.14,1.3674,65,92,29,6.69,26,95,60],
-["Iftikhar Ahmed","All Rounder",82,70,86,29.5,1.2921,55,89,29.23,7.35,23.8,90,70]
+["Iftikhar Ahmed","All Rounder",82,70,86,29.5,1.2921,55,89,29.23,7.35,23.8,90,70],
 ["Wiaan Mulder", "All Rounder", 78, 80, 88, 25.16, 1.3110, 65, 85, 29.17, 8.86, 19.7, 75, 80],
 ["Piyush Chawla", "Bowler", 30, 89, 82, 14.71, 1.2343, 55, 94, 24.50, 7.58, 19.3, 85, 80],
 ["Mujeeb Ur Rahman", "Bowler", 25, 90, 90, 8.38, 1.0599, 45, 89, 23.72, 6.93, 20.5, 95, 80],
