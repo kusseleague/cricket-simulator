@@ -167,7 +167,7 @@ const players = [
 ["Prabhsimran Singh","Wicketkeeper",85,10,90,28.8,1.5633,80,82,null,null,null,null,null],
 ["Naman Dhir","All Rounder",84,70,88,27.3,1.6397,85,75,35,9.6,21.8,65,75],
 ["Jason Roy","Batsman",86,10,91,32.31,1.386,65,87,null,null,null,null,null],
-["Cooper Connolly","Batsman",85,10,88,44.63,1.6312,85,75,18.25,6.84,16,95,90],
+["Cooper Connolly","All Rounder",85,78,92,29.06,1.4225,75,78,24.13,7.46,19.4,90,80],
 ["Alex Carey","Wicketkeeper",80,10,87,37.71,1.526,80,87,null,null,null,null,null],
 ["Imran Tahir","Bowler",10,90,85,10,1.01,45,92,20.16,6.90,16.42,90,90],
 ["Paul Stirling","Batsman",83,10,88,26.6,1.6625,85,92,null,null,null,null,null],
