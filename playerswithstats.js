@@ -4,7 +4,7 @@
 
 const players = [
 ["Virat Kohli","Batsman",91,15,88,40.41,1.3479,65,98,null,null,null,null,null],
-["Rohit Sharma","Batsman",86,15,90,29.91,1.3291,65,95,null,null,null,null,null],
+["Rohit Sharma","All Rounder",86,15,90,29.91,1.3291,65,95,null,null,null,null,null],
 ["Shubman Gill","Batsman",88,15,88,40.33,1.4208,75,82,null,null,null,null,null],
 ["Shreyas Iyer","Batsman",87,10,86,35.83,1.3672,65,87,null,null,null,null,null],
 ["Suryakumar Yadav","Batsman",82,20,87,33.68,1.4858,75,87,null,null,null,null,null],
