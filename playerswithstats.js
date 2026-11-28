@@ -211,6 +211,9 @@ const players = [
 ["Alex Hales","Batsman",86,10,85,29.69,1.4428,75,95,null,null,null,null,null],
 ["Jason Behrendorff","Bowler",20,86,85,13.69,1.0348,45,90,22.68,7.66,17.7,85,85],
 ["Sachin Tendulkar","Batsman",83,20,85,32.90,1.2108,55,95,null,null,null,null,null],
+["Kyle Mayers","All Rounder",79,72,87,22.57,1.3281,65,88,35.10,8.04,26.1,80,60],
+["Rovman Powell","Batsman",83,45,88,25.42,1.4101,75,91,46.11,10.92,25.3,55,60],
+["Reeza Hendricks","Batsman",84,30,86,34.86,1.2857,55,92,45.25,8.04,33.7,80,45],
     
 ].map(([
     name,
