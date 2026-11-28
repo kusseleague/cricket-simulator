@@ -210,6 +210,7 @@ const players = [
 ["Evin Lewis","Batsman",83,10,85,28.81,1.4281,75,90,null,null,null,null,null],
 ["Alex Hales","Batsman",86,10,85,29.69,1.4428,75,95,null,null,null,null,null],
 ["Jason Behrendorff","Bowler",20,86,85,13.69,1.0348,45,90,22.68,7.66,17.7,85,85],
+["Sachin Tendulkar","Batsman",83,20,85,32.90,1.2108,55,95,null,null,null,null,null],
     
 ].map(([
     name,
