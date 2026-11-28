@@ -135,7 +135,7 @@ const players = [
 ["Krunal Pandya","All Rounder",65,82,88,23.31,1.3382,65,87,30.74,7.47,24.67,90,70],
 ["Fakhar Zaman","Batsman",86,10,90,32.66,1.4313,75,87,null,null,null,null,null],
 ["Shaheen Afridi","All Rounder",40,86,85,14,1.26,55,87,21.19,8.02,15.8,80,90],
-["Shahid Afridi","All Rounder",87,35,90,14,1.63,85,92,22.78,6.78,20.1,95,80],
+["Shahid Afridi","All Rounder",87,65,90,14,1.63,85,92,22.78,6.78,20.1,95,80],
 ["Martin Guptill","Batsman",87,10,87,30.52,1.3951,65,92,null,null,null,null,null],
 ["Jimmy Neesham","All Rounder",55,84,87,16.5,1.35,65,87,25.95,9.1,17.1,70,85],
 ["Mitchell McClenaghan","Bowler",25,84,86,6.53,1.2142,55,87,25.5,8.51,17.92,75,85],
