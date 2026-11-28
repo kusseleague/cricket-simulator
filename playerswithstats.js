@@ -191,6 +191,7 @@ const players = [
 ["Piyush Chawla", "Bowler", 30, 89, 82, 14.71, 1.2343, 55, 94, 24.50, 7.58, 19.3, 85, 80],
 ["Mujeeb Ur Rahman", "Bowler", 25, 90, 90, 8.38, 1.0599, 45, 89, 23.72, 6.93, 20.5, 95, 80],
 ["Yuvraj Singh", "All Rounder", 85, 75, 86, 25.69, 1.2876, 55, 94, 24.86, 7.47, 19.9, 90, 80],
+["Moises Constantino Henriques", "All Rounder", 70, 77, 85, 26.76, 1.2824, 55, 93, 29.18, 8.21, 21.3, 80, 75],
     
 ].map(([
     name,
